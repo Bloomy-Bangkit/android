@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_email_sign_in"
         app:startIconDrawable="@drawable/ic_email">
 
-        <com.dicoding.bloomy.ui.customview.EmailEditText
+        <com.capstone.bloomy.ui.customview.EmailEditText
             android:id="@+id/et_email_sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_password_sign_in"
         app:startIconDrawable="@drawable/ic_lock">
 
-        <com.dicoding.bloomy.ui.customview.PasswordEditText
+        <com.capstone.bloomy.ui.customview.PasswordEditText
             android:id="@+id/et_password_sign_in"
             android:layout_width="match_parent"
             android:textColor="@color/red"

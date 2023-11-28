@@ -1,4 +1,4 @@
-package com.dicoding.bloomy.ui.customview
+package com.capstone.bloomy.ui.customview
 
 import android.content.Context
 import android.graphics.Canvas
@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import android.util.Patterns
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
-import com.dicoding.bloomy.R
+import com.capstone.bloomy.R
 
 class EmailEditText : AppCompatEditText {
 

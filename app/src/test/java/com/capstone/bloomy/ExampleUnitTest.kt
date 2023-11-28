@@ -1,4 +1,4 @@
-package com.dicoding.bloomy
+package com.capstone.bloomy
 
 import org.junit.Test
 

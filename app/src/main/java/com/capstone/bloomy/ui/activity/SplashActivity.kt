@@ -1,4 +1,4 @@
-package com.dicoding.bloomy.ui.activity
+package com.capstone.bloomy.ui.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.dicoding.bloomy.R
+import com.capstone.bloomy.R
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
