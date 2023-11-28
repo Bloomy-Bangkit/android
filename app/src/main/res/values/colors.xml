@@ -8,8 +8,14 @@
     <color name="blue_50">#91E5F6</color>
     <color name="blue_50_light">#CCE9FF</color>
     <color name="blue_50_extra_light">#EBF9FF</color>
+
+    <color name="red">#B30000</color>
+    <color name="yellow">#FFC400</color>
+
     <color name="white">#FFFFFF</color>
     <color name="off_white">#FBFBFB</color>
     <color name="gray_dark">#3E3E42</color>
     <color name="gray_light">#EFF1F3</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color">#2693C9</color>
 </resources>
