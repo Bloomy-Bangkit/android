@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Bloomy</string>
+
+    <string name="img_logo_bloomy_splash">Image Logo Bloomy Splash</string>
+
+    <string name="img_background_home">Image Background Home</string>
+    <string name="tv_title_home">Sail into the\nSea\'s Splendor</string>
+    <string name="tv_subtitle_home">Let the Waves of\nInnovation Echo\nthe Melody of\nMaritime Prosperity</string>
+    <string name="btn_get_started_home">Get Started</string>
+
+    <string name="img_logo_bloomy_sign_in">Image Logo Bloomy Sign In</string>
+    <string name="img_bottom_sheet_sign_in">Image Bottom Sheet Sign In</string>
+    <string name="tv_title_sign_in">Sign In</string>
+    <string name="tv_subtitle_sign_in">Sign in to your account</string>
+    <string name="tv_email_sign_in">Email</string>
+    <string name="tv_password_sign_in">Password</string>
+    <string name="tv_sign_up_hint">Don\’t have an account?</string>
+
+    <string name="btn_sign_in">Sign In</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="invalid_email">Invalid email format</string>
+    <string name="invalid_password">Password must be at least 8 characters</string>
 </resources>
