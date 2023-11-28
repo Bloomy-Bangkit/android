@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Base.Theme.Bloomy" parent="Theme.Material3.DayNight.NoActionBar">
-         <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorPrimary">@color/blue_500</item>
     </style>
 
     <style name="blueTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
@@ -14,7 +14,6 @@
         <item name="endIconTint">@color/blue_500</item>
         <item name="startIconTint">@color/blue_500</item>
     </style>
-
 
     <style name="Theme.Bloomy" parent="Base.Theme.Bloomy" />
 
