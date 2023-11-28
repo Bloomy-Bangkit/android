@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.dicoding.bloomy"
+    namespace = "com.capstone.bloomy"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.dicoding.bloomy"
+        applicationId = "com.capstone.bloomy"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
