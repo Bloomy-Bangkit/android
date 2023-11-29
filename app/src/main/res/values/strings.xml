@@ -16,8 +16,32 @@
     <string name="tv_password_sign_in">Password</string>
     <string name="tv_sign_up_hint">Don\’t have an account?</string>
 
+    <string name="img_bottom_sheet_sign_up">Image Bottom Sheet Sign Up</string>
+    <string name="tv_title_sign_up">Sign Up</string>
+    <string name="tv_subtitle_sign_up">Create your new account</string>
+    <string name="tv_username_sign_up">Username</string>
+    <string name="tv_email_sign_up">Email</string>
+    <string name="tv_password_sign_up">Password</string>
+    <string name="tv_confirm_password_sign_up">Confirm Password</string>
+    <string name="tv_sign_in_hint">Already have an account?</string>
+
+    <string name="img_background_sign_up_success">Image Background Sign Up Success</string>
+    <string name="tv_title_sign_up_success">Your account\nhas been created\nsuccessfully</string>
+    <string name="tv_subtitle_sign_up_success">Please check your email for verification\nlink to activate your account</string>
+    <string name="btn_continue_sign_up_success">Continue</string>
+
+    <string name="img_background_error_no_internet_connection">Image Background Error No Internet Connection</string>
+    <string name="img_error_no_internet_connection">Image Error No Internet Connection</string>
+    <string name="tv_title_error_no_internet_connection">No Internet\nConnection</string>
+    <string name="tv_subtitle_error_no_internet_connection">Please check your internet\nconnection and try again</string>
+    <string name="btn_try_again">Try Again</string>
+
+    <string name="my_profile">My Profile</string>
+
     <string name="btn_sign_in">Sign In</string>
+    <string name="btn_sign_in_content_description">Sign in content description</string>
     <string name="btn_sign_up">Sign Up</string>
+    <string name="btn_sign_up_content_description">Sign up content description</string>
     <string name="invalid_email">Invalid email format</string>
     <string name="invalid_password">Password must be at least 8 characters</string>
 </resources>
