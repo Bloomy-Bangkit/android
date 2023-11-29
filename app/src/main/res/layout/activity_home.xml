@@ -11,11 +11,11 @@
         android:id="@+id/img_background_home"
         android:layout_width="0dp"
         android:layout_height="700dp"
+        android:contentDescription="@string/img_background_home"
         android:src="@drawable/ic_background_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/img_background_home" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_title_home"
@@ -50,15 +50,14 @@
         android:id="@+id/btn_get_started_home"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="525dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/btn_get_started_home"
         android:textColor="@color/off_white"
         android:textSize="16sp"
         android:background="@drawable/btn_rounded"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tv_subtitle_home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
