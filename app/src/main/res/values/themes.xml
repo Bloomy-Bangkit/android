@@ -2,6 +2,7 @@
 
     <style name="Base.Theme.Bloomy" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorControlNormal">@color/off_white</item>
     </style>
 
     <style name="blueTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
