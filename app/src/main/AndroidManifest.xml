@@ -13,6 +13,18 @@
         android:theme="@style/Theme.Bloomy"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ErrorNoInternetConnectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SignUpSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
