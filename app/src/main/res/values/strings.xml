@@ -36,7 +36,33 @@
     <string name="tv_subtitle_error_no_internet_connection">Please check your internet\nconnection and try again</string>
     <string name="btn_try_again">Try Again</string>
 
-    <string name="my_profile">My Profile</string>
+    <string name="title_my_profile">My Profile</string>
+    <string name="img_my_shop_profile">Image My Shop Profile</string>
+    <string name="img_my_shop_right_profile">Image My Shop Right Profile</string>
+    <string name="img_bottom_sheet_profile">Image Bottom Sheet Profile</string>
+    <string name="img_edit_profile">Image Edit Profile</string>
+    <string name="img_edit_profile_right">Image Edit Profile Right</string>
+    <string name="img_reset_password">Image Reset Password</string>
+    <string name="img_reset_password_right">Image Reset Password Right</string>
+    <string name="img_content_divider_profile_settings">Image Content Divider Profile Settings</string>
+    <string name="img_change_language">Image Change Language</string>
+    <string name="img_change_language_right">Image Change Language Right</string>
+    <string name="img_content_divider_application_settings">Image Content Divider Application Settings</string>
+    <string name="img_sign_out">Image Sign Out</string>
+    <string name="tv_name_profile">Name</string>
+    <string name="tv_phone_number_profile">+62 878 1932 6417</string>
+    <string name="tv_email_profile">test@gmail.com</string>
+    <string name="tv_my_shop_profile">My Shop</string>
+    <string name="tv_profile_settings">Profile Settings</string>
+    <string name="tv_edit_profile">Edit Profile</string>
+    <string name="tv_edit_profile_description">Update your profile information</string>
+    <string name="tv_reset_password">Reset Password</string>
+    <string name="tv_reset_password_description">Secure your account with a new password</string>
+    <string name="tv_application_settings">Application Settings</string>
+    <string name="tv_change_language">Change Language</string>
+    <string name="tv_change_language_description">Set the language that suits you the most</string>
+    <string name="tv_sign_out">Sign Out</string>
+    <string name="tv_app_version">App Version 1.0.0</string>
 
     <string name="btn_sign_in">Sign In</string>
     <string name="btn_sign_in_content_description">Sign in content description</string>
