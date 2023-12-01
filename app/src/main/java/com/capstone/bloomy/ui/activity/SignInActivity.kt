@@ -16,8 +16,8 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnSignIn.setOnClickListener {
-            val profileIntent = Intent(this, ProfileActivity::class.java)
-            startActivity(profileIntent)
+            val dashboardIntent = Intent(this, DashboardActivity::class.java)
+            startActivity(dashboardIntent)
             finish()
         }
 
