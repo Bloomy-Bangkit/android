@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_700">
+
+    <TextView
+        android:id="@+id/TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/roboto_black"
+        android:text="Lorem Opsum"
+        android:textColor="@color/off_white"
+        android:textSize="20sp" />
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/off_white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <View
+        android:id="@+id/white_box"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_above="@+id/bottom_navigation"
+        android:background="@drawable/back_round" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/grade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/white_box"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginRight="16dp"
+        android:hint="Grade"
+        app:boxStrokeColor="@color/blue_700"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/blue_700">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/white_box"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginRight="16dp"
+        android:hint="Information"
+        app:boxStrokeColor="@color/blue_700"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/blue_700">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/uploadCard"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="500dp"
+        android:focusable="true"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/uploadIcon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="upload_icon"
+                android:src="@drawable/image" />
+
+            <TextView
+                android:id="@+id/uploadText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/uploadIcon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Chosse Your images here"
+                android:textColor="@color/gray_dark" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/TextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/white_box"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/roboto_black"
+        android:text="Lorem Opsum"
+        android:textColor="@color/blue_700"
+        android:textSize="20sp" />
+
+</RelativeLayout>

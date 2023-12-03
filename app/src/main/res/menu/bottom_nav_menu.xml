@@ -1,0 +1,32 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/home"
+        android:title="Home"
+        app:itemIconSize="30dp" />
+
+    <item
+        android:id="@+id/navigation_Grading"
+        android:icon="@drawable/threestars"
+        android:title="Grading"
+        app:itemIconSize="30dp" />
+
+    <item
+        android:id="@+id/navigation_Market"
+        android:icon="@drawable/shoppingcart"
+        android:title="Market"
+        app:itemIconSize="30dp" />
+
+    <item
+        android:id="@+id/navigation_Pricing"
+        android:icon="@drawable/money"
+        android:title="Pricing"
+        app:itemIconSize="30dp" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/user"
+        android:title="User"
+        app:itemIconSize="30dp" />
+</menu>

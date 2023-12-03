@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/off_white">
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/blue_700">
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="back button"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="30dp"
+                android:text="Transaction Detail"
+                android:textColor="#EEEEEE"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listitem"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_below="@id/toolbar"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_detail_transaction" />
+
+        <RelativeLayout
+            android:id="@+id/layoutTextID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/listitem"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:id="@+id/idpem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="ID lorem ipsum"
+                android:textColor="@color/gray_dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/outputText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Output Text"
+                android:textColor="@color/gray_dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idpem"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Status"
+                android:textColor="@color/gray_dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/outputStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/outputText"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Output Text"
+                android:textColor="@color/gray_dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/status"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Date"
+                android:textColor="@color/gray_dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/outputDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/outputStatus"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Output Text"
+                android:textColor="@color/gray_dark"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_below="@+id/layoutTextID"
+            android:layout_marginTop="13dp"
+            android:background="@color/gray_light" />
+
+        <RelativeLayout
+            android:id="@+id/layoutTextCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rectangle"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="ID lorem ipsum"
+                android:textColor="@color/gray_dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/subtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Subtotal lorem ipsum"
+                android:textColor="@color/gray_700"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/outputSubtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/subtotal"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Output Text"
+                android:textColor="@color/gray_700"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/ongkir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/subtotal"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Ongkir lorem ipsum"
+                android:textColor="@color/gray_700"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/outputOngkir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/ongkir"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Output Text"
+                android:textColor="@color/gray_700"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ongkir"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Ongkir lorem ipsum"
+                android:textColor="@color/gray_dark"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/outputTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/total"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Output Text"
+                android:textColor="@color/gray_dark"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layoutTextCount"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="20dp"
+                android:background="@drawable/item_round"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Lorem Ipsum"
+                android:textSize="19sp"
+                app:backgroundTint="@color/blue_700" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
+</ScrollView>
