@@ -11,7 +11,7 @@ import com.capstone.bloomy.R
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
-    private val splashDuration: Long = 3000
+    private val splashDuration: Long = 2000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
