@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="275dp"
         android:contentDescription="@string/img_background_home"
-        android:src="@drawable/ic_background_error_no_internet_connection"
+        android:src="@drawable/background_error_no_internet_connection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/img_error_no_internet_connection"
-        android:src="@drawable/ic_error_no_internet_connection"
+        android:src="@drawable/icon_error_no_internet_connection"
         app:layout_constraintBottom_toTopOf="@id/tv_title_error_no_internet_connection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,16 +57,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title_error_no_internet_connection" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_try_again_error_no_internet_connection"
         android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/btn_try_again"
         android:textColor="@color/off_white"
         android:textSize="16sp"
-        android:background="@drawable/ic_btn_rounded"
+        app:backgroundTint="@color/blue_500"
+        app:cornerRadius="10dp"
+        app:rippleColor="@color/ripple_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_subtitle_error_no_internet_connection" />
