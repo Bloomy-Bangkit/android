@@ -12,7 +12,7 @@
         android:layout_width="315dp"
         android:layout_height="175dp"
         android:contentDescription="@string/img_logo_bloomy_splash"
-        android:src="@drawable/ic_logo_bloomy"
+        android:src="@drawable/image_bloomy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
