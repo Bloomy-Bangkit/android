@@ -10,9 +10,10 @@
     <ImageView
         android:id="@+id/img_background_sign_up_success"
         android:layout_width="0dp"
-        android:layout_height="690dp"
+        android:layout_height="0dp"
         android:contentDescription="@string/img_background_sign_up_success"
-        android:src="@drawable/ic_background_sign_up_success"
+        android:src="@drawable/background_sign_up_success"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -47,18 +48,32 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_title_sign_up_success"
         tools:ignore="TextContrastCheck" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue_sign_up_success"
         android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/btn_continue_sign_up_success"
         android:textColor="@color/off_white"
         android:textSize="16sp"
-        android:background="@drawable/ic_btn_rounded"
+        app:backgroundTint="@color/blue_500"
+        app:cornerRadius="10dp"
+        app:rippleColor="@color/ripple_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_subtitle_sign_up_success" />
+
+    <ImageView
+        android:id="@+id/img_space_sign_up_success"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:contentDescription="@string/img_space_sign_up_success"
+        android:src="@drawable/template_white_spacer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_continue_sign_up_success"
+        tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
