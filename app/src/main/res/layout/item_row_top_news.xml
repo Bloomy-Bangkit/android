@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="225dp"
     android:layout_height="150dp"
-    android:layout_marginTop="10dp"
     android:layout_marginStart="25dp"
+    android:layout_marginTop="10dp"
     app:cardBackgroundColor="@color/off_white"
     app:cardCornerRadius="20dp"
-    app:cardElevation="0dp">
+    app:cardElevation="0dp"
+    tools:ignore="TextSizeCheck">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,7 +21,6 @@
             android:layout_height="150dp"
             android:contentDescription="@string/img_top_news"
             android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="H,16:9"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,8 +30,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/gray_dark"
             android:alpha="0.7"
+            android:background="@color/gray_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,19 +41,19 @@
             android:id="@+id/tv_top_news"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
             android:ellipsize="end"
             android:fontFamily="@font/roboto_regular"
             android:maxLines="3"
-            android:text="Study: Indonesia’s extensive network of marine reserves are poorly managed"
+            android:text="@string/tv_top_news"
             android:textColor="@color/off_white"
             android:textSize="14sp"
-            tools:targetApi="o"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:targetApi="o" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
