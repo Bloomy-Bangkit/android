@@ -13,7 +13,7 @@
         android:layout_height="175dp"
         android:paddingTop="20dp"
         android:contentDescription="@string/img_logo_bloomy_sign_in"
-        android:src="@drawable/ic_logo_bloomy"
+        android:src="@drawable/image_bloomy"
         app:layout_constraintBottom_toTopOf="@id/img_bottom_sheet_sign_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:contentDescription="@string/img_bottom_sheet_sign_in"
-        android:src="@drawable/ic_bottom_sheet"
+        android:src="@drawable/template_bottom_sheet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,23 +71,27 @@
         app:layout_constraintTop_toBottomOf="@id/tv_subtitle_sign_in" />
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/blueTextInputLayout"
+        style="@style/blueTextInputLayoutMaterialComponents"
         android:id="@+id/til_email_sign_in"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:hintEnabled="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_email_sign_in"
-        app:startIconDrawable="@drawable/ic_email">
+        app:startIconDrawable="@drawable/icon_email">
 
         <com.capstone.bloomy.ui.customview.EmailEditText
             android:id="@+id/et_email_sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/blue_500"
             android:ems="10"
+            android:textColorHint="@color/blue_500"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/et_hint_email_sign_in"
             android:inputType="textEmailAddress"
-            tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+            android:textColor="@color/blue_500"
+            tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize,TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -105,38 +109,45 @@
         app:layout_constraintTop_toBottomOf="@id/til_email_sign_in" />
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/blueTextInputLayout"
+        style="@style/blueTextInputLayoutMaterialComponents"
         android:id="@+id/til_password_sign_in"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:textColor="@color/blue_500"
         app:endIconMode="password_toggle"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_password_sign_in"
-        app:startIconDrawable="@drawable/ic_lock">
+        app:startIconDrawable="@drawable/icon_lock">
 
         <com.capstone.bloomy.ui.customview.PasswordEditText
             android:id="@+id/et_password_sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/et_hint_password_sign_in"
+            android:textColorHint="@color/blue_500"
             android:inputType="textPassword"
-            tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+            android:textColor="@color/blue_500"
+            tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize,TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_sign_in"
         android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginTop="67.5dp"
-        android:background="@drawable/ic_btn_rounded"
         android:contentDescription="@string/btn_sign_in_content_description"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/btn_sign_in"
         android:textColor="@color/off_white"
         android:textSize="16sp"
+        app:backgroundTint="@color/blue_500"
+        app:cornerRadius="10dp"
+        app:rippleColor="@color/ripple_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_password_sign_in" />
