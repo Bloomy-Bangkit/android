@@ -15,21 +15,6 @@
         android:theme="@style/Theme.Bloomy"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.NewsDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activity.ProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activity.ErrorNoInternetConnectionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activity.SignUpSuccessActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activity.SignUpActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -45,7 +30,37 @@
             android:name=".ui.activity.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.DashboardActivity"
+            android:name=".ui.activity.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SignUpSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.NewsDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MarketProductDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MarketSellerDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ShopActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ShopAddProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ShopProductDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ShopEditProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ErrorNoInternetConnectionActivity"
             android:exported="false" />
     </application>
 
