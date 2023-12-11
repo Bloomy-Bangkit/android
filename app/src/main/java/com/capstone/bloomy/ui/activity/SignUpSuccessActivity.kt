@@ -15,9 +15,7 @@ class SignUpSuccessActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnContinueSignUpSuccess.setOnClickListener {
-            val errorIntent = Intent(this, ErrorNoInternetConnectionActivity::class.java)
-            startActivity(errorIntent)
-            finish()
+            startActivity(Intent(this, SignInActivity::class.java))
         }
     }
 }
