@@ -10,6 +10,7 @@ import com.capstone.bloomy.databinding.ActivityShopAddProductBinding
 class ShopAddProductActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityShopAddProductBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityShopAddProductBinding.inflate(layoutInflater)
