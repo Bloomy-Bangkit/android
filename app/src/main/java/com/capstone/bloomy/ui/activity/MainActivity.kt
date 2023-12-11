@@ -46,12 +46,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        replaceFragment(DashboardFragment())
+        if (intent.getBooleanExtra("navigateToProfileFragment", false)) {
+            replaceFragment(ProfileFragment())
+            binding.bottomNavigation.selectedItemId = R.id.button_profile
+        } else {
+            replaceFragment(DashboardFragment())
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit()
     }
-
-
 }
