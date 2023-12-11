@@ -176,8 +176,8 @@
     <string name="img_sign_out">Image Sign Out</string>
     <string name="img_bottom_navigation_space">Image Bottom Navigation Space</string>
     <string name="tv_name_profile">Name</string>
-    <string name="tv_phone_number_profile">+62 878 1932 6417</string>
-    <string name="tv_email_profile">test@gmail.com</string>
+    <string name="tv_phone_number_profile">Phone Number</string>
+    <string name="tv_email_profile">Email</string>
     <string name="tv_my_shop_profile">My Shop</string>
     <string name="tv_profile_settings">Profile Settings</string>
     <string name="tv_edit_profile">Edit Profile</string>
@@ -189,6 +189,31 @@
     <string name="tv_change_language_description">Set the language that suits you the most</string>
     <string name="tv_sign_out">Sign Out</string>
     <string name="tv_app_version">App Version 1.0.0</string>
+
+    <!-- EditProfileActivity -->
+    <string name="title_edit_profile">Edit Profile</string>
+    <string name="img_bottom_sheet_edit_profile">Image Bottom Sheet Edit Profile</string>
+    <string name="img_content_divider_edit_profile">Image Content Divider Edit Profile</string>
+    <string name="tv_subtitle_edit_profile">Update your\nProfile Information</string>
+    <string name="tv_choose_image_edit_profile">Choose\nImage</string>
+    <string name="hint_name_edit_profile">Name</string>
+    <string name="hint_phone_number_edit_profile">Phone Number</string>
+    <string name="hint_province_edit_profile">Province</string>
+    <string name="hint_city_edit_profile">City / Regency</string>
+    <string name="hint_address_edit_profile">Address</string>
+    <string name="hint_description_edit_profile">Description</string>
+
+    <!-- ResetPasswordActivity -->
+    <string name="title_reset_password">Reset Password</string>
+    <string name="img_bottom_sheet_reset_password">Image Bottom Sheet Reset Password</string>
+    <string name="img_content_divider_reset_password">Image Content Divider Reset Password</string>
+    <string name="tv_subtitle_reset_password">Secure your account\nwith a new password</string>
+    <string name="tv_old_password_reset">Old Password</string>
+    <string name="et_hint_old_password_reset">••••••••</string>
+    <string name="tv_new_password_reset">New Password</string>
+    <string name="et_hint_new_password_reset">••••••••</string>
+    <string name="tv_confirm_new_password_reset">Confirm New Password</string>
+    <string name="et_hint_confirm_new_password_reset">••••••••</string>
 
     <!-- ShopActivity -->
     <string name="title_my_shop">My Shop</string>
@@ -282,11 +307,30 @@
     <string name="tv_title_error_no_internet_connection">No Internet\nConnection</string>
     <string name="tv_subtitle_error_no_internet_connection">Please check your internet\nconnection and try again</string>
 
+    <!-- ImagePickerDialog -->
+    <string name="img_camera_image_picker_dialog">Image Camera Image Picker Dialog</string>
+    <string name="img_gallery_image_picker_dialog">Image Gallery Image Picker Dialog</string>
+    <string name="tv_choose_image_picker_dialog">Choose Image</string>
+    <string name="tv_camera_image_picker_dialog">Camera</string>
+    <string name="tv_gallery_image_picker_dialog">Gallery</string>
+
     <!-- Additional -->
     <string name="btn_sign_in">Sign In</string>
     <string name="btn_sign_in_content_description">Sign in content description</string>
     <string name="btn_sign_up">Sign Up</string>
     <string name="btn_sign_up_content_description">Sign up content description</string>
+    <string name="btn_no_sign_out_dialog">No</string>
+    <string name="btn_no_sign_out_dialog_content_description">No content description</string>
+    <string name="btn_cancel_image_picker_dialog">Cancel</string>
+    <string name="btn_cancel_image_picker_dialog_content_description">Cancel content description</string>
+    <string name="btn_yes_sign_out_dialog">Yes</string>
+    <string name="btn_yes_sign_out_dialog_content_description">Yes</string>
+    <string name="btn_edit_photo_profile">Edit Photo</string>
+    <string name="btn_edit_photo_profile_content_description">Edit photo profile content description</string>
+    <string name="btn_edit_detail_profile">Edit Detail</string>
+    <string name="btn_edit_detail_profile_content_description">Edit detail profile content description</string>
+    <string name="btn_reset_password">Reset Password</string>
+    <string name="btn_reset_password_content_description">Reset password content description</string>
     <string name="btn_buy">Buy</string>
     <string name="btn_buy_content_description">Buy content description</string>
     <string name="btn_buy_bottom_sheet_dialog">Buy</string>
@@ -297,8 +341,18 @@
     <string name="btn_edit_content_description">Edit content description</string>
     <string name="btn_remove">Remove</string>
     <string name="btn_remove_content_description">Remove content description</string>
+    <string name="btn_loading" tools:ignore="TypographyEllipsis">Loading...</string>
     <string name="invalid_email">Invalid email format</string>
+    <string name="invalid_input">Input field can\'t be empty</string>
+    <string name="invalid_image">The image remains the same as before</string>
     <string name="invalid_password">Password must be at least 8 characters</string>
+    <string name="loading" tools:ignore="TypographyEllipsis">Loading...</string>
+    <string name="welcome_to_bloomy">Welcome to Bloomy!</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="sign_out_confirmation">Are you sure\nyou want to sign out?</string>
+    <string name="default_name">Name</string>
+    <string name="default_phone_number">Phone Number</string>
+    <string name="default_email">Email</string>
 
     <!-- BottomNavigation -->
     <string name="home">Home</string>
@@ -324,47 +378,32 @@
     </string-array>
 
     <string-array name="data_title_top_news">
-        <item>7 Aneka Masakan Ikan Laut, Lezat dan Mudah Dibuat</item>
+        <item>Nelayan Pertanyakan Rencana Menteri KKP Batasi Kuota Penangkapan Ikan</item>
+        <item>Luhut Akui Indeks Kesehatan Laut RI Masih di Bawah Dunia</item>
+        <item>Perubahan Iklim Bikin Air Laut Berubah Warna</item>
+        <item>LIPI: Potensi Benih Lobster Laut RI 20 Miliar Ekor per Tahun</item>
         <item>Indonesia Peringkat Kedua Negara Penghasil Ikan Laut Terbesar Dunia</item>
-        <item>Ikan Air Laut Lebih Sehat dari Air Tawar? Ini Kata Ahli Gizi</item>
-        <item>Omega 3 Terbaik Ada di Ikan Berukuran Besar, Mitos atau Fakta?</item>
-        <item>Ini 7 Jenis Ikan Laut Paling Disukai di Indonesia</item>
-        <item>Kronologi Kapal Maling Ikan Berbendera Filipina Ditangkap di Laut Sulawesi, Diduga Pakai Modus Baru</item>
-        <item>Tips Simpel Membersihkan dan Menghilangkan Bau Amis Ikan, Tak Selalu Harus Pakai Jeruk Nipis</item>
-        <item>Ambil Ikan di Luar Zona Tangkapan Laut Aru, 3 Kapal Nelayan Diciduk KKP</item>
-        <item>Potensi Sumber Daya Ikan Indonesia Lebih dari 12 Juta Ton per Tahun</item>
-        <item>Tokcer, Ekspor Perikanan Indonesia Sentuh Rp USD 5,71 Miliar</item>
     </string-array>
 
     <string-array name="data_image_url_top_news">
-        <item tools:ignore="TypographyDashes,Typos">https://cdn1-production-images-kly.akamaized.net/AQNrYGc6loMA-HTZwpfs8BpSvC8=/640x360/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/2936931/original/024354900_1570788210-bryony-caldwell-HlQzyr_TgWI-unsplash.jpg</item>
+        <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/visual/2022/01/20/kapal-nelayan-tidak-melaut-terkendala-izin_169.jpeg</item>
+        <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/visual/2019/10/22/847bf6d7-5995-46af-91b7-a96cf246c546_169.jpeg</item>
+        <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/community/media/visual/2023/09/20/pesisir-laut-thailand-berubah-hijau-ancam-ekosistem-dan-pariwisata-3_43.jpeg</item>
+        <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/visual/2020/11/25/ilustrasi-benih-lobster_169.jpeg</item>
         <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/community/media/visual/2023/06/09/indonesia-peringkat-kedua-negara-penghasil-ikan-laut-terbesar-dunia_169.jpeg</item>
-        <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/community/media/visual/2017/04/01/0b41471d-de08-4946-8e70-26a3c184b9b7_169.jpg</item>
-        <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/community/media/visual/2019/02/02/17809237-4621-480b-a284-98fd856bffec.jpeg</item>
-        <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/community/media/visual/2018/10/25/960f9cb0-b55a-44a0-a466-a73a35134783.jpeg</item>
-        <item tools:ignore="TypographyDashes,Typos">https://cdn0-production-images-kly.akamaized.net/o_qqg_FkiIzYibH5-NDwkJCo2d8=/640x360/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4666418/original/082709000_1701167791-IMG-20231128-WA0015.jpg</item>
-        <item tools:ignore="TypographyDashes,Typos">https://cdn1-production-images-kly.akamaized.net/ytk_FaPRWCeWlVOL03pJPIUMbXA=/29x0:615x586/640x640/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4660940/original/051878300_1700770460-Ikan_1.JPG</item>
-        <item tools:ignore="TypographyDashes,Typos">https://cdn0-production-images-kly.akamaized.net/DYaoO-DbhRCMhORNC_4KoxZvOO8=/640x360/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4386793/original/092899600_1680868145-IMG-20230407-WA0003.jpg</item>
-        <item tools:ignore="TypographyDashes,Typos">https://cdn0-production-images-kly.akamaized.net/9w60l3SubTbXY7Sfvl8LmY3f3c0=/640x360/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/2041840/original/047368700_1522332201-20180329-Ikan-AY5.jpg</item>
-        <item tools:ignore="TypographyDashes,Typos">https://cdn1-production-images-kly.akamaized.net/42xuhWwR6Shh8aLJb94kpa6w3UM=/640x360/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4273814/original/062652100_1672121764-20221227-Salju-New-York-AP-6.jpg</item>
     </string-array>
 
     <string-array name="data_web_url_top_news">
-        <item tools:ignore="TypographyDashes,Typos">https://www.liputan6.com/hot/read/5307748/7-aneka-masakan-ikan-laut-lezat-dan-mudah-dibuat</item>
+        <item tools:ignore="TypographyDashes,Typos">https://www.cnnindonesia.com/ekonomi/20221228112748-92-893035/nelayan-pertanyakan-rencana-menteri-kkp-batasi-kuota-penangkapan-ikan</item>
+        <item tools:ignore="TypographyDashes,Typos">https://www.cnnindonesia.com/ekonomi/20210330124625-92-623807/luhut-akui-indeks-kesehatan-laut-ri-masih-di-bawah-dunia</item>
+        <item tools:ignore="TypographyDashes,Typos">https://www.detik.com/jabar/berita/d-6965862/perubahan-iklim-bikin-air-laut-berubah-warna</item>
+        <item tools:ignore="TypographyDashes,Typos">https://www.cnnindonesia.com/teknologi/20201130134834-199-576152/lipi-potensi-benih-lobster-laut-ri-20-miliar-ekor-per-tahun</item>
         <item tools:ignore="TypographyDashes,Typos">https://finance.detik.com/foto-bisnis/d-6763746/indonesia-peringkat-kedua-negara-penghasil-ikan-laut-terbesar-dunia</item>
-        <item tools:ignore="TypographyDashes,Typos">https://health.detik.com/diet/d-4853524/ikan-air-laut-lebih-sehat-dari-air-tawar-ini-kata-ahli-gizi</item>
-        <item tools:ignore="TypographyDashes,Typos">https://health.detik.com/berita-detikhealth/d-4411275/omega-3-terbaik-ada-di-ikan-berukuran-besar-mitos-atau-fakta</item>
-        <item tools:ignore="TypographyDashes,Typos">https://food.detik.com/info-kuliner/d-4273183/ini-7-jenis-ikan-laut-paling-disukai-di-indonesia</item>
-        <item tools:ignore="TypographyDashes,Typos">https://www.liputan6.com/bisnis/read/5466933/kronologi-kapal-maling-ikan-berbendera-filipina-ditangkap-di-laut-sulawesi-diduga-pakai-modus-baru</item>
-        <item tools:ignore="TypographyDashes,Typos">https://www.liputan6.com/lifestyle/read/5463164/tips-simpel-membersihkan-dan-menghilangkan-bau-amis-ikan-tak-selalu-harus-pakai-jeruk-nipis</item>
-        <item tools:ignore="TypographyDashes,Typos">https://www.liputan6.com/bisnis/read/5360653/ambil-ikan-di-luar-zona-tangkapan-laut-aru-3-kapal-nelayan-diciduk-kkp</item>
-        <item tools:ignore="TypographyDashes,Typos">https://www.liputan6.com/bisnis/read/5342976/potensi-sumber-daya-ikan-indonesia-lebih-dari-12-juta-ton-per-tahun</item>
-        <item tools:ignore="TypographyDashes,Typos">https://www.liputan6.com/bisnis/read/5167526/tokcer-ekspor-perikanan-indonesia-sentuh-rp-usd-571-miliar</item>
     </string-array>
 
     <string-array name="data_title_today_news">
         <item>7 Aneka Masakan Ikan Laut, Lezat dan Mudah Dibuat</item>
-        <item>Indonesia Peringkat Kedua Negara Penghasil Ikan Laut Terbesar Dunia</item>
+        <item>Daftar Wilayah Berpotensi Gelombang Tinggi di Indonesia Hari Ini</item>
         <item>Ikan Air Laut Lebih Sehat dari Air Tawar? Ini Kata Ahli Gizi</item>
         <item>Omega 3 Terbaik Ada di Ikan Berukuran Besar, Mitos atau Fakta?</item>
         <item>Ini 7 Jenis Ikan Laut Paling Disukai di Indonesia</item>
@@ -377,7 +416,7 @@
 
     <string-array name="data_date_today_news">
         <item>05 Sep 2023, 13:46 WIB</item>
-        <item>09 Jun 2023, 16:30 WIB</item>
+        <item>28 Des 2022, 11:00 WIB</item>
         <item>10 Jan 2020, 07:00 WIB</item>
         <item>02 Feb 2019, 10:45 WIB</item>
         <item>25 Okt 2018, 19:00 WIB</item>
@@ -390,7 +429,7 @@
 
     <string-array name="data_image_url_today_news">
         <item tools:ignore="TypographyDashes,Typos">https://cdn1-production-images-kly.akamaized.net/AQNrYGc6loMA-HTZwpfs8BpSvC8=/640x360/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/2936931/original/024354900_1570788210-bryony-caldwell-HlQzyr_TgWI-unsplash.jpg</item>
-        <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/community/media/visual/2023/06/09/indonesia-peringkat-kedua-negara-penghasil-ikan-laut-terbesar-dunia_169.jpeg</item>
+        <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/visual/2022/12/27/dampak-gelombang-tinggi-yang-melanda-perairan-indonesia-5_169.jpeg</item>
         <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/community/media/visual/2017/04/01/0b41471d-de08-4946-8e70-26a3c184b9b7_169.jpg</item>
         <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/community/media/visual/2019/02/02/17809237-4621-480b-a284-98fd856bffec.jpeg</item>
         <item tools:ignore="TypographyDashes,Typos">https://akcdn.detik.net.id/community/media/visual/2018/10/25/960f9cb0-b55a-44a0-a466-a73a35134783.jpeg</item>
@@ -403,7 +442,7 @@
 
     <string-array name="data_web_url_today_news">
         <item tools:ignore="TypographyDashes,Typos">https://www.liputan6.com/hot/read/5307748/7-aneka-masakan-ikan-laut-lezat-dan-mudah-dibuat</item>
-        <item tools:ignore="TypographyDashes,Typos">https://finance.detik.com/foto-bisnis/d-6763746/indonesia-peringkat-kedua-negara-penghasil-ikan-laut-terbesar-dunia</item>
+        <item tools:ignore="TypographyDashes,Typos">https://www.cnnindonesia.com/teknologi/20221228104328-199-893005/daftar-wilayah-berpotensi-gelombang-tinggi-di-indonesia-hari-ini</item>
         <item tools:ignore="TypographyDashes,Typos">https://health.detik.com/diet/d-4853524/ikan-air-laut-lebih-sehat-dari-air-tawar-ini-kata-ahli-gizi</item>
         <item tools:ignore="TypographyDashes,Typos">https://health.detik.com/berita-detikhealth/d-4411275/omega-3-terbaik-ada-di-ikan-berukuran-besar-mitos-atau-fakta</item>
         <item tools:ignore="TypographyDashes,Typos">https://food.detik.com/info-kuliner/d-4273183/ini-7-jenis-ikan-laut-paling-disukai-di-indonesia</item>
