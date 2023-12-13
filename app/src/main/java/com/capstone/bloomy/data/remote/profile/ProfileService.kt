@@ -24,6 +24,7 @@ interface ProfileService {
         @Field("nama") nama: String,
         @Field("nohp") nohp: String,
         @Field("alamat") alamat: String,
+        @Field("provinsi") provinsi: String,
         @Field("kota") kota: String,
         @Field("description") description: String
     ): EditProfileResponse
