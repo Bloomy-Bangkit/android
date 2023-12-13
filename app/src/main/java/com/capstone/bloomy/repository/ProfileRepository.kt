@@ -15,7 +15,7 @@ class ProfileRepository private constructor(private val profileService: ProfileS
 
     suspend fun getProfile() = profileService.getProfile()
 
-    suspend fun editProfile(nama: String, nohp: String, alamat: String, kota: String, description: String) = profileService.editProfile(nama, nohp, alamat, kota, description)
+    suspend fun editProfile(nama: String, nohp: String, alamat: String, provinsi: String, kota: String, description: String) = profileService.editProfile(nama, nohp, alamat, provinsi, kota, description)
 
     fun editPhotoProfile(file: File) = liveData {
         emit(ResultState.Loading)
