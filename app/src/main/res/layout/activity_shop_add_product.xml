@@ -87,7 +87,7 @@
                 android:clipToOutline="true"
                 android:contentDescription="@string/img_add_product"
                 android:scaleType="centerCrop"
-                android:src="@drawable/image_consectetur_fish"
+                android:src="@color/off_white"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
