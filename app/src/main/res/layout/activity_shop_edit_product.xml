@@ -61,7 +61,7 @@
                 android:layout_height="200dp"
                 android:contentDescription="@string/img_edit_product"
                 android:scaleType="centerCrop"
-                android:src="@drawable/image_consectetur_fish"
+                android:src="@color/off_white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -98,9 +98,9 @@
                 android:fontFamily="@font/roboto_regular"
                 android:inputType="text"
                 android:maxLines="1"
-                android:text="@string/value_title_edit_product"
                 android:textColor="@color/gray_dark"
-                tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                tools:ignore="TextContrastCheck,VisualLintTextFieldSize"
+                tools:text="@string/value_title_edit_product" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -122,10 +122,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
-                android:text="@string/value_grade_edit_product"
                 android:textColor="@color/gray_dark"
                 android:inputType="none"
-                tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                tools:ignore="TextContrastCheck,VisualLintTextFieldSize"
+                tools:text="@string/value_grade_edit_product" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -156,9 +156,9 @@
                 android:fontFamily="@font/roboto_regular"
                 android:inputType="number"
                 android:maxLines="1"
-                android:text="@string/value_price_kg_edit_product"
                 android:textColor="@color/gray_dark"
-                tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                tools:ignore="TextContrastCheck,VisualLintTextFieldSize"
+                tools:text="@string/value_price_kg_edit_product" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -185,9 +185,9 @@
                 android:fontFamily="@font/roboto_regular"
                 android:inputType="number"
                 android:maxLines="1"
-                android:text="@string/value_quantity_kg_edit_product"
                 android:textColor="@color/gray_dark"
-                tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                tools:ignore="TextContrastCheck,VisualLintTextFieldSize"
+                tools:text="@string/value_quantity_kg_edit_product" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -213,9 +213,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
-            android:text="@string/value_description_edit_product"
             android:textColor="@color/gray_dark"
-            tools:ignore="TextContrastCheck,VisualLintTextFieldSize,VisualLintLongText" />
+            tools:ignore="TextContrastCheck,VisualLintTextFieldSize,VisualLintLongText"
+            tools:text="@string/value_description_edit_product" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
