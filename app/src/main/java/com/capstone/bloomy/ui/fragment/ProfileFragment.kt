@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.capstone.bloomy.R
@@ -70,9 +69,33 @@ class ProfileFragment : Fragment() {
         }
 
         binding.cardViewSignOut.setOnClickListener {
-            val message: String = getString(R.string.sign_out_confirmation)
+            showSignOutDialog()
+        }
+    }
 
-            showSignOutDialog(message)
+    override fun onResume() {
+        super.onResume()
+
+        val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(requireContext())
+        val profileViewModel: ProfileViewModel by viewModels { profileViewModelFactory }
+
+        profileViewModel.getProfile()
+
+        profileViewModel.profile.observe(viewLifecycleOwner) { profile ->
+            setProfile(profile)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(requireContext())
+        val profileViewModel: ProfileViewModel by viewModels { profileViewModelFactory }
+
+        profileViewModel.getProfile()
+
+        profileViewModel.profile.observe(viewLifecycleOwner) { profile ->
+            setProfile(profile)
         }
     }
 
@@ -88,7 +111,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun showSignOutDialog(message: String) {
+    private fun showSignOutDialog() {
         val dialog = Dialog(requireContext())
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -100,11 +123,8 @@ class ProfileFragment : Fragment() {
         val userPreferencesViewModelFactory: UserPreferencesViewModelFactory = UserPreferencesViewModelFactory.getInstance(userPreferences)
         val userPreferencesViewModel: UserPreferencesViewModel by viewModels { userPreferencesViewModelFactory }
 
-        val tvSignOutConfirmation: TextView = dialog.findViewById(R.id.tv_sign_out_confirmation_dialog)
         val btnNoSignOut: Button = dialog.findViewById(R.id.btn_no_sign_out_dialog)
         val btnYesSignOut: Button = dialog.findViewById(R.id.btn_yes_sign_out_dialog)
-
-        tvSignOutConfirmation.text = message
 
         btnYesSignOut.setOnClickListener {
             userPreferencesViewModel.removeSession()
