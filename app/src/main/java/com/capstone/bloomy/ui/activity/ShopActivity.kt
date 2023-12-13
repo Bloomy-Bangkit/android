@@ -3,17 +3,25 @@ package com.capstone.bloomy.ui.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
 import com.capstone.bloomy.R
-import com.capstone.bloomy.data.model.ProductModel
+import com.capstone.bloomy.data.response.ProductByUsernameData
+import com.capstone.bloomy.data.response.ProfileData
 import com.capstone.bloomy.databinding.ActivityShopBinding
 import com.capstone.bloomy.ui.adapter.ProductShopAdapter
+import com.capstone.bloomy.ui.viewmodel.ProductViewModel
+import com.capstone.bloomy.ui.viewmodel.ProfileViewModel
+import com.capstone.bloomy.ui.viewmodelfactory.ProductViewModelFactory
+import com.capstone.bloomy.ui.viewmodelfactory.ProfileViewModelFactory
 
 class ShopActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityShopBinding
 
-    private val productShopList = ArrayList<ProductModel>()
+    private val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(this@ShopActivity)
+    private val profileViewModel: ProfileViewModel by viewModels { profileViewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +31,21 @@ class ShopActivity : AppCompatActivity() {
         setSupportActionBar(binding.materialToolBarShop)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        binding.recyclerViewProductShop.setHasFixedSize(true)
+        profileViewModel.getProfile()
 
-        productShopList.addAll(getListProductShop())
-        showProductShopList()
+        profileViewModel.profile.observe(this) { profile ->
+            setProfile(profile)
+
+            val profileData: ProfileData = profile ?: return@observe
+
+            val productViewModelFactory: ProductViewModelFactory = ProductViewModelFactory.getInstance(this@ShopActivity)
+            val productViewModel: ProductViewModel by viewModels { productViewModelFactory }
+
+            productViewModel.getProductByUsername(profileData.username)
+            productViewModel.product.observe(this) { product ->
+                setProductByUsernameData(product)
+            }
+        }
 
         binding.btnAddProduct.setOnClickListener {
             val shopAddProductIntent = Intent(this, ShopAddProductActivity::class.java)
@@ -34,39 +53,69 @@ class ShopActivity : AppCompatActivity() {
         }
     }
 
-    private fun getListProductShop(): ArrayList<ProductModel> {
-        val dataTitleProductShop = resources.getStringArray(R.array.data_title_product_shop)
-        val dataImageUrlProductShop = resources.getStringArray(R.array.data_image_url_product_shop)
-        val dataGradeProductShop = resources.getStringArray(R.array.data_grade_product_shop)
-        val dataPriceProductShop = resources.getStringArray(R.array.data_price_product_shop)
-        val dataRatingProductShop = resources.getStringArray(R.array.data_rating_product_shop)
-        val dataSoldProductShop = resources.getStringArray(R.array.data_sold_product_shop)
-        val dataLocationProductShop = resources.getStringArray(R.array.data_location_product_shop)
-        val dataIsFavoriteProductShop = resources.getStringArray(R.array.data_is_favorite_product_shop)
-        val productShopList = ArrayList<ProductModel>()
+    override fun onResume() {
+        super.onResume()
 
-        val minLength = minOf(dataTitleProductShop.size, dataImageUrlProductShop.size, dataGradeProductShop.size, dataPriceProductShop.size, dataRatingProductShop.size, dataSoldProductShop.size, dataLocationProductShop.size, dataIsFavoriteProductShop.size)
+        profileViewModel.getProfile()
 
-        for (i in 0 until minLength) {
-            val productShop = ProductModel(dataTitleProductShop[i], dataImageUrlProductShop[i], dataGradeProductShop[i], dataPriceProductShop[i], dataRatingProductShop[i], dataSoldProductShop[i], dataLocationProductShop[i], dataIsFavoriteProductShop[i])
-            productShopList.add(productShop)
+        profileViewModel.profile.observe(this) { profile ->
+            setProfile(profile)
+
+            val profileData: ProfileData = profile ?: return@observe
+
+            val productViewModelFactory: ProductViewModelFactory = ProductViewModelFactory.getInstance(this@ShopActivity)
+            val productViewModel: ProductViewModel by viewModels { productViewModelFactory }
+
+            productViewModel.getProductByUsername(profileData.username)
+            productViewModel.product.observe(this) { product ->
+                setProductByUsernameData(product)
+            }
         }
-
-        return productShopList
     }
 
-    private fun showProductShopList() {
-        binding.recyclerViewProductShop.layoutManager = GridLayoutManager(this, 2)
+    override fun onStart() {
+        super.onStart()
 
-        val productShopAdapter = ProductShopAdapter(productShopList)
+        profileViewModel.getProfile()
 
-        binding.recyclerViewProductShop.adapter = productShopAdapter
+        profileViewModel.profile.observe(this) { profile ->
+            setProfile(profile)
 
-        productShopAdapter.setOnItemClickCallback(object : ProductShopAdapter.OnItemClickCallback {
-            override fun onItemClicked(product: ProductModel) {
-                val shopProductDetailIntent = Intent(this@ShopActivity, ShopProductDetailActivity::class.java)
-                startActivity(shopProductDetailIntent)
+            val profileData: ProfileData = profile ?: return@observe
+
+            val productViewModelFactory: ProductViewModelFactory = ProductViewModelFactory.getInstance(this@ShopActivity)
+            val productViewModel: ProductViewModel by viewModels { productViewModelFactory }
+
+            productViewModel.getProductByUsername(profileData.username)
+            productViewModel.product.observe(this) { product ->
+                setProductByUsernameData(product)
             }
-        })
+        }
+    }
+
+    private fun setProfile(profile: ProfileData) {
+        with(binding) {
+            Glide.with(this@ShopActivity)
+                .load(profile.photo)
+                .into(imgShop)
+
+            tvNameShop.text = profile.nama.ifEmpty { getString(R.string.default_name) }
+            tvEmailShop.text = profile.email.ifEmpty { getString(R.string.default_email) }
+            tvLocationShop.text = profile.kota.ifEmpty { getString(R.string.default_location) }
+        }
+    }
+
+    private fun setProductByUsernameData(product: List<ProductByUsernameData>) {
+        val layoutManager = GridLayoutManager(this, 2)
+        binding.recyclerViewProductShop.layoutManager = layoutManager
+
+        val adapter = ProductShopAdapter()
+        adapter.submitList(product)
+        binding.recyclerViewProductShop.adapter = adapter
+
+        val itemCount = adapter.itemCount
+        if (itemCount != 0) {
+            binding.tvProductShop.text = "$itemCount Product"
+        }
     }
 }
