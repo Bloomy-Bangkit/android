@@ -1,7 +1,6 @@
 package com.capstone.bloomy.ui.activity
 
 import android.app.Dialog
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -45,6 +44,9 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
     private var listIdKota = ArrayList<Int>()
     private var listNamaKota = ArrayList<String>()
 
+    private val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(this@EditProfileActivity)
+    private val profileViewModel: ProfileViewModel by viewModels { profileViewModelFactory }
+
     private lateinit var binding: ActivityEditProfileBinding
 
     @RequiresApi(Build.VERSION_CODES.Q)
@@ -56,11 +58,7 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
         setSupportActionBar(binding.materialToolBarEditProfile)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(this@EditProfileActivity)
-        val profileViewModel: ProfileViewModel by viewModels { profileViewModelFactory }
-
         profileViewModel.getProfile()
-
         profileViewModel.profile.observe(this) { profile ->
             setProfile(profile)
         }
@@ -71,48 +69,41 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
 
         showProvinsi()
 
-        binding.btnEditPhotoProfile.setOnClickListener {
-            imageUri?.let { uri ->
-                val editPhotoProfile = binding.btnEditPhotoProfile
-                val file = uriToFile(uri, this).reduceFileImage()
-
-                profileViewModel.editPhotoProfile(file).observe(this) { result ->
-                    if (result != null) {
-                        when (result) {
-                            is ResultState.Loading -> {
-                                showLoadingEditPhotoProfile(editPhotoProfile, true)
-                            }
-
-                            is ResultState.Success -> {
-                                showLoadingEditPhotoProfile(editPhotoProfile, false)
-                                Toast.makeText(this, result.data.message, Toast.LENGTH_SHORT).show()
-
-                                val profileIntent = Intent(this, MainActivity::class.java)
-                                profileIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                profileIntent.putExtra("navigateToProfileFragment", true)
-                                startActivity(profileIntent)
-                            }
-
-                            is ResultState.Error -> {
-                                showLoadingEditPhotoProfile(editPhotoProfile, false)
-                                Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    }
-                }
-            } ?: Toast.makeText(this, getString(R.string.invalid_image), Toast.LENGTH_SHORT).show()
-        }
-
-        binding.btnEditDetailProfile.setOnClickListener {
-            val editProfile = binding.btnEditDetailProfile
+        binding.btnEditProfile.setOnClickListener {
+            val editProfile = binding.btnEditProfile
             val name = binding.etNameEditProfile.text.toString()
             val phoneNumber = binding.etPhoneNumberEditProfile.text.toString()
             val city = binding.etCityEditProfile.text.toString()
             val address = binding.etAddressEditProfile.text.toString()
             val description = binding.etDescriptionEditProfile.text.toString()
 
+            imageUri?.let { uri ->
+                val editPhotoProfile = binding.btnEditProfile
+                val file = uriToFile(uri, this).reduceFileImage()
+
+                profileViewModel.editPhotoProfile(file).observe(this) { result ->
+                    if (result != null) {
+                        when (result) {
+                            is ResultState.Loading -> {
+                                showLoadingEditProfile(editPhotoProfile, true)
+                            }
+
+                            is ResultState.Success -> {
+                                showLoadingEditProfile(editPhotoProfile, false)
+                                Toast.makeText(this, result.data.message, Toast.LENGTH_SHORT).show()
+                            }
+
+                            is ResultState.Error -> {
+                                showLoadingEditProfile(editPhotoProfile, false)
+                                Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                }
+            }
+
             if (name.isNotEmpty() && phoneNumber.isNotEmpty() && city.isNotEmpty() && address.isNotEmpty() && description.isNotEmpty()) {
-                showLoadingEditDetailProfile(editProfile, true)
+                showLoadingEditProfile(editProfile, true)
 
                 profileViewModel.editProfile(name, phoneNumber, address, city, description)
                 profileViewModel.editProfileResponse.observe(this@EditProfileActivity) { response ->
@@ -120,18 +111,13 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
                     val message = response?.message.toString()
 
                     if (error != null) {
-                        showLoadingEditDetailProfile(editProfile, false)
+                        showLoadingEditProfile(editProfile, false)
                         if (error == true) {
                             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                             profileViewModel.defaultEditProfile()
                         } else {
                             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                             profileViewModel.defaultEditProfile()
-
-                            val profileIntent = Intent(this, MainActivity::class.java)
-                            profileIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                            profileIntent.putExtra("navigateToProfileFragment", true)
-                            startActivity(profileIntent)
                         }
                     }
                 }
@@ -266,7 +252,5 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
         })
     }
 
-    private fun showLoadingEditPhotoProfile(editPhotoProfile: Button, isLoading: Boolean) { editPhotoProfile.text = if (!isLoading) getString(R.string.btn_edit_photo_profile) else getString(R.string.btn_loading) }
-
-    private fun showLoadingEditDetailProfile(editDetailProfile: Button, isLoading: Boolean) { editDetailProfile.text = if (!isLoading) getString(R.string.btn_edit_detail_profile) else getString(R.string.btn_loading) }
+    private fun showLoadingEditProfile(editProfile: Button, isLoading: Boolean) { editProfile.text = if (!isLoading) getString(R.string.btn_edit) else getString(R.string.btn_loading) }
 }
