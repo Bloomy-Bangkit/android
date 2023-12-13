@@ -12,7 +12,7 @@ class SailDecisionConfig {
         fun getApiService(): SailDecisionService {
             val client: OkHttpClient
 
-            val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+            val loggingInterceptor = if (BuildConfig.DEBUG) HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY) else HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
 
             val authInterceptor = Interceptor { chain ->
                 val req = chain.request()
