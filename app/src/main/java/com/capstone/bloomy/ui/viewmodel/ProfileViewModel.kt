@@ -43,10 +43,10 @@ class ProfileViewModel(private val profileRepository: ProfileRepository) : ViewM
         _editProfileResponse.value = null
     }
 
-    fun editProfile(nama: String, nohp: String, alamat: String, kota: String, description: String) {
+    fun editProfile(nama: String, nohp: String, alamat: String, provinsi: String, kota: String, description: String) {
         viewModelScope.launch {
             try {
-                val message = profileRepository.editProfile(nama, nohp, alamat, kota, description)
+                val message = profileRepository.editProfile(nama, nohp, alamat, provinsi, kota, description)
                 _editProfileResponse.value = message
             } catch (e: HttpException) {
                 val jsonInString = e.response()?.errorBody()?.string()
