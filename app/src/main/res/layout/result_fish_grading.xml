@@ -6,7 +6,7 @@
     android:background="@color/blue_500">
 
     <TextView
-        android:id="@+id/TextView"
+        android:id="@+id/TextViewb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -17,10 +17,10 @@
         android:textSize="25sp" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/uploadCard"
+        android:id="@+id/uploadCardb"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_above="@+id/bottom_navigation"
+        android:layout_above="@+id/bottom_navigationb"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="420dp"
@@ -29,20 +29,19 @@
         app:cardElevation="8dp">
 
         <RelativeLayout
-            android:id="@+id/tes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/uploadedImage"
+                android:id="@+id/uploadedImageb"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 android:elevation="1dp"/>
 
             <ImageView
-                android:id="@+id/uploadIcon"
+                android:id="@+id/uploadIconb"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:scaleType="centerCrop"
@@ -53,22 +52,22 @@
                 android:elevation="0dp"/>
 
             <TextView
-                android:id="@+id/uploadText"
+                android:id="@+id/uploadTextb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/uploadIcon"
+                android:layout_below="@id/uploadIconb"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/roboto_bold"
                 android:textSize="20dp"
-                android:text="@string/pilih_gambar"
+                android:text="Chosse images"
                 android:textColor="@color/blue_500"
                 android:elevation="0dp"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+        android:id="@+id/bottom_navigationb"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
@@ -80,43 +79,49 @@
         android:id="@+id/white_box"
         android:layout_width="match_parent"
         android:layout_height="550dp"
-        android:layout_above="@+id/bottom_navigation"
+        android:layout_above="@+id/bottom_navigationb"
         android:background="@drawable/back_round">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttongaleri"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/grade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="250dp"
-            android:background="@drawable/item_round"
-            android:drawablePadding="8dp"
-            android:fontFamily="@font/roboto_medium"
-            android:layout_above="@id/buttongrading"
-            android:text="@string/pilih_dari_galeri"
-            android:textSize="19sp"
-            app:backgroundTint="@color/blue_500" />
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="25dp"
+            android:hint="@string/grades"
+            app:boxStrokeColor="@color/blue_500"
+            app:hintTextColor="@color/blue_500"
+            android:layout_above="@+id/information">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonkamera"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/gradeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="180dp"
-            android:background="@drawable/item_round"
-            android:drawablePadding="8dp"
-            android:fontFamily="@font/roboto_medium"
-            android:layout_above="@id/buttongrading"
-            android:text="@string/ambil_dari_kamera"
-            android:textSize="19sp"
-            app:backgroundTint="@color/blue_500" />
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="150dp"
+            android:hint="@string/information"
+            app:boxStrokeColor="@color/blue_500"
+            app:hintTextColor="@color/blue_500"
+            android:layout_above="@+id/morebuttongrading">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/informationtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttongrading"
+            android:id="@+id/morebuttongrading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"

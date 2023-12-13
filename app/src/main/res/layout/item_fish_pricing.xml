@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/box"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:background="@drawable/item_round"
+    android:backgroundTint="@color/off_white"
+    android:padding="16dp"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/rekomendasi_harga_ikan"
+        android:textColor="@color/gray_dark"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/harga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/rp3_000_kg"
+        android:textColor="@color/gray_dark"
+        android:textSize="30sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/predictAgainButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/harga"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custom_edittext_background"
+        android:backgroundTint="@color/blue_500"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/predict_again"
+        android:textColor="@color/off_white"
+        android:textSize="15sp" />
+</RelativeLayout>

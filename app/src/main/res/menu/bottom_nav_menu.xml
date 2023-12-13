@@ -25,7 +25,7 @@
         app:itemIconSize="30dp" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_user"
         android:icon="@drawable/user"
         android:title="User"
         app:itemIconSize="30dp" />

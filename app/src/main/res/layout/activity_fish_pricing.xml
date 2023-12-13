@@ -1,128 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_700">
+    android:background="@color/blue_500"
+    android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/white_box"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/roboto_bold"
-        android:gravity="center_vertical"
-        android:text="Fish Pricing"
-        android:textColor="@color/off_white"
-        android:textSize="25dp" />
-
-    <FrameLayout
-        android:id="@+id/container"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        app:itemBackground="@color/off_white"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav_menu" />
-
-    <RelativeLayout
-        android:id="@+id/white_box"
-        android:layout_width="match_parent"
-        android:layout_height="700dp"
-        android:layout_above="@+id/bottom_navigation"
-        android:background="@drawable/back_round">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fishSpecies"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginRight="16dp"
-            android:hint="Fish Species"
-            app:boxStrokeColor="@color/blue_500"
-            app:hintTextColor="@color/blue_500">
+            android:fontFamily="@font/roboto_bold"
+            android:text="Fish Pricing"
+            android:textColor="@color/off_white"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toTopOf="@+id/white_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/speciesText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/grade"
+        <FrameLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="190dp"
-            android:layout_marginRight="16dp"
-            android:hint="Grade"
-            app:boxStrokeColor="@color/blue_500"
-            app:hintTextColor="@color/blue_500">
+            android:layout_height="match_parent" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/gradeText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/seasonality"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="280dp"
-            android:layout_marginRight="16dp"
-            android:hint="Seasonality"
-            app:boxStrokeColor="@color/blue_500"
-            app:hintTextColor="@color/blue_500">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/seasonalityText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/sustainability"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="370dp"
-            android:layout_marginRight="16dp"
-            android:hint="Sustainability"
-            app:boxStrokeColor="@color/blue_500"
-            app:hintTextColor="@color/blue_500">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/sustainabilityText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
-            android:layout_margin="20dp"
-            android:background="@drawable/item_round"
-            android:drawablePadding="8dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Lorem Ipsum"
-            android:textSize="19sp"
-            app:backgroundTint="@color/blue_700" />
+            app:itemBackground="@color/off_white"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/white_box"
+            android:layout_width="match_parent"
+            android:layout_height="700dp"
+            android:background="@drawable/back_round"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-</RelativeLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fishSpecies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="16dp"
+                android:hint="@string/jenis_ikan"
+                app:boxStrokeColor="@color/blue_500"
+                app:hintTextColor="@color/blue_500">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/speciesText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/actualprice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fishSpecies"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="16dp"
+                android:hint="@string/actual_price_kg"
+                app:boxStrokeColor="@color/blue_500"
+                app:hintTextColor="@color/blue_500">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/actualpricetext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/grade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actualprice"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="16dp"
+                android:hint="@string/grades"
+                app:boxStrokeColor="@color/blue_500"
+                app:hintTextColor="@color/blue_500">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/gradeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/catchingmethods"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/grade"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="16dp"
+                android:hint="@string/catching_methods"
+                app:boxStrokeColor="@color/blue_500"
+                app:hintTextColor="@color/blue_500">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/catchingmethodtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/seasonality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/catchingmethods"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="16dp"
+                android:hint="@string/seasonality"
+                app:boxStrokeColor="@color/blue_500"
+                app:hintTextColor="@color/blue_500">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/seasonalityText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sustainability"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/seasonality"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="16dp"
+                android:hint="@string/sustainability"
+                app:boxStrokeColor="@color/blue_500"
+                app:hintTextColor="@color/blue_500">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sustainabilityText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonpricing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/item_round"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/predict"
+                android:textSize="19sp"
+                app:backgroundTint="@color/blue_500" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

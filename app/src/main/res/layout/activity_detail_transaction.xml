@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/off_white">
+    android:background="@color/off_white">
 
     <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -13,13 +13,13 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/blue_700">
+            android:background="@color/blue_500">
 
             <ImageView
                 android:id="@+id/backButton"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:contentDescription="back button"
+                android:contentDescription="@string/back_button"
                 android:src="@drawable/back" />
 
             <TextView
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginStart="30dp"
-                android:text="Transaction Detail"
+                android:text="@string/transaction_detail"
                 android:textColor="#EEEEEE"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
-                android:text="ID lorem ipsum"
+                android:text="@string/id_pembeli"
                 android:textColor="@color/gray_dark"
                 android:textSize="18sp" />
 
@@ -66,7 +66,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Output Text"
+                android:text="@string/output_text"
                 android:textColor="@color/gray_dark"
                 android:textSize="18sp" />
 
@@ -77,7 +77,7 @@
                 android:layout_below="@+id/idpem"
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Status"
+                android:text="@string/status"
                 android:textColor="@color/gray_dark"
                 android:textSize="18sp" />
 
@@ -89,7 +89,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Output Text"
+                android:text="@string/output_text"
                 android:textColor="@color/gray_dark"
                 android:textSize="18sp" />
 
@@ -100,7 +100,7 @@
                 android:layout_below="@+id/status"
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Date"
+                android:text="@string/date"
                 android:textColor="@color/gray_dark"
                 android:textSize="18sp" />
 
@@ -112,7 +112,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Output Text"
+                android:text="@string/output_text"
                 android:textColor="@color/gray_dark"
                 android:textSize="18sp" />
 
@@ -134,24 +134,36 @@
             android:layout_marginTop="30dp">
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/idtran"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="20dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="ID lorem ipsum"
+                android:text="@string/id_transaksi"
                 android:textColor="@color/gray_dark"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/subtotal"
+                android:id="@+id/idtranout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/title"
+                android:layout_alignBaseline="@+id/idtran"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/output_text"
+                android:textColor="@color/gray_dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/typetran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idtran"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Subtotal lorem ipsum"
+                android:text="@string/type_transaksi"
                 android:textColor="@color/gray_700"
                 android:textSize="18sp" />
 
@@ -159,11 +171,11 @@
                 android:id="@+id/outputSubtotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/subtotal"
+                android:layout_alignBaseline="@+id/typetran"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Output Text"
+                android:text="@string/output_text"
                 android:textColor="@color/gray_700"
                 android:textSize="18sp" />
 
@@ -171,11 +183,11 @@
                 android:id="@+id/ongkir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/subtotal"
+                android:layout_below="@+id/typetran"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Ongkir lorem ipsum"
+                android:text="@string/ongkir"
                 android:textColor="@color/gray_700"
                 android:textSize="18sp" />
 
@@ -187,7 +199,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Output Text"
+                android:text="@string/output_text"
                 android:textColor="@color/gray_700"
                 android:textSize="18sp" />
 
@@ -199,7 +211,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Ongkir lorem ipsum"
+                android:text="@string/total_harga"
                 android:textColor="@color/gray_dark"
                 android:textSize="20sp" />
 
@@ -211,7 +223,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Output Text"
+                android:text="@string/output_text"
                 android:textColor="@color/gray_dark"
                 android:textSize="20sp" />
         </RelativeLayout>
@@ -232,9 +244,9 @@
                 android:background="@drawable/item_round"
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="Lorem Ipsum"
+                android:text="@string/simpan"
                 android:textSize="19sp"
-                app:backgroundTint="@color/blue_700" />
+                app:backgroundTint="@color/blue_500" />
 
         </FrameLayout>
 

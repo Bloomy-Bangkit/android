@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     return@setOnNavigationItemSelectedListener true
                 }
-                R.id.navigation_notifications -> {
+                R.id.navigation_user -> {
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> return@setOnNavigationItemSelectedListener false

@@ -35,7 +35,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="8dp"
             android:paddingLeft="8dp"
-            android:src="@drawable/edit" />
+            android:src="@drawable/edit"
+            android:onClick="showEditTransactionDialog" />
 
         <ImageView
             android:id="@+id/image"
@@ -78,7 +79,7 @@
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/gradeLayout"
             android:fontFamily="@font/roboto_regular"
-            android:text="sdasdasda"
+            android:text="@string/ikan_tongkol"
             android:textSize="20sp" />
 
         <TextView
@@ -90,7 +91,7 @@
             android:layout_marginTop="40dp"
             android:layout_toEndOf="@+id/image"
             android:fontFamily="@font/roboto_medium"
-            android:text="sdasdasda"
+            android:text="@string/rp3_000_kg"
             android:textSize="20sp" />
 
         <RelativeLayout
@@ -113,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/roboto_medium"
-                android:text="Self-Pickup"
+                android:text="@string/self_pickup"
                 android:textColor="@color/gray_dark"
                 android:textSize="15sp" />
         </RelativeLayout>
