@@ -61,18 +61,18 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
         profileViewModel.getProfile()
         profileViewModel.profile.observe(this) { profile ->
             setProfile(profile)
+            showProvinsi()
         }
 
         binding.tvChooseImageEditProfile.setOnClickListener {
             showImagePickerDialog()
         }
 
-        showProvinsi()
-
         binding.btnEditProfile.setOnClickListener {
             val editProfile = binding.btnEditProfile
             val name = binding.etNameEditProfile.text.toString()
             val phoneNumber = binding.etPhoneNumberEditProfile.text.toString()
+            val province = binding.etProvinceEditProfile.text.toString()
             val city = binding.etCityEditProfile.text.toString()
             val address = binding.etAddressEditProfile.text.toString()
             val description = binding.etDescriptionEditProfile.text.toString()
@@ -102,10 +102,10 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
                 }
             }
 
-            if (name.isNotEmpty() && phoneNumber.isNotEmpty() && city.isNotEmpty() && address.isNotEmpty() && description.isNotEmpty()) {
+            if (name.isNotEmpty() && phoneNumber.isNotEmpty() && province.isNotEmpty() && city.isNotEmpty() && address.isNotEmpty() && description.isNotEmpty()) {
                 showLoadingEditProfile(editProfile, true)
 
-                profileViewModel.editProfile(name, phoneNumber, address, city, description)
+                profileViewModel.editProfile(name, phoneNumber, address, province, city, description)
                 profileViewModel.editProfileResponse.observe(this@EditProfileActivity) { response ->
                     val error = response?.error
                     val message = response?.message.toString()
@@ -175,6 +175,7 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
 
             etNameEditProfile.text = Editable.Factory.getInstance().newEditable(profile.nama)
             etPhoneNumberEditProfile.text = Editable.Factory.getInstance().newEditable(profile.nohp)
+            etProvinceEditProfile.text = Editable.Factory.getInstance().newEditable(profile.provinsi)
             etCityEditProfile.text = Editable.Factory.getInstance().newEditable(profile.kota)
             etAddressEditProfile.text = Editable.Factory.getInstance().newEditable(profile.alamat)
             etDescriptionEditProfile.text = Editable.Factory.getInstance().newEditable(profile.description)
@@ -206,6 +207,9 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
                 call: Call<ProvinsiResponse>,
                 response: Response<ProvinsiResponse>
             ) {
+                listIdProvinsi.clear()
+                listNamaProvinsi.clear()
+
                 val listResponse = response.body()?.provinsi
 
                 listResponse?.forEach {
