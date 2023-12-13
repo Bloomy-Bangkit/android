@@ -217,27 +217,23 @@
 
     <!-- ShopActivity -->
     <string name="title_my_shop">My Shop</string>
-    <string name="img_name_shop_right">Image Name Shop Right</string>
-    <string name="img_rating_shop">Image Rating Shop</string>
+    <string name="img_email_shop">Image Email Shop</string>
     <string name="img_location_shop">Image Location Shop</string>
     <string name="img_bottom_sheet_shop">Image Bottom Sheet Shop</string>
     <string name="img_display_product_shop">Image Display Product Shop</string>
-    <string name="tv_name_shop">Bloomy\'s Store</string>
-    <string name="tv_rating_shop">New Seller</string>
-    <string name="tv_location_shop">Jakarta Utara</string>
-    <string name="tv_product_shop">3 Product</string>
+    <string name="tv_name_shop">Name</string>
+    <string name="tv_email_shop">Email</string>
+    <string name="tv_location_shop">Location</string>
+    <string name="tv_product_shop">0 Product</string>
     <string name="tv_display_product_shop">Display</string>
 
     <!-- ShopGrid -->
     <string name="img_product_shop_grid">Image Product Shop Grid</string>
     <string name="img_grade_product_shop_grid">Image Grade Product Shop Grid</string>
-    <string name="img_rating_product_shop_grid">Image Rating Product Shop Grid</string>
-    <string name="img_divider_product_shop_grid">Image Divider Product Shop Grid</string>
     <string name="tv_title_product_shop_grid">Consectetur Fish</string>
     <string name="tv_grade_product_shop_grid">A</string>
     <string name="tv_price_product_shop_grid">Rp30.000/kg</string>
-    <string name="tv_rating_product_shop_grid">No Rating</string>
-    <string name="tv_sold_product_shop_grid">0 Sold</string>
+    <string name="tv_quantity_product_shop_grid">10 kg left</string>
 
     <!-- ShopList -->
     <string name="img_product_shop_list">Image Product Shop List</string>
@@ -260,8 +256,8 @@
     <string name="tv_choose_image">Choose Image</string>
     <string name="hint_title_add_product">Title</string>
     <string name="hint_grade_add_product">Grade</string>
-    <string name="hint_price_kg_add_product">Price</string>
-    <string name="hint_quantity_kg_add_product">Quantity</string>
+    <string name="hint_price_kg_add_product">Price/kg</string>
+    <string name="hint_quantity_kg_add_product">Quantity (kg)</string>
     <string name="hint_description_add_product">Description</string>
     <string name="value_grade_add_product">A</string>
 
@@ -292,7 +288,7 @@
     <string name="hint_title_edit_product">Title</string>
     <string name="hint_grade_edit_product">Grade</string>
     <string name="hint_price_kg_edit_product">Price/kg</string>
-    <string name="hint_quantity_kg_edit_product">Quantity (Kg)</string>
+    <string name="hint_quantity_kg_edit_product">Quantity (kg)</string>
     <string name="hint_description_edit_product">Description</string>
     <string name="value_title_edit_product">Consectetur Fish</string>
     <string name="value_grade_edit_product">A</string>
@@ -314,21 +310,26 @@
     <string name="tv_camera_image_picker_dialog">Camera</string>
     <string name="tv_gallery_image_picker_dialog">Gallery</string>
 
+    <!-- RemoveProductDialog -->
+    <string name="img_remove_product_dialog">Image Warning Remove Product Dialog</string>
+    <string name="tv_remove_product_dialog">Remove Product</string>
+    <string name="tv_confirmation_remove_product_dialog">Are you sure you want\nto remove this product?</string>
+
     <!-- Additional -->
     <string name="btn_sign_in">Sign In</string>
     <string name="btn_sign_in_content_description">Sign in content description</string>
     <string name="btn_sign_up">Sign Up</string>
     <string name="btn_sign_up_content_description">Sign up content description</string>
-    <string name="btn_no_sign_out_dialog">No</string>
-    <string name="btn_no_sign_out_dialog_content_description">No content description</string>
     <string name="btn_cancel_image_picker_dialog">Cancel</string>
     <string name="btn_cancel_image_picker_dialog_content_description">Cancel content description</string>
+    <string name="btn_no_sign_out_dialog">No</string>
+    <string name="btn_no_sign_out_dialog_content_description">No content description</string>
     <string name="btn_yes_sign_out_dialog">Yes</string>
-    <string name="btn_yes_sign_out_dialog_content_description">Yes</string>
-    <string name="btn_edit_photo_profile">Edit Photo</string>
-    <string name="btn_edit_photo_profile_content_description">Edit photo profile content description</string>
-    <string name="btn_edit_detail_profile">Edit Detail</string>
-    <string name="btn_edit_detail_profile_content_description">Edit detail profile content description</string>
+    <string name="btn_yes_sign_out_dialog_content_description">Yes content description</string>
+    <string name="btn_no_sign_up_dialog">No</string>
+    <string name="btn_no_sign_up_dialog_content_description">No content description</string>
+    <string name="btn_yes_sign_up_dialog">Yes</string>
+    <string name="btn_yes_sign_up_dialog_content_description">Yes content description</string>
     <string name="btn_reset_password">Reset Password</string>
     <string name="btn_reset_password_content_description">Reset password content description</string>
     <string name="btn_buy">Buy</string>
@@ -341,18 +342,31 @@
     <string name="btn_edit_content_description">Edit content description</string>
     <string name="btn_remove">Remove</string>
     <string name="btn_remove_content_description">Remove content description</string>
+    <string name="btn_no_remove_product_dialog">No</string>
+    <string name="btn_no_remove_product_dialog_content_description">No content description</string>
+    <string name="btn_yes_remove_product_dialog">Yes</string>
+    <string name="btn_yes_remove_product_dialog_content_description">Yes content description</string>
     <string name="btn_loading" tools:ignore="TypographyEllipsis">Loading...</string>
     <string name="invalid_email">Invalid email format</string>
     <string name="invalid_input">Input field can\'t be empty</string>
     <string name="invalid_image">The image remains the same as before</string>
+    <string name="invalid_image_empty">Image filed can\'t be empty</string>
     <string name="invalid_password">Password must be at least 8 characters</string>
     <string name="loading" tools:ignore="TypographyEllipsis">Loading...</string>
     <string name="welcome_to_bloomy">Welcome to Bloomy!</string>
     <string name="sign_out">Sign Out</string>
     <string name="sign_out_confirmation">Are you sure\nyou want to sign out?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_confirmation">By signing up, you agree\nto our Terms of Service\nand Privacy Policy</string>
     <string name="default_name">Name</string>
     <string name="default_phone_number">Phone Number</string>
     <string name="default_email">Email</string>
+    <string name="default_location">Location</string>
+    <string name="default_title">Title</string>
+    <string name="default_grade">Grade</string>
+    <string name="default_price">Price</string>
+    <string name="default_quantity">Quantity</string>
+    <string name="default_description" tools:ignore="TypographyEllipsis">...</string>
 
     <!-- BottomNavigation -->
     <string name="home">Home</string>
