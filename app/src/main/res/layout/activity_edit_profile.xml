@@ -233,44 +233,20 @@
         android:layout_marginBottom="15dp"
         android:contentDescription="@string/img_content_divider_edit_profile"
         android:src="@drawable/template_content_divider"
-        app:layout_constraintBottom_toTopOf="@id/btn_edit_photo_profile"
+        app:layout_constraintBottom_toTopOf="@id/btn_edit_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="ImageContrastCheck" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_edit_photo_profile"
+        android:id="@+id/btn_edit_profile"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginBottom="15dp"
-        android:layout_marginEnd="12.5dp"
-        android:layout_marginStart="25dp"
-        android:contentDescription="@string/btn_edit_photo_profile_content_description"
+        android:layout_marginHorizontal="25dp"
+        android:contentDescription="@string/btn_edit_content_description"
         android:fontFamily="@font/roboto_bold"
-        android:text="@string/btn_edit_photo_profile"
-        android:textColor="@color/blue_500"
-        android:textSize="16sp"
-        app:backgroundTint="@android:color/transparent"
-        app:cornerRadius="10dp"
-        app:rippleColor="@color/ripple_white"
-        app:strokeColor="@color/blue_500"
-        app:strokeWidth="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_edit_detail_profile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btn_edit_detail_profile"
-        tools:ignore="TextContrastCheck,VisualLintButtonSize" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_edit_detail_profile"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="12.5dp"
-        android:layout_marginEnd="25dp"
-        android:contentDescription="@string/btn_edit_detail_profile_content_description"
-        android:fontFamily="@font/roboto_bold"
-        android:text="@string/btn_edit_detail_profile"
+        android:text="@string/btn_edit"
         android:textColor="@color/off_white"
         android:textSize="16sp"
         app:backgroundTint="@color/blue_500"
@@ -278,7 +254,7 @@
         app:rippleColor="@color/ripple_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_edit_photo_profile"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextContrastCheck,VisualLintButtonSize" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
