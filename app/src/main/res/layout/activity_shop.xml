@@ -33,7 +33,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/image_shop"
+        android:src="@color/blue_500"
         app:civ_border_color="@color/off_white"
         app:civ_border_width="2dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,39 +53,31 @@
         app:layout_constraintTop_toBottomOf="@id/app_bar_layout_shop" />
 
     <ImageView
-        android:id="@+id/img_name_shop_right"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="7.5dp"
-        android:layout_marginTop="5dp"
-        android:contentDescription="@string/img_name_shop_right"
-        android:src="@drawable/icon_right_white"
-        app:layout_constraintBottom_toBottomOf="@id/tv_name_shop"
-        app:layout_constraintStart_toEndOf="@id/tv_name_shop"
-        app:layout_constraintTop_toTopOf="@id/tv_name_shop" />
-
-    <ImageView
-        android:id="@+id/img_rating_shop"
+        android:id="@+id/img_email_shop"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="2.5dp"
-        android:contentDescription="@string/img_rating_shop"
-        android:src="@drawable/icon_rating"
+        android:contentDescription="@string/img_email_shop"
+        android:src="@drawable/icon_email_white"
         app:layout_constraintStart_toStartOf="@id/tv_name_shop"
         app:layout_constraintTop_toBottomOf="@id/tv_name_shop"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
-        android:id="@+id/tv_rating_shop"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_email_shop"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
         android:layout_marginStart="7.5dp"
         android:layout_marginTop="1dp"
+        android:ellipsize="end"
         android:fontFamily="@font/roboto_regular"
-        android:text="@string/tv_rating_shop"
+        android:maxLines="1"
+        android:text="@string/tv_email_shop"
         android:textColor="@color/off_white"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@id/img_rating_shop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_email_shop"
         app:layout_constraintTop_toBottomOf="@id/tv_name_shop"
         tools:ignore="TextContrastCheck" />
 
@@ -96,21 +88,25 @@
         android:layout_marginTop="7.5dp"
         android:contentDescription="@string/img_location_shop"
         android:src="@drawable/icon_location_white"
-        app:layout_constraintStart_toStartOf="@id/img_rating_shop"
-        app:layout_constraintTop_toBottomOf="@id/img_rating_shop" />
+        app:layout_constraintStart_toStartOf="@id/img_email_shop"
+        app:layout_constraintTop_toBottomOf="@id/img_email_shop" />
 
     <TextView
         android:id="@+id/tv_location_shop"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
         android:layout_marginStart="7.5dp"
         android:layout_marginTop="3dp"
+        android:ellipsize="end"
         android:fontFamily="@font/roboto_regular"
+        android:maxLines="1"
         android:text="@string/tv_location_shop"
         android:textColor="@color/off_white"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/img_location_shop"
-        app:layout_constraintTop_toBottomOf="@id/tv_rating_shop"
+        app:layout_constraintTop_toBottomOf="@id/tv_email_shop"
         tools:ignore="TextContrastCheck" />
 
     <ImageView
