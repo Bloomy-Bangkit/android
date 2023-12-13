@@ -34,6 +34,9 @@ data class ProfileData(
     @field:SerializedName("alamat")
     val alamat: String,
 
+    @field:SerializedName("provinsi")
+    val provinsi: String,
+
     @field:SerializedName("kota")
     val kota: String,
 
@@ -69,6 +72,9 @@ data class EditProfileData(
 
     @field:SerializedName("alamat")
     val alamat: String,
+
+    @field:SerializedName("provinsi")
+    val provinsi: String,
 
     @field:SerializedName("kota")
     val kota: String,
