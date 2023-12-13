@@ -20,7 +20,7 @@ class ProductSellerDetailAdapter(private val product: ArrayList<ProductModel>) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val (title, imageUrl, grade, price, rating, sold, _, _) = product[position]
+        val (title, imageUrl, grade, price, _, _, _, _) = product[position]
 
         Glide.with(holder.itemView.context)
             .load(imageUrl)
@@ -31,10 +31,6 @@ class ProductSellerDetailAdapter(private val product: ArrayList<ProductModel>) :
         holder.binding.tvGradeProductShopGrid.text = grade
 
         holder.binding.tvPriceProductShopGrid.text = price
-
-        holder.binding.tvRatingProductShopGrid.text = rating
-
-        holder.binding.tvSoldProductShopGrid.text = sold
 
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(product[holder.adapterPosition]) }
     }
