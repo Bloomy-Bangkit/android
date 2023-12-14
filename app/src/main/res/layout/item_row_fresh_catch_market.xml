@@ -28,14 +28,17 @@
 
         <TextView
             android:id="@+id/tv_title_fresh_catch_market"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginHorizontal="10dp"
             android:layout_marginTop="7.5dp"
+            android:ellipsize="end"
             android:fontFamily="@font/roboto_regular"
+            android:maxLines="1"
             android:text="@string/tv_title_fresh_catch_market"
             android:textColor="@color/gray_dark"
             android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/img_grade_fresh_catch_market"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_fresh_catch_market" />
 
@@ -75,53 +78,17 @@
             app:layout_constraintStart_toStartOf="@id/tv_title_fresh_catch_market"
             app:layout_constraintTop_toBottomOf="@id/tv_title_fresh_catch_market" />
 
-        <ImageView
-            android:id="@+id/img_rating_fresh_catch_market"
-            android:layout_width="11dp"
-            android:layout_height="11dp"
-            android:layout_marginTop="5.5dp"
-            android:contentDescription="@string/img_rating_fresh_catch_market"
-            android:src="@drawable/icon_rating"
-            app:layout_constraintStart_toStartOf="@id/tv_price_fresh_catch_market"
-            app:layout_constraintTop_toBottomOf="@id/tv_price_fresh_catch_market"
-            tools:ignore="ImageContrastCheck" />
-
         <TextView
-            android:id="@+id/tv_rating_fresh_catch_market"
+            android:id="@+id/tv_quantity_fresh_catch_market"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:layout_marginTop="2.5dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="@string/tv_rating_fresh_catch_market"
+            android:text="@string/tv_quantity_fresh_catch_market"
             android:textColor="@color/gray_dark"
             android:textSize="11sp"
-            app:layout_constraintStart_toEndOf="@id/img_rating_fresh_catch_market"
+            app:layout_constraintStart_toStartOf="@id/tv_price_fresh_catch_market"
             app:layout_constraintTop_toBottomOf="@id/tv_price_fresh_catch_market" />
-
-        <ImageView
-            android:id="@+id/img_divider_fresh_catch_market"
-            android:layout_width="5dp"
-            android:layout_height="5dp"
-            android:layout_marginStart="5dp"
-            android:contentDescription="@string/img_divider_fresh_catch_market"
-            android:src="@drawable/template_circle_black"
-            app:layout_constraintBottom_toBottomOf="@id/img_rating_fresh_catch_market"
-            app:layout_constraintStart_toEndOf="@id/tv_rating_fresh_catch_market"
-            app:layout_constraintTop_toTopOf="@id/img_rating_fresh_catch_market"
-            tools:ignore="ImageContrastCheck" />
-
-        <TextView
-            android:id="@+id/tv_sold_fresh_catch_market"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/tv_sold_fresh_catch_market"
-            android:textColor="@color/gray_dark"
-            android:textSize="11sp"
-            app:layout_constraintStart_toEndOf="@id/img_divider_fresh_catch_market"
-            app:layout_constraintTop_toTopOf="@id/tv_rating_fresh_catch_market" />
         
         <ImageView
             android:id="@+id/img_location_fresh_catch_market"
@@ -130,7 +97,7 @@
             android:layout_marginTop="2.5dp"
             android:contentDescription="@string/img_location_fresh_catch_market"
             android:src="@drawable/icon_location_black"
-            app:layout_constraintStart_toStartOf="@id/img_rating_fresh_catch_market"
+            app:layout_constraintStart_toStartOf="@id/tv_quantity_fresh_catch_market"
             app:layout_constraintTop_toTopOf="@id/tv_location_fresh_catch_market" />
 
         <TextView
@@ -140,11 +107,12 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="3dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="@string/tv_location_fresh_catch_market"
+            android:text="@string/default_location"
             android:textColor="@color/gray_dark"
             android:textSize="11sp"
             app:layout_constraintStart_toEndOf="@id/img_location_fresh_catch_market"
-            app:layout_constraintTop_toBottomOf="@id/tv_rating_fresh_catch_market" />
+            app:layout_constraintTop_toBottomOf="@id/tv_quantity_fresh_catch_market"
+            tools:text="@string/tv_location_fresh_catch_market" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
