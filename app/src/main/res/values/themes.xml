@@ -1,9 +1,46 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.Bloomy" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorControlNormal">@color/off_white</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="bottomNavigation" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/off_white</item>
+    </style>
+
+    <style name="blueTextInputLayoutMaterialComponents" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxBackgroundColor">@color/blue_50_extra_light</item>
+        <item name="boxStrokeColor">@color/blue_500</item>
+        <item name="endIconTint">@color/blue_500</item>
+        <item name="startIconTint">@color/blue_500</item>
+    </style>
+
+    <style name="blueTextInputLayoutMaterial3" parent="Widget.Material3.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxBackgroundColor">@color/off_white</item>
+        <item name="boxStrokeColor">@color/blue_500</item>
+        <item name="endIconTint">@color/gray_dark</item>
+    </style>
+
+    <style name="blueDropDownInputLayoutMaterial3" parent="Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxBackgroundColor">@color/off_white</item>
+        <item name="boxStrokeColor">@color/blue_500</item>
+        <item name="endIconTint">@color/gray_dark</item>
     </style>
 
     <style name="Theme.Bloomy" parent="Base.Theme.Bloomy" />
+
 </resources>
