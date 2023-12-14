@@ -33,7 +33,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/image_shop"
+        android:src="@color/blue_500"
         app:civ_border_color="@color/off_white"
         app:civ_border_width="2dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,39 +53,27 @@
         app:layout_constraintTop_toBottomOf="@id/app_bar_layout_seller_detail" />
 
     <ImageView
-        android:id="@+id/img_name_seller_detail_right"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="7.5dp"
-        android:layout_marginTop="5dp"
-        android:contentDescription="@string/img_name_seller_detail_right"
-        android:src="@drawable/icon_right_white"
-        app:layout_constraintBottom_toBottomOf="@id/tv_name_seller_detail"
-        app:layout_constraintStart_toEndOf="@id/tv_name_seller_detail"
-        app:layout_constraintTop_toTopOf="@id/tv_name_seller_detail" />
-
-    <ImageView
-        android:id="@+id/img_rating_seller_detail"
+        android:id="@+id/img_phone_seller_detail"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="2.5dp"
-        android:contentDescription="@string/img_rating_seller_detail"
-        android:src="@drawable/icon_rating"
+        android:contentDescription="@string/img_phone_seller_detail"
+        android:src="@drawable/icon_phone_white"
         app:layout_constraintStart_toStartOf="@id/tv_name_seller_detail"
         app:layout_constraintTop_toBottomOf="@id/tv_name_seller_detail"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
-        android:id="@+id/tv_rating_seller_detail"
+        android:id="@+id/tv_phone_seller_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="7.5dp"
         android:layout_marginTop="1dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="@string/tv_rating_seller_detail"
+        android:text="@string/tv_phone_seller_detail"
         android:textColor="@color/off_white"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@id/img_rating_seller_detail"
+        app:layout_constraintStart_toEndOf="@id/img_phone_seller_detail"
         app:layout_constraintTop_toBottomOf="@id/tv_name_seller_detail"
         tools:ignore="TextContrastCheck" />
 
@@ -96,8 +84,8 @@
         android:layout_marginTop="7.5dp"
         android:contentDescription="@string/img_location_seller_detail"
         android:src="@drawable/icon_location_white"
-        app:layout_constraintStart_toStartOf="@id/img_rating_seller_detail"
-        app:layout_constraintTop_toBottomOf="@id/img_rating_seller_detail" />
+        app:layout_constraintStart_toStartOf="@id/img_phone_seller_detail"
+        app:layout_constraintTop_toBottomOf="@id/img_phone_seller_detail" />
 
     <TextView
         android:id="@+id/tv_location_seller_detail"
@@ -110,7 +98,7 @@
         android:textColor="@color/off_white"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/img_location_seller_detail"
-        app:layout_constraintTop_toBottomOf="@id/tv_rating_seller_detail"
+        app:layout_constraintTop_toBottomOf="@id/tv_phone_seller_detail"
         tools:ignore="TextContrastCheck" />
 
     <ImageView
