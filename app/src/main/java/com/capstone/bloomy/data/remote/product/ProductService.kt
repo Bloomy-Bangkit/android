@@ -5,8 +5,11 @@ import com.capstone.bloomy.data.response.DeleteProductResponse
 import com.capstone.bloomy.data.response.EditPhotoProductResponse
 import com.capstone.bloomy.data.response.EditPhotoProfileResponse
 import com.capstone.bloomy.data.response.EditProductResponse
+import com.capstone.bloomy.data.response.ProductByGradeResponse
 import com.capstone.bloomy.data.response.ProductByIdResponse
+import com.capstone.bloomy.data.response.ProductByNameResponse
 import com.capstone.bloomy.data.response.ProductByUsernameResponse
+import com.capstone.bloomy.data.response.ProductResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -21,15 +24,28 @@ import retrofit2.http.Query
 
 interface ProductService {
 
+    @GET("products")
+    suspend fun getProduct(): Response<ProductResponse>
+
     @GET("product")
     suspend fun getProductByUsername(
-        @Query("username") username: String,
+        @Query("username") username: String
     ): Response<ProductByUsernameResponse>
 
     @GET("product")
     suspend fun getProductById(
-        @Query("id") id: String,
+        @Query("id") id: String
     ): Response<ProductByIdResponse>
+
+    @GET("product")
+    suspend fun getProductByName(
+        @Query("nama") nama: String
+    ): Response<ProductByNameResponse>
+
+    @GET("product")
+    suspend fun getProductByGrade(
+        @Query("grade") grade: String
+    ): Response<ProductByGradeResponse>
 
     @Multipart
     @POST("product")
