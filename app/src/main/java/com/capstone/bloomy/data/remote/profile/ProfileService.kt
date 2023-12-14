@@ -2,6 +2,8 @@ package com.capstone.bloomy.data.remote.profile
 
 import com.capstone.bloomy.data.response.EditPhotoProfileResponse
 import com.capstone.bloomy.data.response.EditProfileResponse
+import com.capstone.bloomy.data.response.ProductByUsernameResponse
+import com.capstone.bloomy.data.response.ProfileByUsernameResponse
 import com.capstone.bloomy.data.response.ProfileResponse
 import com.capstone.bloomy.data.response.ResetPasswordResponse
 import okhttp3.MultipartBody
@@ -12,8 +14,14 @@ import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.PUT
 import retrofit2.http.Part
+import retrofit2.http.Query
 
 interface ProfileService {
+
+    @GET("user")
+    suspend fun getProfileByUsername(
+        @Query("username") username: String,
+    ): Response<ProfileByUsernameResponse>
 
     @GET("user/me")
     suspend fun getProfile(): Response<ProfileResponse>
