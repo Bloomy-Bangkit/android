@@ -1,6 +1,9 @@
 package com.capstone.bloomy.ui.fragment
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.location.Geocoder
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,6 +27,13 @@ import com.capstone.bloomy.ui.viewmodel.ProfileViewModel
 import com.capstone.bloomy.ui.viewmodel.SailDecisionViewModel
 import com.capstone.bloomy.ui.viewmodelfactory.ProfileViewModelFactory
 import com.capstone.bloomy.ui.viewmodelfactory.SailDecisionViewModelFactory
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import com.vmadalin.easypermissions.EasyPermissions
+import com.vmadalin.easypermissions.dialogs.SettingsDialog
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -31,14 +41,28 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
+import java.util.Locale
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     private var _binding: FragmentDashboardBinding? = null
+    private var outlookValue: Int = 0
+    private var temperatureValue: Int = 0
+    private var humidityValue: Int = 0
+    private var windSpeedValue: Int = 0
 
     private val sailDecisionViewModelFactory: SailDecisionViewModelFactory = SailDecisionViewModelFactory.getInstance()
     private val sailDecisionViewModel: SailDecisionViewModel by viewModels { sailDecisionViewModelFactory }
     private val binding get() = _binding!!
+    private val locationCallback = object : LocationCallback() {
+        override fun onLocationResult(p0: LocationResult) {
+            p0.lastLocation?.let { location ->
+                updateLocationUI(location)
+            }
+        }
+    }
+
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,33 +72,34 @@ class DashboardFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+
+        if (hasLocationPermission()) {
+            fusedLocationProviderClient.requestLocationUpdates(
+                createLocationRequest(),
+                locationCallback,
+                null
+            )
+        } else {
+            requestLocationPermission()
+
+            binding.tvLocationSailDecision.text = getString(R.string.tv_location_sail_decision)
+
+            getCurrentWeather("Jakarta")
+        }
 
         val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(requireContext())
         val profileViewModel: ProfileViewModel by viewModels { profileViewModelFactory }
 
         profileViewModel.getProfile()
-
         profileViewModel.profile.observe(viewLifecycleOwner) { profile ->
             setProfile(profile)
         }
 
-        val recyclerViewTopNews = view.findViewById<RecyclerView>(R.id.recycler_view_top_news)
-        val recyclerViewTodayNews = view.findViewById<RecyclerView>(R.id.recycler_view_today_news)
-
-        recyclerViewTopNews.setHasFixedSize(true)
-        recyclerViewTodayNews.setHasFixedSize(true)
-
-        val topNewsList = getListTopNews()
-        val todayNewsList = getListTodayNews()
-
-        showTopNewsList(recyclerViewTopNews, topNewsList)
-        showTodayNewsList(recyclerViewTodayNews, todayNewsList)
-
-        getCurrentWeather()
-
-        sailDecisionViewModel.sailDecision(0, 0, 0, 0)
         sailDecisionViewModel.sailDecisionResponse.observe(viewLifecycleOwner) { response ->
             val code = response?.status?.code
             val sailDecisionData = response?.status?.sailDecisionData
@@ -90,7 +115,96 @@ class DashboardFragment : Fragment() {
                 }
             }
         }
+
+        val recyclerViewTopNews = view.findViewById<RecyclerView>(R.id.recycler_view_top_news)
+        val recyclerViewTodayNews = view.findViewById<RecyclerView>(R.id.recycler_view_today_news)
+
+        recyclerViewTopNews.setHasFixedSize(true)
+        recyclerViewTodayNews.setHasFixedSize(true)
+
+        val topNewsList = getListTopNews()
+        val todayNewsList = getListTodayNews()
+
+        showTopNewsList(recyclerViewTopNews, topNewsList)
+        showTodayNewsList(recyclerViewTodayNews, todayNewsList)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+        _binding = null
+    }
+
+    @SuppressLint("MissingPermission")
+    override fun onResume() {
+        super.onResume()
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+
+        if (hasLocationPermission()) {
+            fusedLocationProviderClient.requestLocationUpdates(
+                createLocationRequest(),
+                locationCallback,
+                null
+            )
+        } else {
+            requestLocationPermission()
+
+            binding.tvLocationSailDecision.text = getString(R.string.tv_location_sail_decision)
+
+            getCurrentWeather("Jakarta")
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
+    }
+
+    override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+            SettingsDialog.Builder(requireActivity()).build().show()
+        } else {
+            requestLocationPermission()
+        }
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
+        Toast.makeText(requireContext(), "Permission Granted", Toast.LENGTH_SHORT).show()
+    }
+
+    @Suppress("DEPRECATION")
+    private fun createLocationRequest(): LocationRequest {
+        return LocationRequest.create()
+            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+            .setInterval(10000)
+            .setFastestInterval(5000)
+    }
+
+    @Suppress("DEPRECATION")
+    private fun updateLocationUI(location: android.location.Location) {
+        val geoCoder = Geocoder(requireContext(), Locale("id"))
+        val currentLocation = geoCoder.getFromLocation(
+            location.latitude,
+            location.longitude,
+            1
+        )
+        val countryName = currentLocation?.first()?.countryName ?: "Indonesia"
+        val fullCityName = currentLocation?.first()?.subAdminArea ?: "Jakarta"
+        val cityName = extractCityName(fullCityName)
+        val locationText = "$cityName, $countryName"
+
+        binding.tvLocationSailDecision.text = locationText
+
+        getCurrentWeather(cityName)
+    }
+
+    private fun hasLocationPermission() = EasyPermissions.hasPermissions(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+
+    private fun requestLocationPermission() = EasyPermissions.requestPermissions(this, "TEST", PERMISSION_LOCATION_REQUEST_CODE, Manifest.permission.ACCESS_FINE_LOCATION)
 
     private fun setProfile(profile: ProfileData) {
         with(binding) {
@@ -99,7 +213,7 @@ class DashboardFragment : Fragment() {
                 .into(imgProfileDashboard)
 
             val tvHelloUsernameDashboardText = if (profile.username.isNotEmpty()) {
-            "Hello, ${profile.username}"
+                "Hello, ${profile.username}"
             } else {
                 getString(R.string.tv_hello_username)
             }
@@ -109,39 +223,66 @@ class DashboardFragment : Fragment() {
     }
 
     @OptIn(DelicateCoroutinesApi::class)
-    private fun getCurrentWeather() {
+    private fun getCurrentWeather(cityName: String) {
         GlobalScope.launch(Dispatchers.IO) {
-            val response = try {
-                CurrentWeatherConfig.api.getCurrentWeather("jakarta", "metric", "29d730ce50152e2ad59f0da578b33a43")
-            } catch (e: IOException) {
-                Toast.makeText(context, "App Error ${e.message}", Toast.LENGTH_SHORT).show()
-                return@launch
-            } catch (e: HttpException) {
-                Toast.makeText(context, "Http Error ${e.message}", Toast.LENGTH_SHORT).show()
-                return@launch
-            }
+            try {
+                val response = CurrentWeatherConfig.api.getCurrentWeather(cityName, "metric", "29d730ce50152e2ad59f0da578b33a43")
 
-            if (response.isSuccessful && response.body() != null) {
                 withContext(Dispatchers.Main) {
-                    val weatherMain = response.body()!!.weather?.get(0)?.main ?: "N/A"
+                    if (response.isSuccessful && response.body() != null) {
+                        val weatherMain = response.body()!!.weather?.get(0)?.main ?: "N/A"
 
-                    val temperature = response.body()!!.main?.temp as? Double ?: 0.0
-                    val atmosphere = when {
-                        temperature >= 30.0 -> "Hot"
-                        temperature >= 20.0 && temperature < 30.0 -> "Moderate"
-                        else -> "Cold"
+                        val outlookInfo = getOutlookInfo(weatherMain)
+                        binding.tvOutlookSailDecision.text = outlookInfo.first
+                        binding.imgOutlookSailDecision.setImageResource(outlookInfo.second)
+
+                        val temperature = response.body()!!.main?.temp as? Double ?: 0.0
+                        val humidity = response.body()!!.main?.humidity ?: 0
+                        val windSpeed = response.body()!!.wind?.speed as? Double ?: 0.0
+
+                        outlookValue = getOutlookValue(weatherMain)
+                        temperatureValue = getTemperatureValue(temperature)
+                        humidityValue = getHumidityValue(humidity)
+                        windSpeedValue = getWindSpeedValue(windSpeed)
+
+                        sailDecisionViewModel.sailDecision(outlookValue, temperatureValue, humidityValue, windSpeedValue)
+
+                        val temperatureText = getString(R.string.temperature_format, response.body()!!.main?.temp)
+                        val humidityText = getString(R.string.humidity_format, response.body()!!.main?.humidity)
+                        val windSpeedText = getString(R.string.wind_speed_format, response.body()!!.wind?.speed)
+
+                        binding.tvTemperatureSailDecision.text = temperatureText
+                        binding.tvHumiditySailDecision.text = humidityText
+                        binding.tvWindSpeedSailDecision.text = windSpeedText
+                        binding.tvWindDirectionSailDecision.text = convertWindDirection(response.body()!!.wind?.deg ?: 0)
                     }
-
-                    val windDirectionDegrees = response.body()!!.wind?.deg ?: 0
-                    val windDirectionCardinal = convertWindDirection(windDirectionDegrees)
-
-                    binding.tvOutlookSailDecision.text = weatherMain
-                    binding.tvTemperatureSailDecision.text = "${response.body()!!.main?.temp}ºC"
-                    binding.tvHumiditySailDecision.text = "${response.body()!!.main?.humidity}%"
-                    binding.tvWindSpeedSailDecision.text= "${response.body()!!.wind?.speed}m/s"
-                    binding.tvWindDirectionSailDecision.text = windDirectionCardinal
+                }
+            } catch (e: IOException) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(context, "App Error ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: HttpException) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(context, "Http Error ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(context, "Unexpected Error ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    private fun getOutlookInfo(weatherMain: String): Pair<String, Int> {
+        return when (weatherMain) {
+            in arrayOf("Thunderstorm", "Drizzle", "Rain", "Snow", "Squall", "Tornado") ->
+                Pair("Rain", R.drawable.icon_outlook_rain)
+            in arrayOf("Mist", "Smoke", "Haze", "Fog", "Ash", "Clouds") ->
+                Pair("Overcast", R.drawable.icon_outlook_overcast)
+            in arrayOf("Dust", "Sand", "Clear") ->
+                Pair("Sunny", R.drawable.icon_outlook_sunny)
+            else ->
+                Pair("Unknown", R.drawable.icon_outlook_sunny)
         }
     }
 
@@ -155,6 +296,39 @@ class DashboardFragment : Fragment() {
 
         val index = ((degrees + 11.25) % 360 / 22.5).toInt()
         return directions[index]
+    }
+
+    private fun getOutlookValue(weatherMain: String): Int {
+        return when (weatherMain) {
+            "Sunny" -> 0
+            "Overcast" -> 1
+            "Rain" -> 2
+            else -> 0
+        }
+    }
+
+    private fun getTemperatureValue(temperature: Double): Int {
+        return when {
+            temperature > 28.0 -> 0
+            temperature in 20.0..28.0 -> 1
+            else -> 1
+        }
+    }
+
+    private fun getHumidityValue(humidity: Int): Int {
+        return if (humidity > 60) {
+            0
+        } else {
+            1
+        }
+    }
+
+    private fun getWindSpeedValue(windSpeed: Double): Int {
+        return if (windSpeed > 7.3) {
+            1
+        } else {
+            0
+        }
     }
 
     private fun getListTopNews(): ArrayList<TopNewsModel> {
@@ -220,5 +394,13 @@ class DashboardFragment : Fragment() {
                 startActivity(detailTodayNewsIntent)
             }
         })
+    }
+
+    private fun extractCityName(fullCityName: String): String {
+        return fullCityName.replaceFirst("(Kota|Kabupaten)\\s".toRegex(), "")
+    }
+
+    companion object {
+        const val PERMISSION_LOCATION_REQUEST_CODE = 1
     }
 }
