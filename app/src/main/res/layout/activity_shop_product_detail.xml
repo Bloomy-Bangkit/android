@@ -61,14 +61,15 @@
 
     <TextView
         android:id="@+id/tv_title_shop_product_detail"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginHorizontal="25dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/roboto_regular"
         android:text="@string/default_title"
         android:textColor="@color/gray_dark"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/img_grade_sheet_shop_product_detail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/img_bottom_sheet_product_detail"
         tools:text="@string/tv_title_shop_product_detail" />
