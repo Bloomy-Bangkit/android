@@ -1,8 +1,8 @@
-package com.dicoding.bloomy.ui.activity
+package com.capstone.bloomy.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.dicoding.bloomy.R
+import com.capstone.bloomy.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
