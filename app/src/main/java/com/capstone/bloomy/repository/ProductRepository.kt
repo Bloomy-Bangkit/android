@@ -17,9 +17,15 @@ import java.io.File
 
 class ProductRepository private constructor(private val productService: ProductService) {
 
+    suspend fun getProduct() = productService.getProduct()
+
     suspend fun getProductByUsername(username: String) = productService.getProductByUsername(username)
 
     suspend fun getProductById(id: String) = productService.getProductById(id)
+
+    suspend fun getProductByName(name: String) = productService.getProductByName(name)
+
+    suspend fun getProductByGrade(grade: String) = productService.getProductByGrade(grade)
 
     fun addProduct(file: File, nama: String, grade: String, price: Number, weight: Number, description: String) = liveData {
         emit(ResultState.Loading)
