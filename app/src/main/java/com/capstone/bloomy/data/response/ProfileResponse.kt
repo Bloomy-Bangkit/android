@@ -2,6 +2,48 @@ package com.capstone.bloomy.data.response
 
 import com.google.gson.annotations.SerializedName
 
+data class ProfileByUsernameResponse(
+
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("data")
+    val profileByUsernameData: ProfileByUsernameData
+)
+
+data class ProfileByUsernameData(
+
+    @field:SerializedName("username")
+    val username: String,
+
+    @field:SerializedName("activated")
+    val activated: Boolean,
+
+    @field:SerializedName("nama")
+    val nama: String,
+
+    @field:SerializedName("nohp")
+    val nohp: String,
+
+    @field:SerializedName("alamat")
+    val alamat: String,
+
+    @field:SerializedName("provinsi")
+    val provinsi: String,
+
+    @field:SerializedName("kota")
+    val kota: String,
+
+    @field:SerializedName("photo")
+    val photo: String,
+
+    @field:SerializedName("description")
+    val description: String
+)
+
 data class ProfileResponse(
 
     @field:SerializedName("error")
