@@ -1,17 +1,12 @@
 package com.capstone.bloomy.ui.adapter
 
-import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.util.Pair
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.capstone.bloomy.R
 import com.capstone.bloomy.data.response.ProductByUsernameData
 import com.capstone.bloomy.databinding.ItemRowProductShopGridBinding
 import com.capstone.bloomy.ui.activity.ShopProductDetailActivity
