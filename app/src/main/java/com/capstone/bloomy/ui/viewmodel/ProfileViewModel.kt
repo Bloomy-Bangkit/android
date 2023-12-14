@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstone.bloomy.data.response.EditProfileResponse
+import com.capstone.bloomy.data.response.ProfileByUsernameData
 import com.capstone.bloomy.data.response.ProfileData
 import com.capstone.bloomy.data.response.ResetPasswordResponse
 import com.capstone.bloomy.repository.ProfileRepository
@@ -15,6 +16,9 @@ import retrofit2.HttpException
 import java.io.File
 
 class ProfileViewModel(private val profileRepository: ProfileRepository) : ViewModel() {
+
+    private val _profileByUsername = MutableLiveData<ProfileByUsernameData>()
+    val profileByUsername: LiveData<ProfileByUsernameData> = _profileByUsername
 
     private val _profile = MutableLiveData<ProfileData>()
     val profile: LiveData<ProfileData> = _profile
@@ -26,6 +30,18 @@ class ProfileViewModel(private val profileRepository: ProfileRepository) : ViewM
     val resetPasswordResponse: LiveData<ResetPasswordResponse?> = _resetPasswordResponse
 
     private val _responseCode = MutableLiveData<Int>()
+
+    fun getProfileByUsername(username: String) {
+        viewModelScope.launch {
+            try {
+                val response = profileRepository.getProfileByUsername(username)
+
+                if (response.isSuccessful) _profileByUsername.value = response.body()?.profileByUsernameData else _responseCode.value = response.code()
+            } catch (e: HttpException) {
+                _responseCode.value = e.code()
+            }
+        }
+    }
 
     fun getProfile() {
         viewModelScope.launch {
