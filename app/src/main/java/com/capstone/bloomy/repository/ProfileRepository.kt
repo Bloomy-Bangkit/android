@@ -13,6 +13,8 @@ import java.io.File
 
 class ProfileRepository private constructor(private val profileService: ProfileService) {
 
+    suspend fun getProfileByUsername(username: String) = profileService.getProfileByUsername(username)
+
     suspend fun getProfile() = profileService.getProfile()
 
     suspend fun editProfile(nama: String, nohp: String, alamat: String, provinsi: String, kota: String, description: String) = profileService.editProfile(nama, nohp, alamat, provinsi, kota, description)
