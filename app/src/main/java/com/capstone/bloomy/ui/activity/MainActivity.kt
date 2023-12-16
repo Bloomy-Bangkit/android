@@ -2,6 +2,7 @@ package com.capstone.bloomy.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.capstone.bloomy.R
 import com.capstone.bloomy.databinding.ActivityMainBinding
