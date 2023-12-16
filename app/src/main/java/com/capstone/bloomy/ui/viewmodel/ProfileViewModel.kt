@@ -55,6 +55,8 @@ class ProfileViewModel(private val profileRepository: ProfileRepository) : ViewM
         }
     }
 
+    fun tokenInvalid() = profileRepository.tokenInvalid()
+
     fun defaultEditProfile() {
         _editProfileResponse.value = null
     }
