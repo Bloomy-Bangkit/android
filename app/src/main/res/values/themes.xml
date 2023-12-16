@@ -7,7 +7,7 @@
     </style>
 
     <style name="bottomNavigation" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/off_white</item>
+        <item name="android:color">@color/blue_50_extra_light</item>
     </style>
 
     <style name="blueTextInputLayoutMaterialComponents" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
