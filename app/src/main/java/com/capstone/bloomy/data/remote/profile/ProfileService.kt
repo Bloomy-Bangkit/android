@@ -2,7 +2,6 @@ package com.capstone.bloomy.data.remote.profile
 
 import com.capstone.bloomy.data.response.EditPhotoProfileResponse
 import com.capstone.bloomy.data.response.EditProfileResponse
-import com.capstone.bloomy.data.response.ProductByUsernameResponse
 import com.capstone.bloomy.data.response.ProfileByUsernameResponse
 import com.capstone.bloomy.data.response.ProfileResponse
 import com.capstone.bloomy.data.response.ResetPasswordResponse
@@ -25,6 +24,9 @@ interface ProfileService {
 
     @GET("user/me")
     suspend fun getProfile(): Response<ProfileResponse>
+
+    @GET("user/me")
+    suspend fun tokenInvalid(): ProfileResponse
 
     @FormUrlEncoded
     @PUT("user")
