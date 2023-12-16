@@ -73,29 +73,28 @@ class ShopEditProductActivity : AppCompatActivity() {
             val description = binding.etDescriptionEditProduct.text.toString()
 
             if (title.isNotEmpty() && grade.isNotEmpty() && priceString.isNotEmpty() && weightString.isNotEmpty() && description.isNotEmpty()) {
+                showLoadingEditProduct(editProduct, true)
+
                 val price = priceString.toInt()
                 val weight = weightString.toInt()
 
-                productViewModel.editProduct(extraProductId.toString(), title, grade, price, weight, description).observe(this) { result ->
-                    if (result != null) {
-                        when (result) {
-                            is ResultState.Loading -> {
-                                showLoadingEditProduct(editProduct, true)
-                            }
+                productViewModel.editProduct(extraProductId.toString(), title, grade, price, weight, description)
+                productViewModel.editProductResponse.observe(this@ShopEditProductActivity) { response ->
+                    val error = response?.error
+                    val message = response?.message.toString()
 
-                            is ResultState.Success -> {
-                                showLoadingEditProduct(editProduct, false)
-                                Toast.makeText(this, result.data.message, Toast.LENGTH_SHORT).show()
+                    if (error != null) {
+                        showLoadingEditProduct(editProduct, false)
+                        if (error == true) {
+                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                            productViewModel.defaultEditProduct()
+                        } else {
+                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                            productViewModel.defaultEditProduct()
 
-                                val shopIntent = Intent(this, ShopActivity::class.java)
-                                shopIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                startActivity(shopIntent)
-                            }
-
-                            is ResultState.Error -> {
-                                showLoadingEditProduct(editProduct, false)
-                                Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
-                            }
+                            val shopIntent = Intent(this, ShopActivity::class.java)
+                            shopIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(shopIntent)
                         }
                     }
                 }
