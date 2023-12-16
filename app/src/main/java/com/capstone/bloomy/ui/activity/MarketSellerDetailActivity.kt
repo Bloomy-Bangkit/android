@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
-import com.capstone.bloomy.R
 import com.capstone.bloomy.data.response.ProductByUsernameData
 import com.capstone.bloomy.data.response.ProfileByUsernameData
 import com.capstone.bloomy.databinding.ActivityMarketSellerDetailBinding
