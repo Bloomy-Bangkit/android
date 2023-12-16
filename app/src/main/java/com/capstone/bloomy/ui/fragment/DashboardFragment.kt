@@ -5,6 +5,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.location.Geocoder
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -84,12 +86,13 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 locationCallback,
                 null
             )
+            Handler(Looper.getMainLooper()).postDelayed({
+                if (binding.tvLocationSailDecision.text == "N/A") {
+                    Toast.makeText(requireContext(), getString(R.string.invalid_location), Toast.LENGTH_SHORT).show()
+                }
+            }, 500)
         } else {
             requestLocationPermission()
-
-            binding.tvLocationSailDecision.text = getString(R.string.tv_location_sail_decision)
-
-            getCurrentWeather("Jakarta")
         }
 
         val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(requireContext())
@@ -149,10 +152,6 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             )
         } else {
             requestLocationPermission()
-
-            binding.tvLocationSailDecision.text = getString(R.string.tv_location_sail_decision)
-
-            getCurrentWeather("Jakarta")
         }
     }
 
@@ -204,7 +203,7 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     private fun hasLocationPermission() = EasyPermissions.hasPermissions(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
 
-    private fun requestLocationPermission() = EasyPermissions.requestPermissions(this, "TEST", PERMISSION_LOCATION_REQUEST_CODE, Manifest.permission.ACCESS_FINE_LOCATION)
+    private fun requestLocationPermission() = EasyPermissions.requestPermissions(this, "To use the Sail Decision feature, please enable the location permission", PERMISSION_LOCATION_REQUEST_CODE, Manifest.permission.ACCESS_FINE_LOCATION)
 
     private fun setProfile(profile: ProfileData) {
         with(binding) {
