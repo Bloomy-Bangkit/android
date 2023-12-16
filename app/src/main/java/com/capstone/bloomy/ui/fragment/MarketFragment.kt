@@ -13,7 +13,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.capstone.bloomy.R
 import com.capstone.bloomy.data.response.ProductData
 import com.capstone.bloomy.databinding.FragmentMarketBinding
-import com.capstone.bloomy.ui.activity.SignUpActivity
+import com.capstone.bloomy.ui.activity.MainActivity
 import com.capstone.bloomy.ui.adapter.FreshCatchMarketAdapter
 import com.capstone.bloomy.ui.adapter.SectionPagerAdapter
 import com.capstone.bloomy.ui.viewmodel.ProductViewModel
@@ -91,7 +91,7 @@ class MarketFragment : Fragment() {
     }
 
     private fun handleSearch(query: String) {
-        val intent = Intent(requireContext(), SignUpActivity::class.java)
+        val intent = Intent(requireContext(), MainActivity::class.java)
         intent.putExtra("searchQuery", query)
         startActivity(intent)
     }
