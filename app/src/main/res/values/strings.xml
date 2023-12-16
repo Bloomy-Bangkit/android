@@ -67,6 +67,12 @@
     <string name="tv_date_today_news">20 Nov 2023, 12:21 WIB</string>
     <string name="tv_read_more_today_news">Read More</string>
 
+    <!-- FishGradingFragment -->
+    <string name="title_fish_grading">Fish Grading</string>
+    <string name="img_fish_grading">Image Fish Grading</string>
+    <string name="img_bottom_sheet_fish_grading">Image Bottom Sheet Fish Grading</string>
+    <string name="tv_title_fish_grading">Grade your fish,\nunveil the quality in every catch!</string>
+
     <!-- MarketFragment -->
     <string name="title_market">Market</string>
     <string name="search_bar_market">Search Bloomy</string>
@@ -145,6 +151,20 @@
     <string name="tv_value_payment_method_buy_bottom_sheet_dialog">Cash On Delivery</string>
     <string name="tv_value_quantity_buy_bottom_sheet_dialog">1</string>
     <string name="tv_value_total_buy_bottom_sheet_dialog">Rp50.000</string>
+
+    <!-- FishPricingFragment -->
+    <string name="title_fish_pricing">Fish Pricing</string>
+    <string name="img_bottom_sheet_fish_pricing">Image Bottom Sheet Fish Pricing</string>
+    <string name="tv_title_fish_pricing">Price your fish,\nunveil the value in every catch!</string>
+    <string name="hint_species_fish_pricing">Fish Species</string>
+    <string name="hint_actual_price_fish_pricing">Actual Price (kg)</string>
+    <string name="hint_catching_method_fish_pricing">Catching Method</string>
+    <string name="hint_grade_fish_pricing">Grade</string>
+    <string name="hint_sustainability_fish_pricing">Sustainability</string>
+    <string name="hint_weight_fish_pricing">Weight</string>
+    <string name="value_catching_method_fish_pricing">Farmed</string>
+    <string name="value_grade_fish_pricing">A</string>
+    <string name="value_sustainability_fish_pricing">Moderately Sustainable</string>
 
     <!-- ProfileFragment -->
     <string name="title_my_profile">My Profile</string>
@@ -288,6 +308,15 @@
     <string name="btn_try_again">Try Again</string>
     <string name="tv_title_error_no_internet_connection">No Internet\nConnection</string>
     <string name="tv_subtitle_error_no_internet_connection">Please check your internet\nconnection and try again</string>
+    
+    <!-- FishGradingDialog -->
+    <string name="fish_grading_description_a">This fish is in excellent condition,\ndisplaying vibrant colors,\nfirm flesh, and clear eyes.\nIt meets the highest standards\nof freshness and quality.</string>
+    <string name="fish_grading_description_b">This fish is in good condition, with\nacceptable freshness and texture.\nWhile it may not be perfect,\nit still offers a satisfactory\neating experience.</string>
+    <string name="fish_grading_description_c">This fish shows signs of\nage or mishandling, with a\ndecline in freshness and texture.\nIt may have slight discoloration\nor soft spots, indicating\na lower quality compared to\nhigher grades.</string>
+
+    <!-- FishPricingDialog -->
+    <string name="tv_fish_pricing_dialog">Fish Price Recommendation</string>
+    <string name="tv_description_fish_pricing_dialog">Rp75.000</string>
 
     <!-- ImagePickerDialog -->
     <string name="img_camera_image_picker_dialog">Image Camera Image Picker Dialog</string>
@@ -316,6 +345,18 @@
     <string name="btn_no_sign_up_dialog_content_description">No content description</string>
     <string name="btn_yes_sign_up_dialog">Yes</string>
     <string name="btn_yes_sign_up_dialog_content_description">Yes content description</string>
+    <string name="btn_camera">Take from Camera</string>
+    <string name="btn_camera_content_description">Camera content description</string>
+    <string name="btn_gallery">Select from Gallery</string>
+    <string name="btn_gallery_content_description">Gallery content description</string>
+    <string name="btn_grade">Grade</string>
+    <string name="btn_grade_content_description">Grade content description</string>
+    <string name="btn_close_fish_grading_dialog">Close</string>
+    <string name="btn_close_fish_grading_dialog_content_description">Close content description</string>
+    <string name="btn_predict">Predict</string>
+    <string name="btn_predict_content_description">Predict content description</string>
+    <string name="btn_close_fish_pricing_dialog">Close</string>
+    <string name="btn_close_fish_pricing_dialog_content_description">Close content description</string>
     <string name="btn_reset_password">Reset Password</string>
     <string name="btn_reset_password_content_description">Reset password content description</string>
     <string name="btn_buy">Buy</string>
@@ -349,6 +390,7 @@
     <string name="humidity_format">%d%%</string>
     <string name="wind_speed_format">%s m/s</string>
     <string name="default_n_a">N/A</string>
+    <string name="default_fish_grading_description">Grade Description</string>
     <string name="default_name">Name</string>
     <string name="default_phone_number">Phone Number</string>
     <string name="default_email">Email</string>
@@ -371,6 +413,18 @@
     <string name="grade_b">Grade \"B\"</string>
     <string name="grade_c">Grade \"C\"</string>
 
+    <string-array name="value_catching_method">
+        <item>Farmed</item>
+        <item>Netting</item>
+        <item>Spearfishing</item>
+        <item>Fishing Hook</item>
+    </string-array>
+
+    <string-array name="value_sustainability">
+        <item>Moderately Sustainable</item>
+        <item>Unsustainable</item>
+    </string-array>
+    
     <string-array name="value_grade">
         <item>A</item>
         <item>B</item>
@@ -457,7 +511,4 @@
         <item tools:ignore="TypographyDashes,Typos">https://www.liputan6.com/bisnis/read/5342976/potensi-sumber-daya-ikan-indonesia-lebih-dari-12-juta-ton-per-tahun</item>
         <item tools:ignore="TypographyDashes,Typos">https://www.liputan6.com/bisnis/read/5167526/tokcer-ekspor-perikanan-indonesia-sentuh-rp-usd-571-miliar</item>
     </string-array>
-
-    <string name="tv_fish_grading_fragment">Fish Grading Fragment</string>
-    <string name="tv_fish_pricing_fragment">Fish Pricing Fragment</string>
 </resources>
