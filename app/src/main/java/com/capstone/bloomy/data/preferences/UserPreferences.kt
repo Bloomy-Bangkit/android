@@ -27,7 +27,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         }
     }
 
-    suspend fun removeSession() {
+    suspend fun clearSession() {
         dataStore.edit { preferences ->
             preferences.remove(SESSION)
         }
