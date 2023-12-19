@@ -33,7 +33,28 @@
                     android:background="@color/blue_500"
                     app:title="@string/title_my_profile"
                     app:titleMarginStart="25dp"
-                    app:titleTextColor="@color/off_white" />
+                    app:titleTextColor="@color/off_white">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/action_transaction_profile"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_gravity="end"
+                        android:contentDescription="@string/action_transaction_profile"
+                        android:background="#00000000"
+                        android:src="@drawable/icon_transaction_action" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/action_favorite_profile"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="end"
+                        android:contentDescription="@string/action_favorite_profile"
+                        android:background="#00000000"
+                        android:src="@drawable/icon_favorite_action" />
+
+                </com.google.android.material.appbar.MaterialToolbar>
 
             </com.google.android.material.appbar.AppBarLayout>
 
