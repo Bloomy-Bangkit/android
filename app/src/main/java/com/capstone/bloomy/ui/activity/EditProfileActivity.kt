@@ -1,6 +1,7 @@
 package com.capstone.bloomy.ui.activity
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -8,6 +9,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.view.MenuItem
 import android.view.View
 import android.view.Window
 import android.widget.AdapterView
@@ -125,6 +127,22 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
                 Toast.makeText(this, getString(R.string.invalid_input), Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                navigateToMainActivity()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        navigateToMainActivity()
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -254,6 +272,13 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
                 Toast.makeText(this@EditProfileActivity, "${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun navigateToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("navigateToProfileFragment", true)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
     private fun showLoadingEditProfile(editProfile: Button, isLoading: Boolean) { editProfile.text = if (!isLoading) getString(R.string.btn_edit) else getString(R.string.btn_loading) }
