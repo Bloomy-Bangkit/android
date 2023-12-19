@@ -40,7 +40,7 @@ class MarketGradeProductAdapter : ListAdapter<ProductByGradeData, MarketGradePro
                 .into(binding.imgMarketGradeProduct)
 
             binding.tvTitleMarketGradeProduct.text = productByGradeData.nama
-            binding.tvPriceMarketGradeProduct.text = formatCurrency(productByGradeData.price)
+            binding.tvPriceMarketGradeProduct.text = formatCurrency(productByGradeData.price) + "/kg"
             binding.tvQuantityMarketGradeProduct.text = formatWeight(productByGradeData.weight)
             binding.tvLocationMarketGradeProduct.text = productByGradeData.kota
         }
