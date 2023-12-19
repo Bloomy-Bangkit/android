@@ -13,9 +13,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.capstone.bloomy.R
 import com.capstone.bloomy.data.response.ProductData
 import com.capstone.bloomy.databinding.FragmentMarketBinding
-import com.capstone.bloomy.ui.activity.MainActivity
+import com.capstone.bloomy.ui.activity.MarketSearchProductActivity
 import com.capstone.bloomy.ui.adapter.FreshCatchMarketAdapter
-import com.capstone.bloomy.ui.adapter.SectionPagerAdapter
+import com.capstone.bloomy.ui.adapter.SectionPagerGradeAdapter
 import com.capstone.bloomy.ui.viewmodel.ProductViewModel
 import com.capstone.bloomy.ui.viewmodelfactory.ProductViewModelFactory
 import com.google.android.material.tabs.TabLayout
@@ -23,7 +23,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MarketFragment : Fragment() {
 
-    private lateinit var adapter: SectionPagerAdapter
+    private lateinit var adapter: SectionPagerGradeAdapter
 
     private var _binding: FragmentMarketBinding? = null
     private val binding get() = _binding!!
@@ -48,12 +48,7 @@ class MarketFragment : Fragment() {
                         val query = searchViewMarket.text.toString()
                         searchViewMarket.hide()
 
-                        if (query.isNotEmpty()) {
-                            // Perform search action with the non-empty query
-                            handleSearch(query)
-                        } else {
-                            // Handle the case when the search query is empty
-                        }
+                        if (query.isNotEmpty()) { handleSearch(query) }
 
                         return@setOnEditorActionListener true
                     }
@@ -69,11 +64,11 @@ class MarketFragment : Fragment() {
             setProduct(products)
         }
 
-        val sectionPagerAdapter = SectionPagerAdapter(this)
-        adapter = sectionPagerAdapter
+        val sectionPagerGradeAdapter = SectionPagerGradeAdapter(this)
+        adapter = sectionPagerGradeAdapter
 
         val viewPager: ViewPager2 = binding.viewPagerGradeMarket
-        viewPager.adapter = sectionPagerAdapter
+        viewPager.adapter = sectionPagerGradeAdapter
 
         val tabLayout: TabLayout = binding.tabLayoutGradeMarket
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
@@ -91,8 +86,8 @@ class MarketFragment : Fragment() {
     }
 
     private fun handleSearch(query: String) {
-        val intent = Intent(requireContext(), MainActivity::class.java)
-        intent.putExtra("searchQuery", query)
+        val intent = Intent(requireContext(), MarketSearchProductActivity::class.java)
+        intent.putExtra("search_query", query)
         startActivity(intent)
     }
 
