@@ -55,7 +55,7 @@ class FishPricingFragment : Fragment() {
             val selectedFishData = fishViewModel.fish.value?.find { it.nama == selectedFish }
 
             selectedFishData?.let {
-                val formattedPrice = formatCurrency(it.price)
+                val formattedPrice = formatCurrency(it.price) + "/kg"
                 binding.etActualPriceFishPricing.text = Editable.Factory.getInstance().newEditable(formattedPrice)
             }
         }
