@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.capstone.bloomy.data.response.EditProductResponse
 import com.capstone.bloomy.data.response.ProductByGradeData
 import com.capstone.bloomy.data.response.ProductByIdData
+import com.capstone.bloomy.data.response.ProductByNameData
 import com.capstone.bloomy.data.response.ProductByUsernameData
 import com.capstone.bloomy.data.response.ProductData
 import com.capstone.bloomy.repository.ProductRepository
@@ -26,6 +27,9 @@ class ProductViewModel(private val productRepository: ProductRepository) : ViewM
 
     private val _detailProduct = MutableLiveData<ProductByIdData>()
     val detailProduct: LiveData<ProductByIdData> = _detailProduct
+
+    private val _productByName = MutableLiveData<List<ProductByNameData>>()
+    val productByName: LiveData<List<ProductByNameData>> = _productByName
 
     private val _productByGrade = MutableLiveData<List<ProductByGradeData>>()
     val productByGrade: LiveData<List<ProductByGradeData>> = _productByGrade
@@ -71,6 +75,18 @@ class ProductViewModel(private val productRepository: ProductRepository) : ViewM
         }
     }
 
+    fun getProductByName(nama: String) {
+        viewModelScope.launch {
+            try {
+                val response = productRepository.getProductByName(nama)
+
+                if (response.isSuccessful) _productByName.value = response.body()?.productByNameData else _responseCode.value = response.code()
+            } catch (e: HttpException) {
+                _responseCode.value = e.code()
+            }
+        }
+    }
+
     fun getProductByGrade(grade: String) {
         viewModelScope.launch {
             try {
@@ -82,7 +98,6 @@ class ProductViewModel(private val productRepository: ProductRepository) : ViewM
             }
         }
     }
-
 
     fun addProduct(file: File, nama: String, grade: String, price: Number, weight: Number, description: String) = productRepository.addProduct(file, nama, grade, price, weight, description)
 
@@ -103,6 +118,7 @@ class ProductViewModel(private val productRepository: ProductRepository) : ViewM
             }
         }
     }
+
     fun editPhotoProduct(id: String, file: File) = productRepository.editPhotoProduct(id, file)
 
     fun deleteProduct(id: String) = productRepository.deleteProduct(id)
