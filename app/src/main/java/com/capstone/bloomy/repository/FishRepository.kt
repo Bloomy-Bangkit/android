@@ -6,8 +6,6 @@ class FishRepository private constructor(private val fishService: FishService) {
 
     suspend fun getFish() = fishService.getFish()
 
-    suspend fun getFishById(id: String) = fishService.getFishById(id)
-
     companion object {
         @Volatile
         private var INSTANCE: FishRepository? = null
