@@ -5,8 +5,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.location.Geocoder
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -86,11 +84,6 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 locationCallback,
                 null
             )
-            Handler(Looper.getMainLooper()).postDelayed({
-                if (binding.tvLocationSailDecision.text == "N/A") {
-                    Toast.makeText(requireContext(), getString(R.string.invalid_location), Toast.LENGTH_SHORT).show()
-                }
-            }, 500)
         } else {
             requestLocationPermission()
         }
@@ -153,6 +146,14 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         } else {
             requestLocationPermission()
         }
+
+        val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(requireContext())
+        val profileViewModel: ProfileViewModel by viewModels { profileViewModelFactory }
+
+        profileViewModel.getProfile()
+        profileViewModel.profile.observe(viewLifecycleOwner) { profile ->
+            setProfile(profile)
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -193,12 +194,14 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         )
         val countryName = currentLocation?.first()?.countryName ?: "Indonesia"
         val fullCityName = currentLocation?.first()?.subAdminArea ?: "Jakarta"
+        val latitude = currentLocation?.first()?.latitude
+        val longitude = currentLocation?.first()?.longitude
         val cityName = extractCityName(fullCityName)
         val locationText = "$cityName, $countryName"
 
         binding.tvLocationSailDecision.text = locationText
 
-        getCurrentWeather(cityName)
+        getCurrentWeather(latitude.toString(), longitude.toString())
     }
 
     private fun hasLocationPermission() = EasyPermissions.hasPermissions(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
@@ -222,10 +225,10 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     }
 
     @OptIn(DelicateCoroutinesApi::class)
-    private fun getCurrentWeather(cityName: String) {
+    private fun getCurrentWeather(lat: String, lon: String) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val response = CurrentWeatherConfig.api.getCurrentWeather(cityName, "metric", "29d730ce50152e2ad59f0da578b33a43")
+                val response = CurrentWeatherConfig.api.getCurrentWeather(lat, lon, "metric", "29d730ce50152e2ad59f0da578b33a43")
 
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful && response.body() != null) {
@@ -315,7 +318,7 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     }
 
     private fun getHumidityValue(humidity: Int): Int {
-        return if (humidity > 60) {
+        return if (humidity > 70) {
             0
         } else {
             1
@@ -385,6 +388,7 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         val todayNewsAdapter = TodayNewsAdapter(todayNewsList)
 
         recyclerView.adapter = todayNewsAdapter
+        recyclerView.isNestedScrollingEnabled = false
 
         todayNewsAdapter.setOnItemClickCallback(object : TodayNewsAdapter.OnItemClickCallback {
             override fun onItemClicked(todayNews: TodayNewsModel) {
