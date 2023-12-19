@@ -38,35 +38,39 @@ class SignInActivity : AppCompatActivity() {
             val password = binding.etPasswordSignIn.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                showLoading(signIn, true)
+//                if (password.length >= 8) {
+                    showLoading(signIn, true)
 
-                authenticationViewModel.signIn(email, password)
-                authenticationViewModel.signInResponse.observe(this) { session ->
-                    if (session != null) {
-                        val userModel = UserModel(
-                            session.token
-                        )
+                    authenticationViewModel.signIn(email, password)
+                    authenticationViewModel.signInResponse.observe(this) { session ->
+                        if (session != null) {
+                            val userModel = UserModel(
+                                session.token
+                            )
 
-                        userPreferencesViewModel.saveSession(userModel)
+                            userPreferencesViewModel.saveSession(userModel)
 
-                        showLoading(signIn, false)
+                            showLoading(signIn, false)
 
-                        val mainIntent = Intent(this, MainActivity::class.java)
-                        mainIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(mainIntent)
+                            val mainIntent = Intent(this, MainActivity::class.java)
+                            startActivity(mainIntent)
+                            finish()
+                        }
                     }
-                }
 
-                authenticationViewModel.invalidSignInResponse.observe(this) { invalidSignIn ->
-                    val invalid = invalidSignIn?.message.toString()
+                    authenticationViewModel.invalidSignInResponse.observe(this) { invalidSignIn ->
+                        val invalid = invalidSignIn?.message.toString()
 
-                    if (invalidSignIn != null) {
-                        showLoading(signIn, false)
+                        if (invalidSignIn != null) {
+                            showLoading(signIn, false)
 
-                        Toast.makeText(this, invalid, Toast.LENGTH_SHORT).show()
-                        authenticationViewModel.defaultSignIn()
+                            Toast.makeText(this, invalid, Toast.LENGTH_SHORT).show()
+                            authenticationViewModel.defaultSignIn()
+                        }
                     }
-                }
+//                } else {
+//                    Toast.makeText(this, getString(R.string.invalid_password), Toast.LENGTH_SHORT).show()
+//                }
             } else {
                 Toast.makeText(this, getString(R.string.invalid_input), Toast.LENGTH_SHORT).show()
             }
