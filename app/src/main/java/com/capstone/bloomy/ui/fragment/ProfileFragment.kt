@@ -19,9 +19,11 @@ import com.capstone.bloomy.data.preferences.dataStore
 import com.capstone.bloomy.data.response.ProfileData
 import com.capstone.bloomy.databinding.FragmentProfileBinding
 import com.capstone.bloomy.ui.activity.EditProfileActivity
+import com.capstone.bloomy.ui.activity.FavoriteActivity
 import com.capstone.bloomy.ui.activity.ResetPasswordActivity
 import com.capstone.bloomy.ui.activity.ShopActivity
 import com.capstone.bloomy.ui.activity.SignInActivity
+import com.capstone.bloomy.ui.activity.TransactionActivity
 import com.capstone.bloomy.ui.viewmodel.ProfileViewModel
 import com.capstone.bloomy.ui.viewmodel.UserPreferencesViewModel
 import com.capstone.bloomy.ui.viewmodelfactory.ProfileViewModelFactory
@@ -53,6 +55,16 @@ class ProfileFragment : Fragment() {
             setProfile(profile)
         }
 
+        binding.actionFavoriteProfile.setOnClickListener {
+            val favoriteIntent = Intent(requireActivity(), FavoriteActivity::class.java)
+            startActivity(favoriteIntent)
+        }
+
+        binding.actionTransactionProfile.setOnClickListener {
+            val transactionIntent = Intent(requireActivity(), TransactionActivity::class.java)
+            startActivity(transactionIntent)
+        }
+
         binding.cardViewMyShopProfile.setOnClickListener {
             val shopIntent = Intent(requireActivity(), ShopActivity::class.java)
             startActivity(shopIntent)
@@ -68,34 +80,12 @@ class ProfileFragment : Fragment() {
             startActivity(resetPasswordIntent)
         }
 
+        binding.cardViewChangeLanguage.setOnClickListener {
+
+        }
+
         binding.cardViewSignOut.setOnClickListener {
             showSignOutDialog()
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(requireContext())
-        val profileViewModel: ProfileViewModel by viewModels { profileViewModelFactory }
-
-        profileViewModel.getProfile()
-
-        profileViewModel.profile.observe(viewLifecycleOwner) { profile ->
-            setProfile(profile)
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(requireContext())
-        val profileViewModel: ProfileViewModel by viewModels { profileViewModelFactory }
-
-        profileViewModel.getProfile()
-
-        profileViewModel.profile.observe(viewLifecycleOwner) { profile ->
-            setProfile(profile)
         }
     }
 
@@ -112,7 +102,9 @@ class ProfileFragment : Fragment() {
     }
 
     private fun showSignOutDialog() {
-        val dialog = Dialog(requireContext())
+        val activity = activity ?: return
+
+        val dialog = Dialog(activity)
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
@@ -127,9 +119,11 @@ class ProfileFragment : Fragment() {
         val btnYesSignOut: Button = dialog.findViewById(R.id.btn_yes_sign_out_dialog)
 
         btnYesSignOut.setOnClickListener {
-            userPreferencesViewModel.removeSession()
+            userPreferencesViewModel.clearSession()
 
-            val signInIntent = Intent(requireActivity(), SignInActivity::class.java)
+            dialog.dismiss()
+
+            val signInIntent = Intent(requireContext(), SignInActivity::class.java)
             signInIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(signInIntent)
         }
