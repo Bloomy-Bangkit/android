@@ -98,7 +98,7 @@ class ShopProductDetailActivity : AppCompatActivity() {
 
             tvTitleShopProductDetail.text = detailProduct.nama
             tvGradeShopProductDetail.text = formatGrade(detailProduct.grade)
-            tvPriceShopProductDetail.text = formatCurrency(detailProduct.price)
+            tvPriceShopProductDetail.text = formatCurrency(detailProduct.price) + "/kg"
             tvQuantityShopProductDetail.text = formatWeight(detailProduct.weight)
             tvValueDescriptionShopProductDetail.text = detailProduct.description
         }
