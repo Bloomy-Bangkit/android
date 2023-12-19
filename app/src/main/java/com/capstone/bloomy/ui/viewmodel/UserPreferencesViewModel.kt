@@ -20,9 +20,9 @@ class UserPreferencesViewModel(private val userPreferences: UserPreferences) : V
         }
     }
 
-    fun removeSession() {
+    fun clearSession() {
         viewModelScope.launch {
-            userPreferences.removeSession()
+            userPreferences.clearSession()
         }
     }
 }
