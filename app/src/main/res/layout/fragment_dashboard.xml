@@ -45,25 +45,25 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_profile_dashboard"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_marginEnd="25dp"
-                android:layout_marginTop="20dp"
                 android:src="@color/blue_500"
                 app:civ_border_color="@color/off_white"
                 app:civ_border_width="2dp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_welcome_back_dashboard"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/tv_hello_username_dashboard" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view_sail_decision_dashboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="25dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_profile_dashboard"
+                app:layout_constraintTop_toBottomOf="@id/tv_welcome_back_dashboard"
                 app:cardBackgroundColor="@color/off_white"
                 app:cardCornerRadius="25dp"
                 app:cardElevation="10dp">
@@ -374,7 +374,8 @@
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:paddingTop="10dp"
-                android:paddingBottom="25dp"
+                android:paddingBottom="220dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_today_news_dashboard"
                 app:layout_constraintTop_toBottomOf="@id/tv_today_news_dashboard" />
 
