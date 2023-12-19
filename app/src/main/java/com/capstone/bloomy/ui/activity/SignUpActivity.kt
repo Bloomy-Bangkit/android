@@ -34,7 +34,15 @@ class SignUpActivity : AppCompatActivity() {
             val confirmPassword = binding.etConfirmPasswordSignUp.text.toString()
 
             if (email.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
-                showSignUpDialog()
+                if (password.length >= 8) {
+                    if (confirmPassword.length >= 8) {
+                        showSignUpDialog()
+                    } else {
+                        Toast.makeText(this, getString(R.string.invalid_confirm_password), Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(this, getString(R.string.invalid_password), Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(this, getString(R.string.invalid_input), Toast.LENGTH_SHORT).show()
             }
