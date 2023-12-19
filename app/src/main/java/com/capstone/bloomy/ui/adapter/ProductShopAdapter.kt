@@ -1,5 +1,6 @@
 package com.capstone.bloomy.ui.adapter
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -37,6 +38,7 @@ class ProductShopAdapter : ListAdapter<ProductByUsernameData, ProductShopAdapter
     }
 
     class MyViewHolder(private val binding: ItemRowProductShopGridBinding) : RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(productByUsernameData: ProductByUsernameData) {
             Glide.with(binding.imgProductShopGrid)
                 .load(productByUsernameData.picture)
@@ -44,7 +46,7 @@ class ProductShopAdapter : ListAdapter<ProductByUsernameData, ProductShopAdapter
 
             binding.tvTitleProductShopGrid.text = productByUsernameData.nama
             binding.tvGradeProductShopGrid.text = productByUsernameData.grade
-            binding.tvPriceProductShopGrid.text = formatCurrency(productByUsernameData.price)
+            binding.tvPriceProductShopGrid.text = formatCurrency(productByUsernameData.price) + "/kg"
             binding.tvQuantityProductShopGrid.text = formatWeight(productByUsernameData.weight)
         }
     }
