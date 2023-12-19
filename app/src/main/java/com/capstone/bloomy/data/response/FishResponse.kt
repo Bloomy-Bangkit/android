@@ -31,33 +31,3 @@ data class FishData(
     @field:SerializedName("updatedAt")
     val updatedAt: String
 )
-
-data class FishByIdResponse(
-
-    @field:SerializedName("error")
-    val error: Boolean,
-
-    @field:SerializedName("message")
-    val message: String,
-
-    @field:SerializedName("data")
-    val fishByIdData: FishByIdData
-)
-
-data class FishByIdData(
-
-    @field:SerializedName("idFish")
-    val idFish: String,
-
-    @field:SerializedName("nama")
-    val nama: String,
-
-    @field:SerializedName("price")
-    val price: Int,
-
-    @field:SerializedName("createdAt")
-    val createdAt: String,
-
-    @field:SerializedName("updatedAt")
-    val updatedAt: String
-)
