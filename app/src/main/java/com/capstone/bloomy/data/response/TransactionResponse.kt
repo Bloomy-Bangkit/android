@@ -19,12 +19,6 @@ data class PurchasesTransactionData(
     @SerializedName("idTransaction")
     val idTransaction: String,
 
-    @SerializedName("idProduct")
-    val idProduct: String,
-
-    @SerializedName("usernameBuyer")
-    val usernameBuyer: String,
-
     @SerializedName("weight")
     val weight: Int,
 
@@ -46,9 +40,6 @@ data class PurchasesTransactionData(
     @SerializedName("totalPrice")
     val totalPrice: Int,
 
-    @SerializedName("grade")
-    val grade: String,
-
     @SerializedName("datePickup")
     val datePickup: String,
 
@@ -58,8 +49,29 @@ data class PurchasesTransactionData(
     @SerializedName("updatedAt")
     val updatedAt: String,
 
+    @SerializedName("product")
+    val productPurchaseData: ProductPurchaseData,
+
     @SerializedName("seller")
     val sellerData: SellerData
+)
+
+data class ProductPurchaseData(
+
+    @SerializedName("idProduct")
+    val idProduct: String,
+
+    @SerializedName("nama")
+    val nama: String,
+
+    @SerializedName("grade")
+    val grade: String,
+
+    @SerializedName("picture")
+    val picture: String,
+
+    @SerializedName("pricePerKg")
+    val pricePerKg: String
 )
 
 data class SellerData(
@@ -67,7 +79,7 @@ data class SellerData(
     @SerializedName("usernameSeller")
     val usernameSeller: String,
 
-    @SerializedName("nameSeller")
+    @SerializedName("namaSeller")
     val nameSeller: String,
 
     @SerializedName("picture")
@@ -91,9 +103,6 @@ data class SalesTransactionData(
     @SerializedName("idTransaction")
     val idTransaction: String,
 
-    @SerializedName("idProduct")
-    val idProduct: String,
-
     @SerializedName("weight")
     val weight: Int,
 
@@ -115,9 +124,6 @@ data class SalesTransactionData(
     @SerializedName("totalPrice")
     val totalPrice: Int,
 
-    @SerializedName("grade")
-    val grade: String,
-
     @SerializedName("datePickup")
     val datePickup: String,
 
@@ -127,8 +133,29 @@ data class SalesTransactionData(
     @SerializedName("updatedAt")
     val updatedAt: String,
 
+    @SerializedName("product")
+    val productSaleData: ProductSaleData,
+
     @SerializedName("buyer")
     val buyerData: BuyerData
+)
+
+data class ProductSaleData(
+
+    @SerializedName("idProduct")
+    val idProduct: String,
+
+    @SerializedName("nama")
+    val nama: String,
+
+    @SerializedName("grade")
+    val grade: String,
+
+    @SerializedName("picture")
+    val picture: String,
+
+    @SerializedName("pricePerKg")
+    val pricePerKg: String
 )
 
 data class BuyerData(
