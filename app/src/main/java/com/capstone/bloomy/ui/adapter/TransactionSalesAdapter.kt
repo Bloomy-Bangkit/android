@@ -1,6 +1,7 @@
 package com.capstone.bloomy.ui.adapter
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.capstone.bloomy.R
 import com.capstone.bloomy.data.response.SalesTransactionData
 import com.capstone.bloomy.databinding.ItemRowTransactionBinding
+import com.capstone.bloomy.ui.activity.TransactionDetailActivity
 
 class TransactionSalesAdapter : ListAdapter<SalesTransactionData, TransactionSalesAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
@@ -24,7 +26,9 @@ class TransactionSalesAdapter : ListAdapter<SalesTransactionData, TransactionSal
 
         holder.bind(transaction)
         holder.itemView.setOnClickListener {
+            val detailTransaction = Intent(holder.itemView.context, TransactionDetailActivity::class.java)
 
+            holder.itemView.context.startActivity(detailTransaction)
         }
     }
 
@@ -36,10 +40,10 @@ class TransactionSalesAdapter : ListAdapter<SalesTransactionData, TransactionSal
             Glide.with(binding.imgUserTransaction)
                 .load(salesTransactionData.buyerData.pictureBuyer)
                 .into(binding.imgUserTransaction)
-//
-//            Glide.with(binding.imgProductTransaction)
-//                .load()
-//                .into(binding.imgProductTransaction)
+
+            Glide.with(binding.imgProductTransaction)
+                .load(salesTransactionData.productSaleData.picture)
+                .into(binding.imgProductTransaction)
 
             binding.tvUserTransaction.text = salesTransactionData.buyerData.namaBuyer
             binding.tvStatusTransaction.text = when (salesTransactionData.status) {
@@ -50,16 +54,16 @@ class TransactionSalesAdapter : ListAdapter<SalesTransactionData, TransactionSal
                 "4" -> context.getString(R.string.canceled)
                 else -> "Unknown"
             }
-            binding.tvGradeTransaction.text = salesTransactionData.grade
-            binding.tvTitleTransaction.text = "IKAN"
-            binding.tvPriceTransaction.text = formatCurrency(salesTransactionData.price) + "/kg"
+            binding.tvGradeTransaction.text = salesTransactionData.productSaleData.grade
+            binding.tvTitleTransaction.text = salesTransactionData.productSaleData.nama
+            binding.tvPriceTransaction.text = formatCurrency(salesTransactionData.productSaleData.pricePerKg.toInt()) + "/kg"
             binding.tvDeliveryMethodTransaction.text = when (salesTransactionData.type) {
                 "0" -> context.getString(R.string.delivery)
                 "1" -> context.getString(R.string.self_pickup)
                 else -> "Unknown"
             }
             binding.tvQuantityTransaction.text = salesTransactionData.weight.toString()
-            binding.tvTotalTransaction.text = "Total: " + formatCurrency(salesTransactionData.totalPrice)
+            binding.tvTotalTransaction.text = "Total: " + formatCurrency(salesTransactionData.price)
         }
     }
 
