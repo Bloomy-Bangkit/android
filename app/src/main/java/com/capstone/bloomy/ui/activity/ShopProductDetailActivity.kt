@@ -6,9 +6,11 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.Window
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.capstone.bloomy.R
@@ -47,6 +49,23 @@ class ShopProductDetailActivity : AppCompatActivity() {
 
         binding.btnRemoveProductDetail.setOnClickListener {
             showRemoveProductDialog()
+        }
+
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                navigateToShopActivity()
+            }
+        })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                navigateToShopActivity()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -115,6 +134,12 @@ class ShopProductDetailActivity : AppCompatActivity() {
 
     private fun formatWeight(weight: Int): String {
         return "$weight kg left"
+    }
+
+    private fun navigateToShopActivity() {
+        val intent = Intent(this, ShopActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
     companion object {
