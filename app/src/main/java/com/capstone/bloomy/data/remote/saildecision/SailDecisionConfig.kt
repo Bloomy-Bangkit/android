@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class SailDecisionConfig {
     companion object {
-        fun getApiService(): SailDecisionService {
+        fun getApiService(token: String): SailDecisionService {
             val client: OkHttpClient
 
             val loggingInterceptor = if (BuildConfig.DEBUG) HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY) else HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
@@ -17,7 +17,7 @@ class SailDecisionConfig {
             val authInterceptor = Interceptor { chain ->
                 val req = chain.request()
                 val requestHeaders = req.newBuilder()
-                    .addHeader("Authorization", "Bearer Bloomy-APIModel!")
+                    .addHeader("Authorization", "Bearer $token")
                     .build()
                 chain.proceed(requestHeaders)
             }
