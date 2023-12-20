@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -64,6 +65,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.firebase:firebase-analytics")
     implementation("com.intuit.sdp:sdp-android:1.1.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
@@ -71,6 +73,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.vmadalin:easypermissions-ktx:1.0.0")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
 
     testImplementation("junit:junit:4.13.2")
 
