@@ -7,6 +7,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -282,6 +283,17 @@ class MarketProductDetailActivity : AppCompatActivity(), DatePickerDialog.OnDate
         savedMinute = minute
 
         etPickupDate.text = Editable.Factory.getInstance().newEditable("$savedYear/$savedMonth/$savedDay $savedHour:$savedMinute")
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun getDateTimeCalendar() {
