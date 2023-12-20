@@ -9,6 +9,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.view.MenuItem
 import android.view.Window
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -135,6 +136,17 @@ class ShopEditProductActivity : AppCompatActivity() {
         val arrayAdapter = ArrayAdapter(this, R.layout.item_list_grade, grade)
 
         binding.etGradeEditProduct.setAdapter(arrayAdapter)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun showImagePickerDialog() {
