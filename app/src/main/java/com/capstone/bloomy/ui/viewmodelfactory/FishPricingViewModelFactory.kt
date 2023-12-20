@@ -1,5 +1,6 @@
 package com.capstone.bloomy.ui.viewmodelfactory
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.bloomy.di.FishPricingInjection
@@ -20,9 +21,9 @@ class FishPricingViewModelFactory private constructor(private val fishPricingRep
         @Volatile
         private var INSTANCE: FishPricingViewModelFactory? = null
 
-        fun getInstance(): FishPricingViewModelFactory =
+        fun getInstance(context: Context): FishPricingViewModelFactory =
             INSTANCE ?: synchronized(this) {
-                INSTANCE ?: FishPricingViewModelFactory(FishPricingInjection.provideRepository())
+                INSTANCE ?: FishPricingViewModelFactory(FishPricingInjection.provideRepository(context))
             }.also { INSTANCE = it }
     }
 }
