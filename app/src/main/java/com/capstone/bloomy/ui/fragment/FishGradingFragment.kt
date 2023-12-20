@@ -33,8 +33,6 @@ class FishGradingFragment : Fragment() {
     private var imageUri: Uri? = null
 
     private val binding get() = _binding!!
-    private val fishGradingViewModelFactory: FishGradingViewModelFactory = FishGradingViewModelFactory.getInstance()
-    private val fishGradingViewModel: FishGradingViewModel by viewModels { fishGradingViewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,6 +64,9 @@ class FishGradingFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun showFishGradingDialog() {
+        val fishGradingViewModelFactory: FishGradingViewModelFactory = FishGradingViewModelFactory.getInstance(requireContext())
+        val fishGradingViewModel: FishGradingViewModel by viewModels { fishGradingViewModelFactory }
+
         val dialog = Dialog(requireContext())
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
