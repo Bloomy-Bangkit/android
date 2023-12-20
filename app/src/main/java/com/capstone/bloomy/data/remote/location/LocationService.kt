@@ -1,17 +1,18 @@
 package com.capstone.bloomy.data.remote.location
 
-import com.capstone.bloomy.data.response.KotaTestResponse
-import com.capstone.bloomy.data.response.ProvinsiTestResponse
+import com.capstone.bloomy.data.response.KotaResponse
+import com.capstone.bloomy.data.response.ProvinsiResponse
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface LocationService {
 
     @GET("location/provinsi")
-    suspend fun getProvinsi(): ProvinsiTestResponse
+    suspend fun getProvinsi(): Response<ProvinsiResponse>
 
-    @GET("location/provinsi/{nama}/kota")
+    @GET("location/provinsi/{id}/kota")
     suspend fun getKota(
-        @Path("nama") nama: String
-    ): KotaTestResponse
+        @Path("id") id: Int
+    ): Response<KotaResponse>
 }
