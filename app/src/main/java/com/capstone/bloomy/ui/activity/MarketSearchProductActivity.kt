@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -51,6 +52,17 @@ class MarketSearchProductActivity : AppCompatActivity() {
         productViewModel.getProductByName(extraSearchQuery.toString())
         productViewModel.productByName.observe(this) { products ->
             setProduct(products)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
