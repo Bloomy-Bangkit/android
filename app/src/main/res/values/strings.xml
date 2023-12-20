@@ -257,6 +257,9 @@
     <string name="tv_quantity_transaction">5</string>
     <string name="tv_total_transaction">Total: Rp250.000</string>
 
+    <!-- TransactionDetailActivity -->
+    <string name="title_transaction_detail">Transaction Detail</string>
+
     <!-- EditProfileActivity -->
     <string name="title_edit_profile">Edit Profile</string>
     <string name="img_bottom_sheet_edit_profile">Image Bottom Sheet Edit Profile</string>
@@ -480,14 +483,14 @@
     <!-- TabLayoutTransaction -->
     <string name="sales">Sales</string>
     <string name="purchases">Purchases</string>
-    
+
     <!-- Status -->
     <string name="not_confirmed">Not Confirmed</string>
     <string name="in_process">In Process</string>
     <string name="shipped">Shipped</string>
     <string name="finished">Finished</string>
     <string name="canceled">Canceled</string>
-    
+
     <!-- MethodDelivery -->
     <string name="delivery">Delivery</string>
     <string name="self_pickup">Self-Pickup</string>
