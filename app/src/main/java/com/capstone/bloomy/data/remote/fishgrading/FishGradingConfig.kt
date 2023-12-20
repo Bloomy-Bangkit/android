@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class FishGradingConfig {
     companion object {
-        fun getApiService(): FishGradingService {
+        fun getApiService(token: String): FishGradingService {
             val client: OkHttpClient
 
             val loggingInterceptor = if (BuildConfig.DEBUG) HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY) else HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
@@ -17,7 +17,7 @@ class FishGradingConfig {
             val authInterceptor = Interceptor { chain ->
                 val req = chain.request()
                 val requestHeaders = req.newBuilder()
-                    .addHeader("Authorization", "Bearer Bloomy-APIModel!")
+                    .addHeader("Authorization", "Bearer $token")
                     .build()
                 chain.proceed(requestHeaders)
             }
