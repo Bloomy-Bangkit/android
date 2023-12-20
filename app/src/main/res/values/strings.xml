@@ -593,6 +593,4 @@
         <item tools:ignore="TypographyDashes,Typos">https://www.liputan6.com/bisnis/read/5342976/potensi-sumber-daya-ikan-indonesia-lebih-dari-12-juta-ton-per-tahun</item>
         <item tools:ignore="TypographyDashes,Typos">https://www.liputan6.com/bisnis/read/5167526/tokcer-ekspor-perikanan-indonesia-sentuh-rp-usd-571-miliar</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
