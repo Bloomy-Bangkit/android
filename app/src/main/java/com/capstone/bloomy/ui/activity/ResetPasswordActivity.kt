@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import com.capstone.bloomy.R
 import com.capstone.bloomy.databinding.ActivityResetPasswordBinding
@@ -61,6 +62,12 @@ class ResetPasswordActivity : AppCompatActivity() {
                 Toast.makeText(this, getString(R.string.invalid_input), Toast.LENGTH_SHORT).show()
             }
         }
+
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                navigateToMainActivity()
+            }
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -72,11 +79,6 @@ class ResetPasswordActivity : AppCompatActivity() {
 
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        navigateToMainActivity()
     }
 
     private fun navigateToMainActivity() {
