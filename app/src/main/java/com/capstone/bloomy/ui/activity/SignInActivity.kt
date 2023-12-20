@@ -38,7 +38,7 @@ class SignInActivity : AppCompatActivity() {
             val password = binding.etPasswordSignIn.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-//                if (password.length >= 8) {
+                if (password.length >= 8) {
                     showLoading(signIn, true)
 
                     authenticationViewModel.signIn(email, password)
@@ -68,9 +68,9 @@ class SignInActivity : AppCompatActivity() {
                             authenticationViewModel.defaultSignIn()
                         }
                     }
-//                } else {
-//                    Toast.makeText(this, getString(R.string.invalid_password), Toast.LENGTH_SHORT).show()
-//                }
+                } else {
+                    Toast.makeText(this, getString(R.string.invalid_password), Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(this, getString(R.string.invalid_input), Toast.LENGTH_SHORT).show()
             }
