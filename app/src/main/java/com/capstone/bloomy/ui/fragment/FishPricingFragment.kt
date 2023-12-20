@@ -30,8 +30,6 @@ class FishPricingFragment : Fragment() {
     private var listFishName = ArrayList<String>()
 
     private val binding get() = _binding!!
-    private val fishPricingViewModelFactory: FishPricingViewModelFactory = FishPricingViewModelFactory.getInstance()
-    private val fishPricingViewModel: FishPricingViewModel by viewModels { fishPricingViewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -98,6 +96,9 @@ class FishPricingFragment : Fragment() {
     }
 
     private fun showFishPricingDialog() {
+        val fishPricingViewModelFactory: FishPricingViewModelFactory = FishPricingViewModelFactory.getInstance(requireContext())
+        val fishPricingViewModel: FishPricingViewModel by viewModels { fishPricingViewModelFactory }
+
         val dialog = Dialog(requireContext())
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
