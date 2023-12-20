@@ -51,8 +51,6 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private var humidityValue: Int = 0
     private var windSpeedValue: Int = 0
 
-    private val sailDecisionViewModelFactory: SailDecisionViewModelFactory = SailDecisionViewModelFactory.getInstance()
-    private val sailDecisionViewModel: SailDecisionViewModel by viewModels { sailDecisionViewModelFactory }
     private val binding get() = _binding!!
     private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(p0: LocationResult) {
@@ -95,6 +93,9 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         profileViewModel.profile.observe(viewLifecycleOwner) { profile ->
             setProfile(profile)
         }
+
+        val sailDecisionViewModelFactory: SailDecisionViewModelFactory = SailDecisionViewModelFactory.getInstance(requireContext())
+        val sailDecisionViewModel: SailDecisionViewModel by viewModels { sailDecisionViewModelFactory }
 
         sailDecisionViewModel.sailDecisionResponse.observe(viewLifecycleOwner) { response ->
             val code = response?.status?.code
@@ -246,6 +247,9 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                         temperatureValue = getTemperatureValue(temperature)
                         humidityValue = getHumidityValue(humidity)
                         windSpeedValue = getWindSpeedValue(windSpeed)
+
+                        val sailDecisionViewModelFactory: SailDecisionViewModelFactory = SailDecisionViewModelFactory.getInstance(requireContext())
+                        val sailDecisionViewModel: SailDecisionViewModel by viewModels { sailDecisionViewModelFactory }
 
                         sailDecisionViewModel.sailDecision(outlookValue, temperatureValue, humidityValue, windSpeedValue)
 
