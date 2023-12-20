@@ -1,5 +1,6 @@
 package com.capstone.bloomy.ui.viewmodelfactory
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.bloomy.di.FishGradingInjection
@@ -20,9 +21,9 @@ class FishGradingViewModelFactory private constructor(private val fishGradingRep
         @Volatile
         private var INSTANCE: FishGradingViewModelFactory? = null
 
-        fun getInstance(): FishGradingViewModelFactory =
+        fun getInstance(context: Context): FishGradingViewModelFactory =
             INSTANCE ?: synchronized(this) {
-                INSTANCE ?: FishGradingViewModelFactory(FishGradingInjection.provideRepository())
+                INSTANCE ?: FishGradingViewModelFactory(FishGradingInjection.provideRepository(context))
             }.also { INSTANCE = it }
     }
 }
