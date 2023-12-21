@@ -6,7 +6,7 @@
     android:background="@color/blue_500"
     tools:context=".ui.fragment.MarketFragment">
 
-    <ScrollView
+    <com.emilsjolander.components.StickyScrollViewItems.StickyScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -110,8 +110,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:tabBackground="@color/white"
                 android:contentDescription="@string/tab_layout_grade_market"
+                android:tag="sticky"
+                app:tabBackground="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recycler_view_fresh_catch_market" />
@@ -119,13 +120,13 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager_grade_market"
                 android:layout_width="0dp"
-                android:layout_height="600dp"
+                android:layout_height="800dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tab_layout_grade_market" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
