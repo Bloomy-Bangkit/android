@@ -2,221 +2,449 @@ package com.capstone.bloomy.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class PurchasesTransactionResponse(
+data class TransactionByIdResponse(
 
-    @SerializedName("error")
+    @field:SerializedName("error")
     val error: Boolean,
 
-    @SerializedName("message")
+    @field:SerializedName("message")
     val message: String,
 
-    @SerializedName("data")
+    @field:SerializedName("data")
+    val transactionByIdData: TransactionByIdData
+)
+
+data class TransactionByIdData(
+
+    @field:SerializedName("idTransaction")
+    val idTransaction: String,
+
+    @field:SerializedName("weight")
+    val weight: Int,
+
+    @field:SerializedName("price")
+    val price: Int,
+
+    @field:SerializedName("type")
+    val type: String,
+
+    @field:SerializedName("status")
+    val status: String,
+
+    @field:SerializedName("noResi")
+    val noResi: String,
+
+    @field:SerializedName("ongkir")
+    val ongkir: Int,
+
+    @field:SerializedName("totalPrice")
+    val totalPrice: Int,
+
+    @field:SerializedName("datePickup")
+    val datePickup: String,
+
+    @field:SerializedName("createdAt")
+    val createdAt: String,
+
+    @field:SerializedName("updatedAt")
+    val updatedAt: String,
+
+    @field:SerializedName("product")
+    val productTransactionByIdData: ProductTransactionByIdData,
+
+    @field:SerializedName("buyer")
+    val buyerTransactionByIdData: BuyerTransactionByIdData,
+
+    @field:SerializedName("seller")
+    val sellerTransactionByIdData: SellerTransactionByIdData
+)
+
+data class ProductTransactionByIdData(
+
+    @field:SerializedName("idProduct")
+    val idProduct: String,
+
+    @field:SerializedName("nama")
+    val nama: String,
+
+    @field:SerializedName("grade")
+    val grade: String,
+
+    @field:SerializedName("picture")
+    val picture: String,
+
+    @field:SerializedName("pricePerKg")
+    val pricePerKg: String
+)
+
+data class BuyerTransactionByIdData(
+
+    @field:SerializedName("usernameBuyer")
+    val usernameBuyer: String,
+
+    @field:SerializedName("namaBuyer")
+    val namaBuyer: String,
+
+    @field:SerializedName("picture")
+    val picture: String
+)
+
+data class SellerTransactionByIdData(
+
+    @field:SerializedName("usernameSeller")
+    val usernameSeller: String,
+
+    @field:SerializedName("nama")
+    val nama: String,
+
+    @field:SerializedName("picture")
+    val picture: String
+)
+
+data class PurchasesTransactionResponse(
+
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("data")
     val purchasesTransactionData: List<PurchasesTransactionData>
 )
 
 data class PurchasesTransactionData(
 
-    @SerializedName("idTransaction")
+    @field:SerializedName("idTransaction")
     val idTransaction: String,
 
-    @SerializedName("weight")
+    @field:SerializedName("weight")
     val weight: Int,
 
-    @SerializedName("price")
+    @field:SerializedName("price")
     val price: Int,
 
-    @SerializedName("type")
+    @field:SerializedName("type")
     val type: String,
 
-    @SerializedName("status")
+    @field:SerializedName("status")
     val status: String,
 
-    @SerializedName("noResi")
+    @field:SerializedName("noResi")
     val noResi: String,
 
-    @SerializedName("ongkir")
+    @field:SerializedName("ongkir")
     val ongkir: Int,
 
-    @SerializedName("totalPrice")
+    @field:SerializedName("totalPrice")
     val totalPrice: Int,
 
-    @SerializedName("datePickup")
+    @field:SerializedName("datePickup")
     val datePickup: String,
 
-    @SerializedName("createdAt")
+    @field:SerializedName("createdAt")
     val createdAt: String,
 
-    @SerializedName("updatedAt")
+    @field:SerializedName("updatedAt")
     val updatedAt: String,
 
-    @SerializedName("product")
+    @field:SerializedName("product")
     val productPurchaseData: ProductPurchaseData,
 
-    @SerializedName("seller")
+    @field:SerializedName("seller")
     val sellerData: SellerData
 )
 
 data class ProductPurchaseData(
 
-    @SerializedName("idProduct")
+    @field:SerializedName("idProduct")
     val idProduct: String,
 
-    @SerializedName("nama")
+    @field:SerializedName("nama")
     val nama: String,
 
-    @SerializedName("grade")
+    @field:SerializedName("grade")
     val grade: String,
 
-    @SerializedName("picture")
+    @field:SerializedName("picture")
     val picture: String,
 
-    @SerializedName("pricePerKg")
+    @field:SerializedName("pricePerKg")
     val pricePerKg: String
 )
 
 data class SellerData(
 
-    @SerializedName("usernameSeller")
+    @field:SerializedName("usernameSeller")
     val usernameSeller: String,
 
-    @SerializedName("namaSeller")
+    @field:SerializedName("namaSeller")
     val nameSeller: String,
 
-    @SerializedName("picture")
+    @field:SerializedName("picture")
     val picture: String
 )
 
 data class SalesTransactionResponse(
 
-    @SerializedName("error")
+    @field:SerializedName("error")
     val error: Boolean,
 
-    @SerializedName("message")
+    @field:SerializedName("message")
     val message: String,
 
-    @SerializedName("data")
+    @field:SerializedName("data")
     val salesTransactionData: List<SalesTransactionData>
 )
 
 data class SalesTransactionData(
 
-    @SerializedName("idTransaction")
+    @field:SerializedName("idTransaction")
     val idTransaction: String,
 
-    @SerializedName("weight")
+    @field:SerializedName("weight")
     val weight: Int,
 
-    @SerializedName("price")
+    @field:SerializedName("price")
     val price: Int,
 
-    @SerializedName("type")
+    @field:SerializedName("type")
     val type: String,
 
-    @SerializedName("status")
+    @field:SerializedName("status")
     val status: String,
 
-    @SerializedName("noResi")
+    @field:SerializedName("noResi")
     val noResi: String,
 
-    @SerializedName("ongkir")
+    @field:SerializedName("ongkir")
     val ongkir: Int,
 
-    @SerializedName("totalPrice")
+    @field:SerializedName("totalPrice")
     val totalPrice: Int,
 
-    @SerializedName("datePickup")
+    @field:SerializedName("datePickup")
     val datePickup: String,
 
-    @SerializedName("createdAt")
+    @field:SerializedName("createdAt")
     val createdAt: String,
 
-    @SerializedName("updatedAt")
+    @field:SerializedName("updatedAt")
     val updatedAt: String,
 
-    @SerializedName("product")
+    @field:SerializedName("product")
     val productSaleData: ProductSaleData,
 
-    @SerializedName("buyer")
+    @field:SerializedName("buyer")
     val buyerData: BuyerData
 )
 
 data class ProductSaleData(
 
-    @SerializedName("idProduct")
+    @field:SerializedName("idProduct")
     val idProduct: String,
 
-    @SerializedName("nama")
+    @field:SerializedName("nama")
     val nama: String,
 
-    @SerializedName("grade")
+    @field:SerializedName("grade")
     val grade: String,
 
-    @SerializedName("picture")
+    @field:SerializedName("picture")
     val picture: String,
 
-    @SerializedName("pricePerKg")
+    @field:SerializedName("pricePerKg")
     val pricePerKg: String
 )
 
 data class BuyerData(
 
-    @SerializedName("usernameBuyer")
+    @field:SerializedName("usernameBuyer")
     val usernameBuyer: String,
 
-    @SerializedName("namaBuyer")
+    @field:SerializedName("namaBuyer")
     val namaBuyer: String,
 
-    @SerializedName("pictureBuyer")
+    @field:SerializedName("pictureBuyer")
     val pictureBuyer: String
 )
 
 data class BuyProductResponse(
 
-    @SerializedName("error")
+    @field:SerializedName("error")
     val error: Boolean,
 
-    @SerializedName("message")
+    @field:SerializedName("message")
     val message: String,
 
-    @SerializedName("data")
+    @field:SerializedName("data")
     val buyProductData: BuyProductData
 )
 
 data class BuyProductData(
 
-    @SerializedName("noResi")
+    @field:SerializedName("noResi")
     val noResi: String,
 
-    @SerializedName("ongkir")
+    @field:SerializedName("ongkir")
     val ongkir: Int,
 
-    @SerializedName("idTransaction")
+    @field:SerializedName("idTransaction")
     val idTransaction: String,
 
-    @SerializedName("idProduct")
+    @field:SerializedName("idProduct")
     val idProduct: String,
 
-    @SerializedName("usernameBuyer")
+    @field:SerializedName("usernameBuyer")
     val usernameBuyer: String,
 
-    @SerializedName("weight")
+    @field:SerializedName("weight")
     val weight: Int,
 
-    @SerializedName("price")
+    @field:SerializedName("price")
     val price: Int,
 
-    @SerializedName("type")
+    @field:SerializedName("type")
     val type: String,
 
-    @SerializedName("status")
+    @field:SerializedName("status")
     val status: String,
 
-    @SerializedName("datePickup")
+    @field:SerializedName("datePickup")
     val datePickup: String,
 
-    @SerializedName("createdAt")
+    @field:SerializedName("createdAt")
     val createdAt: String,
 
-    @SerializedName("updatedAt")
+    @field:SerializedName("updatedAt")
     val updatedAt: String
+)
+
+data class EditPurchasesTransactionResponse(
+
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("data")
+    val editPurchasesTransactionData: EditPurchasesTransactionData
+)
+
+data class EditPurchasesTransactionData(
+
+    @field:SerializedName("idTransaction")
+    val idTransaction: String,
+
+    @field:SerializedName("idProduct")
+    val idProduct: String,
+
+    @field:SerializedName("usernameBuyer")
+    val usernameBuyer: String,
+
+    @field:SerializedName("weight")
+    val weight: Int,
+
+    @field:SerializedName("price")
+    val price: Int,
+
+    @field:SerializedName("totalPrice")
+    val totalPrice: Int,
+
+    @field:SerializedName("type")
+    val type: String,
+
+    @field:SerializedName("status")
+    val status: String,
+
+    @field:SerializedName("noResi")
+    val noResi: String,
+
+    @field:SerializedName("ongkir")
+    val ongkir: Int,
+
+    @field:SerializedName("datePickup")
+    val datePickup: String,
+
+    @field:SerializedName("createdAt")
+    val createdAt: String,
+
+    @field:SerializedName("updatedAt")
+    val updatedAt: String
+)
+
+data class EditSalesTransactionResponse(
+
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("data")
+    val editSalesTransactionData: EditSalesTransactionData
+)
+
+data class EditSalesTransactionData(
+
+    @field:SerializedName("idTransaction")
+    val idTransaction: String,
+
+    @field:SerializedName("idProduct")
+    val idProduct: String,
+
+    @field:SerializedName("usernameBuyer")
+    val usernameBuyer: String,
+
+    @field:SerializedName("weight")
+    val weight: Int,
+
+    @field:SerializedName("price")
+    val price: Int,
+
+    @field:SerializedName("totalPrice")
+    val totalPrice: Int,
+
+    @field:SerializedName("type")
+    val type: String,
+
+    @field:SerializedName("status")
+    val status: String,
+
+    @field:SerializedName("noResi")
+    val noResi: String,
+
+    @field:SerializedName("ongkir")
+    val ongkir: Int,
+
+    @field:SerializedName("datePickup")
+    val datePickup: String,
+
+    @field:SerializedName("createdAt")
+    val createdAt: String,
+
+    @field:SerializedName("updatedAt")
+    val updatedAt: String
+)
+
+data class DeleteTransactionResponse(
+
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("data")
+    val deleteTransactionData: DeleteTransactionData
+)
+
+data class DeleteTransactionData(
+
+    @field:SerializedName("idTransaction")
+    val idTransaction: String,
+
+    @field:SerializedName("isDelete")
+    val isDelete: Boolean
 )
