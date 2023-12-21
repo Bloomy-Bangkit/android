@@ -13,6 +13,7 @@
     <!-- SignInActivity -->
     <string name="img_logo_bloomy_sign_in">Image Logo Bloomy Sign In</string>
     <string name="img_bottom_sheet_sign_in">Image Bottom Sheet Sign In</string>
+    <string name="btn_forgot_password">Forgot Password?</string>
     <string name="et_hint_email_sign_in">example@gmail.com</string>
     <string name="et_hint_password_sign_in">••••••••</string>
     <string name="tv_title_sign_in">Sign In</string>
@@ -21,8 +22,14 @@
     <string name="tv_password_sign_in">Password</string>
     <string name="tv_sign_up_hint">Don\’t have an account?</string>
 
+    <!-- ForgotPassword -->
+    <string name="tv_forgot_password_dialog">Forgot Password</string>
+    <string name="tv_description_forgot_password_dialog">Please provide the email\naddress that you used when you\nsigned up for your account</string>
+    <string name="et_hint_email_forgot_password_dialog">example@gmail.com</string>
+
     <!-- SignUpActivity -->
     <string name="img_bottom_sheet_sign_up">Image Bottom Sheet Sign Up</string>
+    <string name="btn_resend_verification">Resend Link</string>
     <string name="et_hint_username_sign_up">example</string>
     <string name="et_hint_email_sign_up">example@gmail.com</string>
     <string name="et_hint_password_sign_up">••••••••</string>
@@ -34,6 +41,13 @@
     <string name="tv_password_sign_up">Password</string>
     <string name="tv_confirm_password_sign_up">Confirm Password</string>
     <string name="tv_sign_in_hint">Already have an account?</string>
+    <string name="tv_or_sign_up">Or</string>
+    <string name="tv_resend_verification_hint">Verification link expired?</string>
+
+    <!-- SendVerificationLink -->
+    <string name="tv_send_verification_link_dialog">Resend Verification Link</string>
+    <string name="tv_description_send_verification_link_dialog">Please provide the email\naddress that you used when you\nsigned up for your account</string>
+    <string name="et_hint_email_send_verification_link_dialog">example@gmail.com</string>
 
     <!-- SignUpSuccessActivity -->
     <string name="img_background_sign_up_success">Image Background Sign Up Success</string>
@@ -248,7 +262,7 @@
     <string name="img_grade_transaction">Image Grade Transaction</string>
     <string name="img_delivery_method_transaction">Image Delivery Method Transaction</string>
     <string name="img_quantity_transaction">Image Quantity Transaction</string>
-    <string name="tv_user_transaction">Username</string>
+    <string name="tv_user_transaction">Name</string>
     <string name="tv_status_transaction">Status</string>
     <string name="tv_grade_transaction">A</string>
     <string name="tv_title_transaction">Lorem Ipsum Fish</string>
@@ -257,8 +271,146 @@
     <string name="tv_quantity_transaction">5</string>
     <string name="tv_total_transaction">Total: Rp250.000</string>
 
-    <!-- TransactionDetailActivity -->
-    <string name="title_transaction_detail">Transaction Detail</string>
+    <!-- PurchasesTransactionDetailActivity -->
+    <string name="title_purchases_transaction_detail">Purchases Transaction Detail</string>
+    <string name="img_bottom_sheet_purchases_transaction_detail">Image Bottom Sheet Purchases Transaction Detail</string>
+    <string name="img_user_purchases_transaction_detail">Image User Purchases Transaction Detail</string>
+    <string name="img_product_purchases_transaction_detail">Image Product Purchases Transaction Detail</string>
+    <string name="img_grade_purchases_transaction_detail">Image Grade Purchases Transaction Detail</string>
+    <string name="img_delivery_method_purchases_transaction_detail">Image Delivery Method Purchases Transaction Detail</string>
+    <string name="img_quantity_purchases_transaction_detail">Image Quantity Purchases Transaction Detail</string>
+    <string name="img_content_divider_address_purchases_transaction_detail">Image Content Divider Address Purchases Transaction Detail</string>
+    <string name="img_content_divider_status_purchases_transaction_detail">Image Content Divider Status Purchases Transaction Detail</string>
+    <string name="img_content_divider_price_purchases_transaction_detail">Image Content Divider Price Purchases Transaction Detail</string>
+    <string name="img_content_divider_purchases_transaction_detail">Image Content Divider Purchases Transaction Detail</string>
+    <string name="img_background_button_purchases_transaction_detail">Image Background Purchases Transaction Detail</string>
+    <string name="tv_user_purchases_transaction_detail">Sandhi</string>
+    <string name="tv_default_user_purchases_transaction_detail">Name</string>
+    <string name="tv_grade_purchases_transaction_detail">A</string>
+    <string name="tv_default_grade_purchases_transaction_detail">.</string>
+    <string name="tv_title_purchases_transaction_detail">Lorem Ipsum Fish</string>
+    <string name="tv_default_title_purchases_transaction_detail">Title</string>
+    <string name="tv_price_purchases_transaction_detail">Rp50.000/kg</string>
+    <string name="tv_default_price_purchases_transaction_detail">Rp0/kg</string>
+    <string name="tv_delivery_method_purchases_transaction_detail">Self-Pickup</string>
+    <string name="tv_default_delivery_method_purchases_transaction_detail">Delivery Method</string>
+    <string name="tv_quantity_purchases_transaction_detail">5</string>
+    <string name="tv_default_quantity_purchases_transaction_detail">0</string>
+    <string name="tv_receipt_number_purchases_transaction_detail">Receipt Number</string>
+    <string name="tv_value_receipt_number_purchases_transaction_detail">CH2-PS086</string>
+    <string name="tv_default_value_receipt_number_purchases_transaction_detail">-</string>
+    <string name="tv_seller_address_purchases_transaction_detail">Seller Address:</string>
+    <string name="tv_value_seller_address_purchases_transaction_detail">Pacific Century Place Tower Level 45 SCBD Lot 10, Jl. Jenderal Sudirman No.53, RT.5/RW.3, Senayan, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12190</string>
+    <string name="tv_default_value_seller_address_purchases_transaction_detail" tools:ignore="TypographyEllipsis">...</string>
+    <string name="tv_status_purchases_transaction_detail">Status</string>
+    <string name="tv_value_status_purchases_transaction_detail">Not Confirmed</string>
+    <string name="tv_default_value_status_purchases_transaction_detail" tools:ignore="TypographyEllipsis">-</string>
+    <string name="tv_pickup_date_purchases_transaction_detail">Pickup Date</string>
+    <string name="tv_value_pickup_date_purchases_transaction_detail">2023/12/22 9:41</string>
+    <string name="tv_default_value_pickup_date_purchases_transaction_detail" tools:ignore="TypographyEllipsis">-</string>
+    <string name="tv_subtotal_purchases_transaction_detail">Subtotal</string>
+    <string name="tv_value_subtotal_purchases_transaction_detail">Rp250.000</string>
+    <string name="tv_default_value_subtotal_purchases_transaction_detail">Rp0</string>
+    <string name="tv_shipping_cost_purchases_transaction_detail">Shipping Cost</string>
+    <string name="tv_value_shipping_cost_purchases_transaction_detail">Rp0</string>
+    <string name="tv_default_value_shipping_cost_purchases_transaction_detail">Rp0</string>
+    <string name="tv_total_purchases_transaction_detail">Total</string>
+    <string name="tv_value_total_purchases_transaction_detail">Rp250.000</string>
+    <string name="tv_default_value_total_purchases_transaction_detail">Rp0</string>
+
+    <!-- EditPurchasesTransactionBottomSheetDialog -->
+    <string name="img_cancel_edit_purchases_transaction_bottom_sheet_dialog">Image Cancel Edit Purchases Transaction Bottom Sheet Dialog</string>
+    <string name="img_order_detail_content_divider_edit_purchases_transaction_bottom_sheet_dialog">Image Order Detail Content Divider Edit Purchases Transaction Bottom Sheet Dialog</string>
+    <string name="img_value_quantity_container_edit_purchases_transaction_bottom_sheet">Image Value Quantity Container Edit Purchases Transaction Bottom Sheet Dialog</string>
+    <string name="img_subtract_quantity_edit_purchases_transaction_bottom_sheet_dialog">Image Subtract Quantity Edit Purchases Transaction Bottom Sheet Dialog</string>
+    <string name="img_add_quantity_edit_purchases_transaction_bottom_sheet_dialog">Image Add Quantity Edit Purchases Transaction Bottom Sheet Dialog</string>
+    <string name="img_value_delivery_method_container_edit_purchases_transaction_bottom_sheet_dialog">Image Value Delivery Method Container Edit Purchases Transaction Bottom Sheet Dialog</string>
+    <string name="img_drop_down_delivery_method_edit_purchases_transaction_bottom_sheet_dialog">Image Drop Down Delivery Method Edit Purchases Transaction Bottom Sheet Dialog</string>
+    <string name="img_total_content_divider_edit_purchases_transaction_bottom_sheet_dialog">Image Total Content Divider Edit Purchases Transaction Bottom Sheet Dialog</string>
+    <string name="tv_order_detail_edit_purchases_transaction_bottom_sheet_dialog">Edit Transaction</string>
+    <string name="tv_hint_payment_method_edit_purchases_transaction_bottom_sheet_dialog">Payment Method</string>
+    <string name="tv_hint_quantity_edit_purchases_transaction_bottom_sheet_dialog">Quantity</string>
+    <string name="tv_hint_delivery_method_edit_purchases_transaction_bottom_sheet_dialog">Delivery Method</string>
+    <string name="tv_hint_pickup_date_edit_purchases_transaction_bottom_sheet_dialog">Pickup Date</string>
+    <string name="tv_hint_total_edit_purchases_transaction_bottom_sheet_dialog">Subtotal</string>
+    <string name="tv_value_payment_method_edit_purchases_transaction_bottom_sheet_dialog">Cash On Delivery</string>
+    <string name="tv_value_quantity_edit_purchases_transaction_bottom_sheet_dialog">1</string>
+    <string name="tv_value_delivery_method_edit_purchases_transaction_bottom_sheet_dialog">Self-Pickup</string>
+    <string name="tv_value_total_edit_purchases_transaction_bottom_sheet_dialog">Rp0</string>
+    <string name="tv_value_pickup_date_edit_purchases_transaction_bottom_sheet_dialog">- Not Set -</string>
+    <string name="self_pickup_method_edit_purchases_transaction_bottom_sheet_dialog">Self-Pickup</string>
+    <string name="delivery_method_edit_purchases_transaction_bottom_sheet_dialog">Delivery</string>
+
+    <!-- SalesTransactionDetailActivity -->
+    <string name="title_sales_transaction_detail">Sales Transaction Detail</string>
+    <string name="img_bottom_sheet_sales_transaction_detail">Image Bottom Sheet Sales Transaction Detail</string>
+    <string name="img_user_sales_transaction_detail">Image User Sales Transaction Detail</string>
+    <string name="img_product_sales_transaction_detail">Image Product Sales Transaction Detail</string>
+    <string name="img_grade_sales_transaction_detail">Image Grade Sales Transaction Detail</string>
+    <string name="img_delivery_method_sales_transaction_detail">Image Delivery Method Sales Transaction Detail</string>
+    <string name="img_quantity_sales_transaction_detail">Image Quantity Sales Transaction Detail</string>
+    <string name="img_content_divider_address_sales_transaction_detail">Image Content Divider Address Sales Transaction Detail</string>
+    <string name="img_content_divider_status_sales_transaction_detail">Image Content Divider Status Sales Transaction Detail</string>
+    <string name="img_content_divider_price_sales_transaction_detail">Image Content Divider Price Sales Transaction Detail</string>
+    <string name="img_content_divider_sales_transaction_detail">Image Content Divider Sales Transaction Detail</string>
+    <string name="img_background_button_sales_transaction_detail">Image Background Sales Transaction Detail</string>
+    <string name="tv_user_sales_transaction_detail">Sandhi</string>
+    <string name="tv_default_user_sales_transaction_detail">Name</string>
+    <string name="tv_grade_sales_transaction_detail">A</string>
+    <string name="tv_default_grade_sales_transaction_detail">.</string>
+    <string name="tv_title_sales_transaction_detail">Lorem Ipsum Fish</string>
+    <string name="tv_default_title_sales_transaction_detail">Title</string>
+    <string name="tv_price_sales_transaction_detail">Rp50.000/kg</string>
+    <string name="tv_default_price_sales_transaction_detail">Rp0/kg</string>
+    <string name="tv_delivery_method_sales_transaction_detail">Self-Pickup</string>
+    <string name="tv_default_delivery_method_sales_transaction_detail">Delivery Method</string>
+    <string name="tv_quantity_sales_transaction_detail">5</string>
+    <string name="tv_default_quantity_sales_transaction_detail">0</string>
+    <string name="tv_receipt_number_sales_transaction_detail">Receipt Number</string>
+    <string name="tv_value_receipt_number_sales_transaction_detail">CH2-PS086</string>
+    <string name="tv_default_value_receipt_number_sales_transaction_detail">-</string>
+    <string name="tv_buyer_address_sales_transaction_detail">Buyer Address:</string>
+    <string name="tv_value_buyer_address_sales_transaction_detail">Pacific Century Place Tower Level 45 SCBD Lot 10, Jl. Jenderal Sudirman No.53, RT.5/RW.3, Senayan, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12190</string>
+    <string name="tv_default_value_buyer_address_sales_transaction_detail" tools:ignore="TypographyEllipsis">...</string>
+    <string name="tv_status_sales_transaction_detail">Status</string>
+    <string name="tv_value_status_sales_transaction_detail">Not Confirmed</string>
+    <string name="tv_default_value_status_sales_transaction_detail" tools:ignore="TypographyEllipsis">...</string>
+    <string name="tv_pickup_date_sales_transaction_detail">Pickup Date</string>
+    <string name="tv_value_pickup_date_sales_transaction_detail">2023/12/22 9:41</string>
+    <string name="tv_default_value_pickup_date_sales_transaction_detail" tools:ignore="TypographyEllipsis">-</string>
+    <string name="tv_subtotal_sales_transaction_detail">Subtotal</string>
+    <string name="tv_value_subtotal_sales_transaction_detail">Rp250.000</string>
+    <string name="tv_default_value_subtotal_sales_transaction_detail">Rp0</string>
+    <string name="tv_shipping_cost_sales_transaction_detail">Shipping Cost</string>
+    <string name="tv_value_shipping_cost_sales_transaction_detail">Rp0</string>
+    <string name="tv_default_value_shipping_cost_sales_transaction_detail">Rp0</string>
+    <string name="tv_total_sales_transaction_detail">Total</string>
+    <string name="tv_value_total_sales_transaction_detail">Rp250.000</string>
+    <string name="tv_default_value_total_sales_transaction_detail">Rp0</string>
+
+    <!-- EditSalesTransactionBottomSheetDialog -->
+    <string name="img_cancel_edit_sales_transaction_bottom_sheet_dialog">Image Cancel Edit Sales Transaction Bottom Sheet Dialog</string>
+    <string name="img_order_detail_content_divider_edit_sales_transaction_bottom_sheet_dialog">Image Order Detail Content Divider Edit Sales Transaction Bottom Sheet Dialog</string>
+    <string name="img_value_quantity_container_edit_sales_transaction_bottom_sheet">Image Value Quantity Container Edit Sales Transaction Bottom Sheet Dialog</string>
+    <string name="img_subtract_quantity_edit_sales_transaction_bottom_sheet_dialog">Image Subtract Quantity Edit Sales Transaction Bottom Sheet Dialog</string>
+    <string name="img_add_quantity_edit_sales_transaction_bottom_sheet_dialog">Image Add Quantity Edit Sales Transaction Bottom Sheet Dialog</string>
+    <string name="img_value_delivery_method_container_edit_sales_transaction_bottom_sheet_dialog">Image Value Delivery Method Container Edit Sales Transaction Bottom Sheet Dialog</string>
+    <string name="img_drop_down_delivery_method_edit_sales_transaction_bottom_sheet_dialog">Image Drop Down Delivery Method Edit Sales Transaction Bottom Sheet Dialog</string>
+    <string name="img_total_content_divider_edit_sales_transaction_bottom_sheet_dialog">Image Total Content Divider Edit Sales Transaction Bottom Sheet Dialog</string>
+    <string name="tv_order_detail_edit_sales_transaction_bottom_sheet_dialog">Edit Transaction</string>
+    <string name="tv_hint_payment_method_edit_sales_transaction_bottom_sheet_dialog">Payment Method</string>
+    <string name="tv_hint_shipping_cost_edit_sales_transaction_bottom_sheet_dialog">Shipping Cost</string>
+    <string name="tv_hint_status_edit_sales_transaction_bottom_sheet_dialog">Status</string>
+    <string name="tv_hint_receipt_number_edit_sales_transaction_bottom_sheet_dialog">Receipt Number</string>
+    <string name="tv_value_payment_method_edit_sales_transaction_bottom_sheet_dialog">Cash On Delivery</string>
+    <string name="tv_value_shipping_cost_edit_sales_transaction_bottom_sheet_dialog">- Not Set -</string>
+    <string name="tv_value_status_edit_sales_transaction_bottom_sheet_dialog">Not Confirmed</string>
+    <string name="tv_value_receipt_number_edit_sales_transaction_bottom_sheet_dialog">- Not Set -</string>
+    <string name="not_confirmed_status_edit_sales_transaction_bottom_sheet_dialog">Not Confirmed</string>
+    <string name="in_process_status_edit_sales_transaction_bottom_sheet_dialog">In Process</string>
+    <string name="shipped_status_edit_sales_transaction_bottom_sheet_dialog">Shipped</string>
+    <string name="finished_status_edit_sales_transaction_bottom_sheet_dialog">Finished</string>
+    <string name="canceled_status_edit_sales_transaction_bottom_sheet_dialog">Canceled</string>
 
     <!-- EditProfileActivity -->
     <string name="title_edit_profile">Edit Profile</string>
@@ -394,11 +546,24 @@
     <string name="tv_remove_product_dialog">Remove Product</string>
     <string name="tv_confirmation_remove_product_dialog">Are you sure you want\nto remove this product?</string>
 
+    <!-- RemoveProductDialog -->
+    <string name="img_remove_transaction_dialog">Image Warning Remove Transaction Dialog</string>
+    <string name="tv_remove_transaction_dialog">Remove Transaction</string>
+    <string name="tv_confirmation_remove_transaction_dialog">Are you sure you want\nto remove this transaction?</string>
+
     <!-- Additional -->
     <string name="btn_sign_in">Sign In</string>
     <string name="btn_sign_in_content_description">Sign in content description</string>
+    <string name="btn_cancel_forgot_password_dialog">Cancel</string>
+    <string name="btn_cancel_forgot_password_dialog_content_description">Cancel content description</string>
+    <string name="btn_forgot_password_dialog">Send</string>
+    <string name="btn_forgot_password_dialog_content_description">Send content description</string>
     <string name="btn_sign_up">Sign Up</string>
     <string name="btn_sign_up_content_description">Sign up content description</string>
+    <string name="btn_cancel_send_verification_link_dialog">Cancel</string>
+    <string name="btn_cancel_send_verification_link_dialog_content_description">Cancel content description</string>
+    <string name="btn_send_verification_link_dialog">Resend</string>
+    <string name="btn_send_verification_link_dialog_content_description">Resend content description</string>
     <string name="btn_cancel_image_picker_dialog">Cancel</string>
     <string name="btn_cancel_image_picker_dialog_content_description">Cancel content description</string>
     <string name="btn_no_sign_out_dialog">No</string>
@@ -437,9 +602,19 @@
     <string name="btn_no_remove_product_dialog_content_description">No content description</string>
     <string name="btn_yes_remove_product_dialog">Yes</string>
     <string name="btn_yes_remove_product_dialog_content_description">Yes content description</string>
+    <string name="btn_no_remove_transaction_dialog">No</string>
+    <string name="btn_no_remove_transaction_dialog_content_description">No content description</string>
+    <string name="btn_yes_remove_transaction_dialog">Yes</string>
+    <string name="btn_yes_remove_transaction_dialog_content_description">Yes content description</string>
+    <string name="btn_edit_purchases_transaction_bottom_sheet_dialog">Edit</string>
+    <string name="btn_edit_purchases_transaction_bottom_sheet_dialog_content_description">Edit content description</string>
+    <string name="btn_edit_sales_transaction_bottom_sheet_dialog">Edit</string>
+    <string name="btn_edit_sales_transaction_bottom_sheet_dialog_content_description">Edit content description</string>
     <string name="btn_loading" tools:ignore="TypographyEllipsis">Loading...</string>
     <string name="invalid_email">Invalid email format</string>
     <string name="invalid_location">Location not found. Please enable GPS and try again</string>
+    <string name="invalid_sail_decision">Location Disabled</string>
+    <string name="invalid_description_sail_decision">Enable location to use the\nSail Decision feature</string>
     <string name="invalid_input">Input field can\'t be empty</string>
     <string name="invalid_quantity">Quantity can\'t be lower than 1</string>
     <string name="invalid_image">The image remains the same as before</string>
@@ -447,12 +622,16 @@
     <string name="invalid_password">Password must be at least 8 characters</string>
     <string name="invalid_confirm_password">Confirm password must be at least 8 characters</string>
     <string name="invalid_transaction">There is no transaction</string>
+    <string name="invalid_edit_transaction">Can only edit transaction that is not confirmed yet</string>
+    <string name="invalid_remove_transaction">Can only remove transaction that is not confirmed yet</string>
+    <string name="success_remove_transaction">Transaction removed</string>
     <string name="loading" tools:ignore="TypographyEllipsis">Loading...</string>
     <string name="welcome_to_bloomy">Welcome to Bloomy!</string>
     <string name="sign_out">Sign Out</string>
     <string name="sign_out_confirmation">Are you sure\nyou want to sign out?</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_up_confirmation">By signing up, you agree\nto our Terms of Service\nand Privacy Policy</string>
+    <string name="sail_decision_permission">To use the Sail Decision feature, please enable the location permission</string>
     <string name="temperature_format">%sºC</string>
     <string name="humidity_format">%d%%</string>
     <string name="wind_speed_format">%s m/s</string>
@@ -516,6 +695,14 @@
     <string-array name="value_delivery_method">
         <item>Self-Pickup</item>
         <item>Delivery</item>
+    </string-array>
+
+    <string-array name="value_status">
+        <item name="not_confirmed">Not Confirmed</item>
+        <item name="in_process">In Process</item>
+        <item name="shipped">Shipped</item>
+        <item name="finished">Finished</item>
+        <item name="canceled">Canceled</item>
     </string-array>
 
     <string-array name="data_title_top_news">
