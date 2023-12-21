@@ -212,7 +212,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/tv_value_pickup_date_buy_bottom_sheet_dialog"
                 android:textColor="@color/gray_dark"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
         </com.google.android.material.textfield.TextInputLayout>
