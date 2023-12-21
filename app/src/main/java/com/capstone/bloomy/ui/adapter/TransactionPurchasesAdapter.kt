@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.capstone.bloomy.R
 import com.capstone.bloomy.data.response.PurchasesTransactionData
 import com.capstone.bloomy.databinding.ItemRowTransactionBinding
-import com.capstone.bloomy.ui.activity.TransactionDetailActivity
+import com.capstone.bloomy.ui.activity.PurchasesTransactionDetailActivity
 
 class TransactionPurchasesAdapter : ListAdapter<PurchasesTransactionData, TransactionPurchasesAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
@@ -26,7 +26,10 @@ class TransactionPurchasesAdapter : ListAdapter<PurchasesTransactionData, Transa
 
         holder.bind(transaction)
         holder.itemView.setOnClickListener {
-            val detailTransaction = Intent(holder.itemView.context, TransactionDetailActivity::class.java)
+            val detailTransaction = Intent(holder.itemView.context, PurchasesTransactionDetailActivity::class.java)
+
+            PurchasesTransactionDetailActivity.TRANSACTION_ID = transaction.idTransaction
+            PurchasesTransactionDetailActivity.SELLER_USERNAME = transaction.sellerData.usernameSeller
 
             holder.itemView.context.startActivity(detailTransaction)
         }
