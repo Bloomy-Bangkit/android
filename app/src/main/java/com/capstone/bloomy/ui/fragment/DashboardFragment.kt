@@ -76,6 +76,20 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
+        if (binding.tvLocationSailDecision.text == "N/A") {
+            binding.imgLocationSailDecision.visibility = View.GONE
+            binding.tvLocationSailDecision.visibility = View.GONE
+            binding.tvOutlookSailDecision.visibility = View.GONE
+            binding.tvTemperatureSailDecision.visibility = View.GONE
+            binding.imgOutlookSailDecision.visibility = View.GONE
+            binding.cardViewHumiditySailDecision.visibility = View.GONE
+            binding.cardViewWindSpeedSailDecision.visibility = View.GONE
+            binding.cardViewWindDirectionSailDecision.visibility = View.GONE
+            binding.cardViewDescriptionSailDecision.visibility = View.GONE
+            binding.invalidSailDecision.visibility = View.VISIBLE
+            binding.invalidDescriptionSailDecision.visibility = View.VISIBLE
+        }
+
         if (hasLocationPermission()) {
             fusedLocationProviderClient.requestLocationUpdates(
                 createLocationRequest(),
@@ -202,12 +216,24 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
         binding.tvLocationSailDecision.text = locationText
 
+        binding.imgLocationSailDecision.visibility = View.VISIBLE
+        binding.tvLocationSailDecision.visibility = View.VISIBLE
+        binding.tvOutlookSailDecision.visibility = View.VISIBLE
+        binding.tvTemperatureSailDecision.visibility = View.VISIBLE
+        binding.imgOutlookSailDecision.visibility = View.VISIBLE
+        binding.cardViewHumiditySailDecision.visibility = View.VISIBLE
+        binding.cardViewWindSpeedSailDecision.visibility = View.VISIBLE
+        binding.cardViewWindDirectionSailDecision.visibility = View.VISIBLE
+        binding.cardViewDescriptionSailDecision.visibility = View.VISIBLE
+        binding.invalidSailDecision.visibility = View.GONE
+        binding.invalidDescriptionSailDecision.visibility = View.GONE
+
         getCurrentWeather(latitude.toString(), longitude.toString())
     }
 
     private fun hasLocationPermission() = EasyPermissions.hasPermissions(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
 
-    private fun requestLocationPermission() = EasyPermissions.requestPermissions(this, "To use the Sail Decision feature, please enable the location permission", PERMISSION_LOCATION_REQUEST_CODE, Manifest.permission.ACCESS_FINE_LOCATION)
+    private fun requestLocationPermission() = EasyPermissions.requestPermissions(this, getString(R.string.sail_decision_permission), PERMISSION_LOCATION_REQUEST_CODE, Manifest.permission.ACCESS_FINE_LOCATION)
 
     private fun setProfile(profile: ProfileData) {
         with(binding) {
@@ -215,10 +241,10 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 .load(profile.photo)
                 .into(imgProfileDashboard)
 
-            val tvHelloUsernameDashboardText = if (profile.username.isNotEmpty()) {
-                "Hello, ${profile.username}"
+            val tvHelloUsernameDashboardText = if (profile.nama.isNotEmpty()) {
+                "Hello, ${profile.nama}"
             } else {
-                getString(R.string.tv_hello_username)
+                "Hello, ${profile.username}"
             }
 
             tvHelloUsernameDashboard.text = tvHelloUsernameDashboardText
