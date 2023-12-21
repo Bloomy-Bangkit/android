@@ -53,7 +53,9 @@ class MarketProductDetailActivity : AppCompatActivity(), DatePickerDialog.OnDate
     private var minute = 0
 
     private var savedDay = 0
+    private var formattedDay = ""
     private var savedMonth = 0
+    private var formattedMonth = ""
     private var savedYear = 0
     private var savedHour = 0
     private var savedMinute = 0
@@ -270,8 +272,11 @@ class MarketProductDetailActivity : AppCompatActivity(), DatePickerDialog.OnDate
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         savedDay = dayOfMonth
-        savedMonth = month + 1
+        savedMonth = month + 1 // Adding 1 because Calendar months are zero-based
         savedYear = year
+
+        formattedMonth = String.format("%02d", savedMonth)
+        formattedDay = String.format("%02d", savedDay)
 
         getDateTimeCalendar()
 
@@ -282,7 +287,10 @@ class MarketProductDetailActivity : AppCompatActivity(), DatePickerDialog.OnDate
         savedHour = hourOfDay
         savedMinute = minute
 
-        etPickupDate.text = Editable.Factory.getInstance().newEditable("$savedYear/$savedMonth/$savedDay $savedHour:$savedMinute")
+        val formattedHour = String.format("%02d", savedHour)
+        val formattedMinute = String.format("%02d", savedMinute)
+
+        etPickupDate.text = Editable.Factory.getInstance().newEditable("$savedYear-$formattedMonth-$formattedDay $formattedHour:$formattedMinute:00")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
