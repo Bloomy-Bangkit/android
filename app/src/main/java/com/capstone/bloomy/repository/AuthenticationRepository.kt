@@ -8,6 +8,10 @@ class AuthenticationRepository private constructor(private val authenticationSer
 
     suspend fun signIn(email: String, password: String) = authenticationService.signIn(email, password)
 
+    suspend fun sendVerificationLink(email: String) = authenticationService.sendVerificationLink(email)
+
+    suspend fun forgotPassword(email: String) = authenticationService.forgotPassword(email)
+
     companion object {
         @Volatile
         private var INSTANCE: AuthenticationRepository? = null
