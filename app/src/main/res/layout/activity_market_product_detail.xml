@@ -219,14 +219,16 @@
 
             <TextView
                 android:id="@+id/tv_location_seller_market_product_detail"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
                 android:layout_marginStart="5dp"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/default_location"
                 android:textColor="@color/gray_dark"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/img_seller_market_product_detail"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_location_seller_market_product_detail"
                 app:layout_constraintTop_toBottomOf="@id/tv_name_seller_market_product_detail"
                 tools:ignore="TextContrastCheck"
