@@ -154,7 +154,7 @@
             android:id="@+id/img_quantity_transaction"
             android:layout_width="0dp"
             android:layout_height="25dp"
-            android:layout_marginStart="17.5dp"
+            android:layout_marginStart="10dp"
             android:contentDescription="@string/img_quantity_transaction"
             android:src="@drawable/template_transaction_container"
             app:layout_constraintEnd_toEndOf="parent"
