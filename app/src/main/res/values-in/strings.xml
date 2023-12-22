@@ -65,7 +65,7 @@
     <string name="img_bottom_sheet_dashboard">Image Bottom Sheet Dashboard</string>
     <string name="img_top_news">Image Top News</string>
     <string name="img_today_news">Image Today News</string>
-    <string name="tv_hello_username">Halo, Username</string>
+    <string name="tv_hello_username">Halo, %s</string>
     <string name="tv_welcome_back">Selamat Datang</string>
     <string name="tv_location_sail_decision">Jakarta, Indonesia</string>
     <string name="tv_outlook_sail_decision">Day Cloudy</string>
@@ -118,7 +118,10 @@
     <string name="title_market_search_product">Cari Produk</string>
     <string name="search_bar_market_product">Cari Bloomy</string>
     <string name="img_bottom_sheet_market_search_product">Image Bottom Sheet Market Search Product</string>
-    <string name="tv_description_market_search_product">Showing 0 result</string>
+    <string name="tv_description_market_search_product">Menampilkan 0 hasil</string>
+    <string name="search_result_single">hasil</string>
+    <string name="search_result_plural">hasil</string>
+    <string name="search_description">Menampilkan %d %s untuk \"%s\"</string>
 
     <!-- ItemMarketSearchProduct -->
     <string name="img_market_search_product">Image Market Search Product</string>
@@ -526,9 +529,14 @@
     <string name="tv_subtitle_error_no_internet_connection">Periksa kembali koneksi internet\nAnda dan coba laig</string>
 
     <!-- FishGradingDialog -->
-    <string name="fish_grading_description_a">Ikan ini dalam kondisi sangat baik,\nmenampilkan warna yang cerah,\ndaging yang kenyal,\ndan mata yang jernih.\nMemenuhi standar tertinggi\nkesegaran dan kualitas.</string>
-    <string name="fish_grading_description_b">Ikan ini dalam kondisi baik,\ndengan kesegaran dan tekstur\nyang dapat diterima.\nMeskipun mungkin tidak sempurna,\ntetapi masih memberikan pengalaman\nmakan yang memuaskan.</string>
-    <string name="fish_grading_description_c">Ikan ini menunjukkan tanda-tanda\npenuaan atau penanganan yang buruk,\ndengan penurunan kesegaran dan tekstur.\nMungkin memiliki sedikit perubahan warna\natau bagian yang lembek,\nmenunjukkan kualitas yang lebih rendah\ndibandingkan dengan tingkatan yang lebih tinggi.</string>
+    <string name="fish_grade">Ikan ini bergrade \"%s\"</string>
+    <string name="shrimp_grade">Udang ini bergrade \"%s\"</string>
+    <string name="fish_grading_description_a">Ikan ini dalam kondisi sangat baik, menampilkan warna yang cerah, daging yang kenyal, dan mata yang jernih. Memenuhi standar tertinggi kesegaran dan kualitas.</string>
+    <string name="fish_grading_description_b">Ikan ini dalam kondisi baik, dengan kesegaran dan tekstur yang dapat diterima. Meskipun mungkin tidak sempurna, tetapi masih memberikan pengalaman makan yang memuaskan.</string>
+    <string name="fish_grading_description_c">Ikan ini menunjukkan tanda-tanda penuaan atau penanganan yang buruk, dengan penurunan kesegaran dan tekstur. Mungkin memiliki sedikit perubahan warna atau bagian yang lembek, menunjukkan kualitas yang lebih rendah dibandingkan dengan tingkatan yang lebih tinggi.</string>
+    <string name="shrimp_grading_description_a">Udang ini dalam kondisi sangat baik, menampilkan warna yang cerah, daging yang kenyal, dan mata yang jernih. Memenuhi standar tertinggi kesegaran dan kualitas.</string>
+    <string name="shrimp_grading_description_b">Udang ini dalam kondisi baik, dengan kesegaran dan tekstur yang dapat diterima. Meskipun mungkin tidak sempurna, tetapi masih memberikan pengalaman makan yang memuaskan.</string>
+    <string name="shrimp_grading_description_c">Udang ini menunjukkan tanda-tanda penuaan atau penanganan yang buruk, dengan penurunan kesegaran dan tekstur. Mungkin memiliki sedikit perubahan warna atau bagian yang lembek, menunjukkan kualitas yang lebih rendah dibandingkan dengan tingkatan yang lebih tinggi.</string>
 
     <!-- FishPricingDialog -->
     <string name="tv_fish_pricing_dialog">Rekomendasi Harga Ikan</string>
