@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -50,8 +51,17 @@ class ShopActivity : AppCompatActivity() {
         }
 
         binding.btnAddProduct.setOnClickListener {
-            val shopAddProductIntent = Intent(this, ShopAddProductActivity::class.java)
-            startActivity(shopAddProductIntent)
+            profileViewModel.getProfile()
+
+            profileViewModel.profile.observe(this) { profile ->
+                if (profile.nama.isNullOrEmpty() && profile.nohp.isNullOrEmpty() && profile.provinsi.isNullOrEmpty() && profile.kota.isNullOrEmpty() && profile.alamat.isNullOrEmpty() && profile.description.isNullOrEmpty()) {
+                    val editProfileIntent = Intent(this, EditProfileActivity::class.java)
+                    startActivity(editProfileIntent)
+                } else {
+                    val shopAddProductIntent = Intent(this, ShopAddProductActivity::class.java)
+                    startActivity(shopAddProductIntent)
+                }
+            }
         }
 
         onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
