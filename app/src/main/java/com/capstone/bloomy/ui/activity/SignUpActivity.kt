@@ -96,6 +96,10 @@ class SignUpActivity : AppCompatActivity() {
                         authenticationViewModel.defaultSignUp()
 
                         dialog.dismiss()
+
+                        val signUpSuccessIntent = Intent(this, SignUpSuccessActivity::class.java)
+                        signUpSuccessIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(signUpSuccessIntent)
                     }
                 }
             }
@@ -154,9 +158,7 @@ class SignUpActivity : AppCompatActivity() {
                             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                             authenticationViewModel.defaultSendVerificationLink()
 
-                            val signUpSuccessIntent = Intent(this, SignUpSuccessActivity::class.java)
-                            signUpSuccessIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                            startActivity(signUpSuccessIntent)
+                            dialog.dismiss()
                         }
                     }
                 }
