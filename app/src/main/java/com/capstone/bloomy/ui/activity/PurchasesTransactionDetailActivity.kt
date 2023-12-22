@@ -135,7 +135,7 @@ class PurchasesTransactionDetailActivity : AppCompatActivity(), DatePickerDialog
                     etDeliveryMethod.setOnItemClickListener { _, _, position, _ ->
                         val selectedDeliveryMethod = deliveryMethod[position]
 
-                        if (selectedDeliveryMethod == "Self-Pickup") {
+                        if (selectedDeliveryMethod == getString(R.string.self_pickup)) {
                             tvHintPickUpDate.visibility = View.VISIBLE
                             etPickupDate.visibility = View.VISIBLE
                             etPickupDate.text = Editable.Factory.getInstance().newEditable(getString(R.string.tv_value_pickup_date_buy_bottom_sheet_dialog))
