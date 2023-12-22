@@ -2,10 +2,10 @@ package com.capstone.bloomy.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
-import com.capstone.bloomy.R
 import com.capstone.bloomy.data.response.ProductByUsernameData
 import com.capstone.bloomy.data.response.ProfileByUsernameData
 import com.capstone.bloomy.databinding.ActivityMarketSellerDetailBinding
@@ -45,6 +45,17 @@ class MarketSellerDetailActivity : AppCompatActivity() {
             productViewModel.product.observe(this) { product ->
                 setProductByUsernameData(product)
             }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

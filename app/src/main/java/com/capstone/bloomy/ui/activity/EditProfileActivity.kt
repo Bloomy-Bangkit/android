@@ -1,6 +1,7 @@
 package com.capstone.bloomy.ui.activity
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -8,44 +9,42 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.view.View
+import android.view.MenuItem
 import android.view.Window
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.capstone.bloomy.R
-import com.capstone.bloomy.data.remote.indonesialocation.IndonesiaLocationConfig
-import com.capstone.bloomy.data.response.KotaResponse
 import com.capstone.bloomy.data.response.ProfileData
-import com.capstone.bloomy.data.response.ProvinsiResponse
 import com.capstone.bloomy.data.state.ResultState
 import com.capstone.bloomy.databinding.ActivityEditProfileBinding
+import com.capstone.bloomy.ui.viewmodel.LocationViewModel
 import com.capstone.bloomy.ui.viewmodel.ProfileViewModel
+import com.capstone.bloomy.ui.viewmodelfactory.LocationViewModelFactory
 import com.capstone.bloomy.ui.viewmodelfactory.ProfileViewModelFactory
 import com.capstone.bloomy.utils.getImageUri
 import com.capstone.bloomy.utils.reduceFileImage
 import com.capstone.bloomy.utils.uriToFile
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.google.android.material.snackbar.Snackbar
 
-class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class EditProfileActivity : AppCompatActivity() {
 
     private var imageUri: Uri? = null
-    private var listIdProvinsi = ArrayList<Int>()
-    private var listNamaProvinsi = ArrayList<String>()
-    private var listIdKota = ArrayList<Int>()
-    private var listNamaKota = ArrayList<String>()
+    private var listProvinceName = ArrayList<String>()
+    private var selectedProvinsiId = 0
 
     private val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(this@EditProfileActivity)
     private val profileViewModel: ProfileViewModel by viewModels { profileViewModelFactory }
+
+    private val locationViewModelFactory: LocationViewModelFactory = LocationViewModelFactory.getInstance(this@EditProfileActivity)
+    private val locationViewModel: LocationViewModel by viewModels { locationViewModelFactory }
 
     private lateinit var binding: ActivityEditProfileBinding
 
@@ -60,8 +59,34 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
 
         profileViewModel.getProfile()
         profileViewModel.profile.observe(this) { profile ->
+            if (profile.nama.isNullOrEmpty() && profile.nohp.isNullOrEmpty() && profile.provinsi.isNullOrEmpty() && profile.kota.isNullOrEmpty() && profile.alamat.isNullOrEmpty() && profile.description.isNullOrEmpty()) {
+                Snackbar.make(binding.root, getString(R.string.invalid_buy_sell), Snackbar.LENGTH_SHORT).show()
+            }
             setProfile(profile)
-            showProvinsi()
+        }
+
+        locationViewModel.getProvinsi()
+        locationViewModel.provinsiData.observe(this) { provinsi ->
+            listProvinceName.addAll(provinsi.map { it.nama })
+
+            val provinsiAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, listProvinceName)
+            binding.etProvinceEditProfile.setAdapter(provinsiAdapter)
+
+            binding.etProvinceEditProfile.setOnItemClickListener { _, _, position, _ ->
+                binding.etCityEditProfile.text = Editable.Factory.getInstance().newEditable("")
+
+                selectedProvinsiId = provinsi[position].id
+                locationViewModel.getKota(selectedProvinsiId)
+            }
+        }
+
+        locationViewModel.kotaData.observe(this) { kota ->
+            val filteredCities = kota.filter { it.idProvinsi == selectedProvinsiId }
+                .map { it.nama }
+                .toCollection(ArrayList())
+
+            val kotaAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, filteredCities)
+            binding.etCityEditProfile.setAdapter(kotaAdapter)
         }
 
         binding.tvChooseImageEditProfile.setOnClickListener {
@@ -125,17 +150,24 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
                 Toast.makeText(this, getString(R.string.invalid_input), Toast.LENGTH_SHORT).show()
             }
         }
+
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                navigateToMainActivity()
+            }
+        })
     }
 
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        parent?.getItemAtPosition(position)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                navigateToMainActivity()
+                true
+            }
 
-        if (parent?.selectedItem == binding.etProvinceEditProfile.text.toString()) {
-            showKota(listIdProvinsi[position])
+            else -> super.onOptionsItemSelected(item)
         }
     }
-
-    override fun onNothingSelected(parent: AdapterView<*>?) { }
 
     private fun showImagePickerDialog() {
         val dialog = Dialog(this)
@@ -201,59 +233,11 @@ class EditProfileActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
         }
     }
 
-    private fun showProvinsi() {
-        IndonesiaLocationConfig.api.getProvinsi().enqueue(object : Callback<ProvinsiResponse> {
-            override fun onResponse(
-                call: Call<ProvinsiResponse>,
-                response: Response<ProvinsiResponse>
-            ) {
-                listIdProvinsi.clear()
-                listNamaProvinsi.clear()
-
-                val listResponse = response.body()?.provinsi
-
-                listResponse?.forEach {
-                    listIdProvinsi.add(it.id)
-                    listNamaProvinsi.add(it.nama)
-                }
-
-                val adapter = ArrayAdapter(this@EditProfileActivity, android.R.layout.simple_dropdown_item_1line, listNamaProvinsi)
-
-                binding.etProvinceEditProfile.setAdapter(adapter)
-                binding.etProvinceEditProfile.setOnItemClickListener { _, _, position, _ ->
-                    showKota(listIdProvinsi[position])
-                }
-            }
-
-            override fun onFailure(call: Call<ProvinsiResponse>, t: Throwable) {
-                Toast.makeText(this@EditProfileActivity, "${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-
-    private fun showKota(idProv: Int) {
-        IndonesiaLocationConfig.api.getKota(idProv).enqueue(object : Callback<KotaResponse> {
-            override fun onResponse(call: Call<KotaResponse>, response: Response<KotaResponse>) {
-                val listResponse = response.body()?.kotaKabupaten
-
-                listIdKota.clear()
-                listNamaKota.clear()
-
-                listResponse?.forEach {
-                    listIdKota.add(it.id)
-                    listNamaKota.add(it.nama)
-                }
-
-                val adapter = ArrayAdapter(this@EditProfileActivity, android.R.layout.simple_dropdown_item_1line, listNamaKota)
-
-                binding.etCityEditProfile.setAdapter(adapter)
-                binding.etCityEditProfile.setText("", false)
-            }
-
-            override fun onFailure(call: Call<KotaResponse>, t: Throwable) {
-                Toast.makeText(this@EditProfileActivity, "${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
+    private fun navigateToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("navigateToProfileFragment", true)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
     private fun showLoadingEditProfile(editProfile: Button, isLoading: Boolean) { editProfile.text = if (!isLoading) getString(R.string.btn_edit) else getString(R.string.btn_loading) }

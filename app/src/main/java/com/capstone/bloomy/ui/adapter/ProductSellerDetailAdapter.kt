@@ -44,7 +44,7 @@ class ProductSellerDetailAdapter : ListAdapter<ProductByUsernameData, ProductSel
 
             binding.tvTitleProductShopGrid.text = productByUsernameData.nama
             binding.tvGradeProductShopGrid.text = productByUsernameData.grade
-            binding.tvPriceProductShopGrid.text = formatCurrency(productByUsernameData.price)
+            binding.tvPriceProductShopGrid.text = formatCurrency(productByUsernameData.price) + "/kg"
             binding.tvQuantityProductShopGrid.text = formatWeight(productByUsernameData.weight)
         }
     }

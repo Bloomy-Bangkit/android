@@ -133,6 +133,7 @@
         android:layout_marginEnd="25dp"
         android:contentDescription="@string/img_display_product_seller_detail"
         android:src="@drawable/icon_display_grid"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/tv_display_product_seller_detail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_display_product_seller_detail" />
@@ -146,6 +147,7 @@
         android:text="@string/tv_display_product_seller_detail"
         android:textColor="@color/blue_500"
         android:textSize="18sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@id/img_display_product_seller_detail"
         app:layout_constraintBottom_toBottomOf="@id/tv_product_seller_detail"
         app:layout_constraintTop_toTopOf="@id/tv_product_seller_detail" />

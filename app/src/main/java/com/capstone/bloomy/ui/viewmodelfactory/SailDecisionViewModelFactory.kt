@@ -1,5 +1,6 @@
 package com.capstone.bloomy.ui.viewmodelfactory
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.bloomy.di.SailDecisionInjection
@@ -20,9 +21,9 @@ class SailDecisionViewModelFactory private constructor(private val sailDecisionR
         @Volatile
         private var INSTANCE: SailDecisionViewModelFactory? = null
 
-        fun getInstance(): SailDecisionViewModelFactory =
+        fun getInstance(context: Context): SailDecisionViewModelFactory =
             INSTANCE ?: synchronized(this) {
-                INSTANCE ?: SailDecisionViewModelFactory(SailDecisionInjection.provideRepository())
+                INSTANCE ?: SailDecisionViewModelFactory(SailDecisionInjection.provideRepository(context))
             }.also { INSTANCE = it }
     }
 }

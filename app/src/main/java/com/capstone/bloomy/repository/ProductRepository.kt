@@ -5,7 +5,6 @@ import com.capstone.bloomy.data.remote.product.ProductService
 import com.capstone.bloomy.data.response.AddProductResponse
 import com.capstone.bloomy.data.response.DeleteProductResponse
 import com.capstone.bloomy.data.response.EditPhotoProductResponse
-import com.capstone.bloomy.data.response.EditProductResponse
 import com.capstone.bloomy.data.state.ResultState
 import com.google.gson.Gson
 import okhttp3.MediaType.Companion.toMediaType
@@ -54,26 +53,7 @@ class ProductRepository private constructor(private val productService: ProductS
         }
     }
 
-    fun editProduct(id: String, nama: String, grade: String, price: Number, weight: Number, description: String) = liveData {
-        emit(ResultState.Loading)
-
-        val requestNama = nama.toRequestBody("text/plain".toMediaType())
-        val requestGrade = grade.toRequestBody("text/plain".toMediaType())
-        val requestPrice = price.toString().toRequestBody("text/plain".toMediaType())
-        val requestWeight = weight.toString().toRequestBody("text/plain".toMediaType())
-        val requestDescription = description.toRequestBody("text/plain".toMediaType())
-
-        try {
-            val successResponse = productService.editProduct(id, requestNama, requestGrade, requestPrice, requestWeight, requestDescription)
-
-            emit(ResultState.Success(successResponse))
-        } catch (e: HttpException) {
-            val errorBody = e.response()?.errorBody()?.string()
-            val errorResponse = Gson().fromJson(errorBody, EditProductResponse::class.java)
-
-            emit(ResultState.Error(errorResponse.message))
-        }
-    }
+    suspend fun editProduct(id: String, nama: String, grade: String, price: Number, weight: Number, description: String) = productService.editProduct(id, nama, grade, price, weight, description)
 
     fun editPhotoProduct(id: String, file: File) = liveData {
         emit(ResultState.Loading)

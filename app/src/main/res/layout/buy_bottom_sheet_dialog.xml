@@ -61,58 +61,58 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_order_detail_content_divider_buy_bottom_sheet_dialog" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/blueTextInputLayoutMaterial3"
+            android:id="@+id/til_payment_method_buy_bottom_sheet_dialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:enabled="false"
+            app:layout_constraintEnd_toStartOf="@id/img_value_quantity_container_buy_bottom_sheet_dialog"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_hint_payment_method_buy_bottom_sheet_dialog">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_payment_method_buy_bottom_sheet_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/tv_value_payment_method_buy_bottom_sheet_dialog"
+                android:textColor="@color/gray_light"
+                android:textSize="14sp"
+                tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <TextView
             android:id="@+id/tv_hint_quantity_buy_bottom_sheet_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/tv_hint_quantity_buy_bottom_sheet_dialog"
             android:textColor="@color/gray_dark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_hint_payment_method_buy_bottom_sheet_dialog" />
-
-        <TextView
-            android:id="@+id/tv_hint_delivery_method_buy_bottom_sheet_dialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_bold"
-            android:text="@string/tv_hint_delivery_method_buy_bottom_sheet_dialog"
-            android:textColor="@color/gray_dark"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@id/img_cancel_buy_bottom_sheet_dialog"
-            app:layout_constraintTop_toTopOf="@id/tv_hint_quantity_buy_bottom_sheet_dialog" />
-
-        <TextView
-            android:id="@+id/tv_value_payment_method_buy_bottom_sheet_dialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/tv_value_payment_method_buy_bottom_sheet_dialog"
-            android:textColor="@color/gray_dark"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@id/tv_hint_payment_method_buy_bottom_sheet_dialog"
-            app:layout_constraintTop_toBottomOf="@id/tv_hint_payment_method_buy_bottom_sheet_dialog" />
 
         <ImageView
             android:id="@+id/img_value_quantity_container_buy_bottom_sheet_dialog"
-            android:layout_width="75dp"
-            android:layout_height="30dp"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
             android:layout_marginTop="5dp"
             android:contentDescription="@string/img_value_quantity_container_buy_bottom_sheet"
             android:src="@drawable/template_order_detail_container"
             app:layout_constraintEnd_toEndOf="@id/tv_hint_quantity_buy_bottom_sheet_dialog"
-            app:layout_constraintStart_toStartOf="@id/tv_hint_quantity_buy_bottom_sheet_dialog"
+            app:layout_constraintStart_toEndOf="@id/til_payment_method_buy_bottom_sheet_dialog"
             app:layout_constraintTop_toBottomOf="@id/tv_hint_quantity_buy_bottom_sheet_dialog"
             tools:ignore="ImageContrastCheck" />
 
         <ImageView
             android:id="@+id/img_subtract_quantity_buy_bottom_sheet_dialog"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginStart="7.5dp"
+            android:layout_width="17.5dp"
+            android:layout_height="17.5dp"
+            android:layout_marginStart="10dp"
             android:contentDescription="@string/img_subtract_quantity_buy_bottom_sheet_dialog"
             android:src="@drawable/icon_quantity_subtract"
             app:layout_constraintBottom_toBottomOf="@id/img_value_quantity_container_buy_bottom_sheet_dialog"
@@ -134,60 +134,99 @@
 
         <ImageView
             android:id="@+id/img_add_quantity_buy_bottom_sheet_dialog"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginEnd="7.5dp"
+            android:layout_width="17.5dp"
+            android:layout_height="17.5dp"
+            android:layout_marginEnd="10dp"
             android:contentDescription="@string/img_add_quantity_buy_bottom_sheet_dialog"
             android:src="@drawable/icon_quantity_add"
             app:layout_constraintBottom_toBottomOf="@id/img_value_quantity_container_buy_bottom_sheet_dialog"
             app:layout_constraintEnd_toEndOf="@id/img_value_quantity_container_buy_bottom_sheet_dialog"
             app:layout_constraintTop_toTopOf="@id/img_value_quantity_container_buy_bottom_sheet_dialog" />
 
-        <ImageView
-            android:id="@+id/img_value_delivery_method_container_buy_bottom_sheet_dialog"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:contentDescription="@string/img_value_delivery_method_container_buy_bottom_sheet_dialog"
-            android:src="@drawable/template_order_detail_container"
-            app:layout_constraintEnd_toEndOf="@id/tv_hint_delivery_method_buy_bottom_sheet_dialog"
-            app:layout_constraintStart_toStartOf="@id/tv_hint_delivery_method_buy_bottom_sheet_dialog"
-            app:layout_constraintTop_toBottomOf="@id/tv_hint_delivery_method_buy_bottom_sheet_dialog" />
+        <TextView
+            android:id="@+id/tv_hint_delivery_method_buy_bottom_sheet_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/tv_hint_delivery_method_buy_bottom_sheet_dialog"
+            android:textColor="@color/gray_dark"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/til_payment_method_buy_bottom_sheet_dialog"
+            app:layout_constraintTop_toBottomOf="@id/til_payment_method_buy_bottom_sheet_dialog" />
 
-        <Spinner
-            android:id="@+id/spinner_delivery_method_buy_bottom_sheet_dialog"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/blueDropDownInputLayoutMaterial3"
+            android:id="@+id/til_delivery_method_buy_bottom_sheet_dialog"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/off_white"
-            android:popupBackground="@color/off_white"
-            android:spinnerMode="dropdown"
-            app:layout_constraintBottom_toBottomOf="@id/img_value_delivery_method_container_buy_bottom_sheet_dialog"
-            app:layout_constraintEnd_toEndOf="@id/img_value_delivery_method_container_buy_bottom_sheet_dialog"
-            app:layout_constraintStart_toStartOf="@id/img_value_delivery_method_container_buy_bottom_sheet_dialog"
-            app:layout_constraintTop_toTopOf="@id/img_value_delivery_method_container_buy_bottom_sheet_dialog"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_marginHorizontal="25dp"
+            app:endIconTint="@color/blue_500"
+            app:layout_constraintEnd_toStartOf="@id/til_pickup_date_buy_bottom_sheet_dialog"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_hint_delivery_method_buy_bottom_sheet_dialog">
 
-        <ImageView
-            android:id="@+id/img_drop_down_delivery_method_buy_bottom_sheet_dialog"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginEnd="7.5dp"
-            android:contentDescription="@string/img_drop_down_delivery_method_buy_bottom_sheet_dialog"
-            android:src="@drawable/icon_drop_down"
-            app:layout_constraintBottom_toBottomOf="@id/img_value_delivery_method_container_buy_bottom_sheet_dialog"
-            app:layout_constraintEnd_toEndOf="@id/img_value_delivery_method_container_buy_bottom_sheet_dialog"
-            app:layout_constraintTop_toTopOf="@id/img_value_delivery_method_container_buy_bottom_sheet_dialog" />
+            <AutoCompleteTextView
+                android:id="@+id/et_delivery_method_buy_bottom_sheet_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:fontFamily="@font/roboto_regular"
+                android:inputType="none"
+                android:text="@string/tv_value_delivery_method_buy_bottom_sheet_dialog"
+                android:textColor="@color/gray_dark"
+                android:textSize="14sp"
+                tools:ignore="LabelFor,SpeakableTextPresentCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_hint_pickup_date_buy_bottom_sheet_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/tv_hint_pickup_date_buy_bottom_sheet_dialog"
+            android:textColor="@color/gray_dark"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_hint_quantity_buy_bottom_sheet_dialog"
+            app:layout_constraintTop_toBottomOf="@id/img_value_quantity_container_buy_bottom_sheet_dialog" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/blueTextInputLayoutMaterial3"
+            android:id="@+id/til_pickup_date_buy_bottom_sheet_dialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/til_delivery_method_buy_bottom_sheet_dialog"
+            app:layout_constraintEnd_toEndOf="@id/tv_hint_pickup_date_buy_bottom_sheet_dialog"
+            app:layout_constraintStart_toEndOf="@id/til_delivery_method_buy_bottom_sheet_dialog"
+            app:layout_constraintTop_toTopOf="@id/til_delivery_method_buy_bottom_sheet_dialog">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_pickup_date_buy_bottom_sheet_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:focusableInTouchMode="true"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/tv_value_pickup_date_buy_bottom_sheet_dialog"
+                android:textColor="@color/gray_dark"
+                android:textSize="12sp"
+                tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
             android:id="@+id/img_total_content_divider_buy_bottom_sheet_dialog"
             android:layout_width="match_parent"
             android:layout_height="7.5dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:contentDescription="@string/img_total_content_divider_buy_bottom_sheet_dialog"
             android:src="@drawable/template_content_divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_value_payment_method_buy_bottom_sheet_dialog"
+            app:layout_constraintTop_toBottomOf="@id/til_delivery_method_buy_bottom_sheet_dialog"
             tools:ignore="ImageContrastCheck" />
 
         <TextView
@@ -199,7 +238,7 @@
             android:text="@string/tv_hint_total_buy_bottom_sheet_dialog"
             android:textColor="@color/gray_dark"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@id/tv_value_payment_method_buy_bottom_sheet_dialog"
+            app:layout_constraintStart_toStartOf="@id/tv_hint_payment_method_buy_bottom_sheet_dialog"
             app:layout_constraintTop_toBottomOf="@id/img_total_content_divider_buy_bottom_sheet_dialog" />
 
         <TextView
@@ -210,7 +249,7 @@
             android:text="@string/tv_value_total_buy_bottom_sheet_dialog"
             android:textColor="@color/gray_dark"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@id/tv_hint_delivery_method_buy_bottom_sheet_dialog"
+            app:layout_constraintEnd_toEndOf="@id/tv_hint_quantity_buy_bottom_sheet_dialog"
             app:layout_constraintTop_toTopOf="@id/tv_hint_total_buy_bottom_sheet_dialog" />
 
         <ImageView

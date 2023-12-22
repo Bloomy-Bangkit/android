@@ -41,7 +41,7 @@ class FreshCatchMarketAdapter : ListAdapter<ProductData, FreshCatchMarketAdapter
 
             binding.tvTitleFreshCatchMarket.text = productData.nama
             binding.tvGradeFreshCatchMarket.text = productData.grade
-            binding.tvPriceFreshCatchMarket.text = formatCurrency(productData.price)
+            binding.tvPriceFreshCatchMarket.text = formatCurrency(productData.price) + "/kg"
             binding.tvQuantityFreshCatchMarket.text = formatWeight(productData.weight)
             binding.tvLocationFreshCatchMarket.text = productData.kota
         }

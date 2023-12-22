@@ -51,8 +51,6 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private var humidityValue: Int = 0
     private var windSpeedValue: Int = 0
 
-    private val sailDecisionViewModelFactory: SailDecisionViewModelFactory = SailDecisionViewModelFactory.getInstance()
-    private val sailDecisionViewModel: SailDecisionViewModel by viewModels { sailDecisionViewModelFactory }
     private val binding get() = _binding!!
     private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(p0: LocationResult) {
@@ -78,6 +76,20 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
+        if (binding.tvLocationSailDecision.text == "N/A") {
+            binding.imgLocationSailDecision.visibility = View.GONE
+            binding.tvLocationSailDecision.visibility = View.GONE
+            binding.tvOutlookSailDecision.visibility = View.GONE
+            binding.tvTemperatureSailDecision.visibility = View.GONE
+            binding.imgOutlookSailDecision.visibility = View.GONE
+            binding.cardViewHumiditySailDecision.visibility = View.GONE
+            binding.cardViewWindSpeedSailDecision.visibility = View.GONE
+            binding.cardViewWindDirectionSailDecision.visibility = View.GONE
+            binding.cardViewDescriptionSailDecision.visibility = View.GONE
+            binding.invalidSailDecision.visibility = View.VISIBLE
+            binding.invalidDescriptionSailDecision.visibility = View.VISIBLE
+        }
+
         if (hasLocationPermission()) {
             fusedLocationProviderClient.requestLocationUpdates(
                 createLocationRequest(),
@@ -86,10 +98,6 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             )
         } else {
             requestLocationPermission()
-
-            binding.tvLocationSailDecision.text = getString(R.string.tv_location_sail_decision)
-
-            getCurrentWeather("Jakarta")
         }
 
         val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(requireContext())
@@ -99,6 +107,9 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         profileViewModel.profile.observe(viewLifecycleOwner) { profile ->
             setProfile(profile)
         }
+
+        val sailDecisionViewModelFactory: SailDecisionViewModelFactory = SailDecisionViewModelFactory.getInstance(requireContext())
+        val sailDecisionViewModel: SailDecisionViewModel by viewModels { sailDecisionViewModelFactory }
 
         sailDecisionViewModel.sailDecisionResponse.observe(viewLifecycleOwner) { response ->
             val code = response?.status?.code
@@ -149,10 +160,14 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             )
         } else {
             requestLocationPermission()
+        }
 
-            binding.tvLocationSailDecision.text = getString(R.string.tv_location_sail_decision)
+        val profileViewModelFactory: ProfileViewModelFactory = ProfileViewModelFactory.getInstance(requireContext())
+        val profileViewModel: ProfileViewModel by viewModels { profileViewModelFactory }
 
-            getCurrentWeather("Jakarta")
+        profileViewModel.getProfile()
+        profileViewModel.profile.observe(viewLifecycleOwner) { profile ->
+            setProfile(profile)
         }
     }
 
@@ -194,17 +209,31 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         )
         val countryName = currentLocation?.first()?.countryName ?: "Indonesia"
         val fullCityName = currentLocation?.first()?.subAdminArea ?: "Jakarta"
+        val latitude = currentLocation?.first()?.latitude
+        val longitude = currentLocation?.first()?.longitude
         val cityName = extractCityName(fullCityName)
         val locationText = "$cityName, $countryName"
 
         binding.tvLocationSailDecision.text = locationText
 
-        getCurrentWeather(cityName)
+        binding.imgLocationSailDecision.visibility = View.VISIBLE
+        binding.tvLocationSailDecision.visibility = View.VISIBLE
+        binding.tvOutlookSailDecision.visibility = View.VISIBLE
+        binding.tvTemperatureSailDecision.visibility = View.VISIBLE
+        binding.imgOutlookSailDecision.visibility = View.VISIBLE
+        binding.cardViewHumiditySailDecision.visibility = View.VISIBLE
+        binding.cardViewWindSpeedSailDecision.visibility = View.VISIBLE
+        binding.cardViewWindDirectionSailDecision.visibility = View.VISIBLE
+        binding.cardViewDescriptionSailDecision.visibility = View.VISIBLE
+        binding.invalidSailDecision.visibility = View.GONE
+        binding.invalidDescriptionSailDecision.visibility = View.GONE
+
+        getCurrentWeather(latitude.toString(), longitude.toString())
     }
 
     private fun hasLocationPermission() = EasyPermissions.hasPermissions(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
 
-    private fun requestLocationPermission() = EasyPermissions.requestPermissions(this, "TEST", PERMISSION_LOCATION_REQUEST_CODE, Manifest.permission.ACCESS_FINE_LOCATION)
+    private fun requestLocationPermission() = EasyPermissions.requestPermissions(this, getString(R.string.sail_decision_permission), PERMISSION_LOCATION_REQUEST_CODE, Manifest.permission.ACCESS_FINE_LOCATION)
 
     private fun setProfile(profile: ProfileData) {
         with(binding) {
@@ -212,21 +241,16 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 .load(profile.photo)
                 .into(imgProfileDashboard)
 
-            val tvHelloUsernameDashboardText = if (profile.username.isNotEmpty()) {
-                "Hello, ${profile.username}"
-            } else {
-                getString(R.string.tv_hello_username)
-            }
-
+            val tvHelloUsernameDashboardText = getString(R.string.tv_hello_username, if (profile.nama.isNotEmpty()) profile.nama else profile.username)
             tvHelloUsernameDashboard.text = tvHelloUsernameDashboardText
         }
     }
 
     @OptIn(DelicateCoroutinesApi::class)
-    private fun getCurrentWeather(cityName: String) {
+    private fun getCurrentWeather(lat: String, lon: String) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val response = CurrentWeatherConfig.api.getCurrentWeather(cityName, "metric", "29d730ce50152e2ad59f0da578b33a43")
+                val response = CurrentWeatherConfig.api.getCurrentWeather(lat, lon, "metric", "29d730ce50152e2ad59f0da578b33a43")
 
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful && response.body() != null) {
@@ -244,6 +268,9 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                         temperatureValue = getTemperatureValue(temperature)
                         humidityValue = getHumidityValue(humidity)
                         windSpeedValue = getWindSpeedValue(windSpeed)
+
+                        val sailDecisionViewModelFactory: SailDecisionViewModelFactory = SailDecisionViewModelFactory.getInstance(requireContext())
+                        val sailDecisionViewModel: SailDecisionViewModel by viewModels { sailDecisionViewModelFactory }
 
                         sailDecisionViewModel.sailDecision(outlookValue, temperatureValue, humidityValue, windSpeedValue)
 
@@ -316,7 +343,7 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     }
 
     private fun getHumidityValue(humidity: Int): Int {
-        return if (humidity > 60) {
+        return if (humidity > 70) {
             0
         } else {
             1
@@ -386,6 +413,7 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         val todayNewsAdapter = TodayNewsAdapter(todayNewsList)
 
         recyclerView.adapter = todayNewsAdapter
+        recyclerView.isNestedScrollingEnabled = false
 
         todayNewsAdapter.setOnItemClickCallback(object : TodayNewsAdapter.OnItemClickCallback {
             override fun onItemClicked(todayNews: TodayNewsModel) {

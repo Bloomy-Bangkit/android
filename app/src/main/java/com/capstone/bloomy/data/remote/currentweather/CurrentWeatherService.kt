@@ -9,7 +9,8 @@ interface CurrentWeatherService {
 
     @GET("weather?")
     suspend fun getCurrentWeather(
-        @Query("q") city: String,
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
         @Query("units") units: String,
         @Query("appid") apiKey: String
     ): Response<CurrentWeatherModel>
