@@ -629,6 +629,7 @@
     <string name="invalid_image_empty">Kolom gambar tidak boleh kosong</string>
     <string name="invalid_password">Password setidaknya harus 8 karakter</string>
     <string name="invalid_confirm_password">Konfirmasi password setidaknya harus 8 karakter</string>
+    <string name="invalid_buy_sell">Lengkapi informasi profil Anda terlebih dahulu sebelum menjual atau membeli produk apapun</string>
     <string name="invalid_transaction">Tidak ada transaksi</string>
     <string name="invalid_edit_transaction">Hanya bisa mengubah transaksi yang belum dikonfirmasi</string>
     <string name="invalid_remove_transaction">Hanya bisa menghapus transaksi yang belum dikonfirmasi</string>
