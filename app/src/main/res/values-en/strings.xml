@@ -629,6 +629,7 @@
     <string name="invalid_image_empty">Image filed can\'t be empty</string>
     <string name="invalid_password">Password must be at least 8 characters</string>
     <string name="invalid_confirm_password">Confirm password must be at least 8 characters</string>
+    <string name="invalid_buy_sell">Complete your profile information first before buying or selling any product</string>
     <string name="invalid_transaction">There is no transaction</string>
     <string name="invalid_edit_transaction">Can only edit transaction that is not confirmed yet</string>
     <string name="invalid_remove_transaction">Can only remove transaction that is not confirmed yet</string>
