@@ -33,9 +33,10 @@
 
         <TextView
             android:id="@+id/tv_description_fish_grading_dialog"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="25dp"
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
             android:text="@string/default_description"
