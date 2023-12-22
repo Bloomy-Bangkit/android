@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.capstone.bloomy.R
 import com.capstone.bloomy.data.response.ProductByNameData
 import com.capstone.bloomy.databinding.ActivityMarketSearchProductBinding
 import com.capstone.bloomy.ui.adapter.MarketSearchProductAdapter
@@ -78,16 +79,13 @@ class MarketSearchProductActivity : AppCompatActivity() {
         val itemCount = adapter.itemCount
         val extraSearchQuery = intent.getStringExtra("search_query")
 
-        val resultCountText = if (itemCount == 1) {
-            "result"
-        } else {
-            "results"
-        }
+        val resultCountText = getString(
+            if (itemCount == 1) R.string.search_result_single else R.string.search_result_plural,
+            itemCount
+        )
 
-        val description = "Showing $itemCount $resultCountText"
-        val searchQuery = extraSearchQuery ?: "No Search Query"
-        val fullDescription = "$description for \"$searchQuery\""
-        binding.tvDescriptionMarketSearchProduct.text = fullDescription
+        val description = getString(R.string.search_description, itemCount, resultCountText, extraSearchQuery ?: "No Search Query")
+        binding.tvDescriptionMarketSearchProduct.text = description
     }
 
     private fun handleSearch(query: String) {
