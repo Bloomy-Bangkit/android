@@ -147,126 +147,134 @@ class MarketProductDetailActivity : AppCompatActivity(), DatePickerDialog.OnDate
         }
 
         binding.btnBuy.setOnClickListener {
-            val bottomSheetDialog = BottomSheetDialog(this)
-            val view = layoutInflater.inflate(R.layout.buy_bottom_sheet_dialog, null)
-
-            val btnCancel = view.findViewById<ImageView>(R.id.img_cancel_buy_bottom_sheet_dialog)
-            val btnBuy = view.findViewById<MaterialButton>(R.id.btn_buy_bottom_sheet_dialog)
-
-            val deliveryMethod = resources.getStringArray(R.array.value_delivery_method)
-            val arrayAdapter = ArrayAdapter(this, R.layout.item_list_delivery_method, deliveryMethod)
-            val etDeliveryMethod = view.findViewById<AutoCompleteTextView>(R.id.et_delivery_method_buy_bottom_sheet_dialog)
-
-            val tvHintPickUpDate = view.findViewById<TextView>(R.id.tv_hint_pickup_date_buy_bottom_sheet_dialog)
-            val tvTotal = view.findViewById<TextView>(R.id.tv_value_total_buy_bottom_sheet_dialog)
-
-            val tvQuantity = view.findViewById<TextView>(R.id.tv_value_quantity_buy_bottom_sheet_dialog)
-            val quantitySubstract = view.findViewById<ImageView>(R.id.img_subtract_quantity_buy_bottom_sheet_dialog)
-            val quantityAdd = view.findViewById<ImageView>(R.id.img_add_quantity_buy_bottom_sheet_dialog)
-
-            tvQuantity.text = tvValueQuantity.toString()
-            tvTotal.text = formatCurrency(tvValueTotal.toInt())
-
-            etPickupDate = view.findViewById(R.id.et_pickup_date_buy_bottom_sheet_dialog)
-
-            etDeliveryMethod.setAdapter(arrayAdapter)
-
-            etDeliveryMethod.setOnItemClickListener { _, _, position, _ ->
-                val selectedDeliveryMethod = deliveryMethod[position]
-
-                if (selectedDeliveryMethod == getString(R.string.self_pickup)) {
-                    tvHintPickUpDate.visibility = View.VISIBLE
-                    etPickupDate.visibility = View.VISIBLE
-                    etPickupDate.text = Editable.Factory.getInstance().newEditable(getString(R.string.tv_value_pickup_date_buy_bottom_sheet_dialog))
+            profileViewModel.getProfile()
+            profileViewModel.profile.observe(this) { profile ->
+                if (profile.nama.isNullOrEmpty() && profile.nohp.isNullOrEmpty() && profile.provinsi.isNullOrEmpty() && profile.kota.isNullOrEmpty() && profile.alamat.isNullOrEmpty() && profile.description.isNullOrEmpty()) {
+                    val editProfileIntent = Intent(this, EditProfileActivity::class.java)
+                    startActivity(editProfileIntent)
                 } else {
-                    tvHintPickUpDate.visibility = View.GONE
-                    etPickupDate.visibility = View.GONE
-                    etPickupDate.text = Editable.Factory.getInstance().newEditable("")
-                }
-            }
+                    val bottomSheetDialog = BottomSheetDialog(this)
+                    val view = layoutInflater.inflate(R.layout.buy_bottom_sheet_dialog, null)
 
-            quantitySubstract.setOnClickListener {
-                if (tvValueQuantity > 1) {
-                    tvValueQuantity--
+                    val btnCancel = view.findViewById<ImageView>(R.id.img_cancel_buy_bottom_sheet_dialog)
+                    val btnBuy = view.findViewById<MaterialButton>(R.id.btn_buy_bottom_sheet_dialog)
+
+                    val deliveryMethod = resources.getStringArray(R.array.value_delivery_method)
+                    val arrayAdapter = ArrayAdapter(this, R.layout.item_list_delivery_method, deliveryMethod)
+                    val etDeliveryMethod = view.findViewById<AutoCompleteTextView>(R.id.et_delivery_method_buy_bottom_sheet_dialog)
+
+                    val tvHintPickUpDate = view.findViewById<TextView>(R.id.tv_hint_pickup_date_buy_bottom_sheet_dialog)
+                    val tvTotal = view.findViewById<TextView>(R.id.tv_value_total_buy_bottom_sheet_dialog)
+
+                    val tvQuantity = view.findViewById<TextView>(R.id.tv_value_quantity_buy_bottom_sheet_dialog)
+                    val quantitySubstract = view.findViewById<ImageView>(R.id.img_subtract_quantity_buy_bottom_sheet_dialog)
+                    val quantityAdd = view.findViewById<ImageView>(R.id.img_add_quantity_buy_bottom_sheet_dialog)
+
                     tvQuantity.text = tvValueQuantity.toString()
-                    tvTotal.text = formatCurrency(tvValueTotal.toInt() * tvValueQuantity)
-                } else {
-                    Toast.makeText(this, getString(R.string.invalid_quantity), Toast.LENGTH_SHORT).show()
-                }
-            }
+                    tvTotal.text = formatCurrency(tvValueTotal.toInt())
 
-            quantityAdd.setOnClickListener {
-                tvValueQuantity++
-                tvQuantity.text = tvValueQuantity.toString()
-                tvTotal.text = formatCurrency(tvValueTotal.toInt() * tvValueQuantity)
-            }
+                    etPickupDate = view.findViewById(R.id.et_pickup_date_buy_bottom_sheet_dialog)
 
-            etPickupDate.setOnClickListener {
-                getDateTimeCalendar()
+                    etDeliveryMethod.setAdapter(arrayAdapter)
 
-                DatePickerDialog(this, this, year, month, day).show()
-            }
+                    etDeliveryMethod.setOnItemClickListener { _, _, position, _ ->
+                        val selectedDeliveryMethod = deliveryMethod[position]
 
-            btnCancel.setOnClickListener {
-                tvValueQuantity = 1
-
-                bottomSheetDialog.dismiss()
-            }
-
-            btnBuy.setOnClickListener {
-                val buyProduct = view.findViewById<Button>(R.id.btn_buy_bottom_sheet_dialog)
-                val type = view.findViewById<AutoCompleteTextView>(R.id.et_delivery_method_buy_bottom_sheet_dialog)
-                val quantity = view.findViewById<TextView>(R.id.tv_value_quantity_buy_bottom_sheet_dialog)
-                val datePickup = view.findViewById<TextInputEditText>(R.id.et_pickup_date_buy_bottom_sheet_dialog)
-                val idProductValue = productId
-                val typeValue = when (type.text.toString()) {
-                    getString(R.string.delivery_method_buy_bottom_sheet_dialog) -> "0"
-                    getString(R.string.self_pickup_method_buy_bottom_sheet_dialog) -> "1"
-                    else -> "0"
-                }
-                val quantityValue = quantity.text.toString().toInt()
-                val datePickupValue = datePickup.text.toString()
-
-                if (datePickupValue != getString(R.string.tv_value_pickup_date_buy_bottom_sheet_dialog)) {
-                    showLoadingBuyProduct(buyProduct, true)
-
-                    transactionViewModel.buyProduct(idProductValue, typeValue, quantityValue, datePickupValue)
-                    transactionViewModel.buyProductResponse.observe(this@MarketProductDetailActivity) { response ->
-                        val error = response?.error
-                        val message = response?.message.toString()
-
-                        if (error != null) {
-                            showLoadingBuyProduct(buyProduct, false)
-                            if (error == true) {
-                                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-                                transactionViewModel.defaultBuyProduct()
-                            } else {
-                                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-                                transactionViewModel.defaultBuyProduct()
-
-                                productViewModel.getProductById(productId)
-                                productViewModel.detailProduct.observe(this) { detailProduct ->
-                                    setDetailProduct(detailProduct)
-                                }
-
-                                bottomSheetDialog.dismiss()
-
-                                val transactionIntent = Intent(this, TransactionActivity::class.java)
-                                transactionIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                startActivity(transactionIntent)
-                            }
+                        if (selectedDeliveryMethod == getString(R.string.self_pickup)) {
+                            tvHintPickUpDate.visibility = View.VISIBLE
+                            etPickupDate.visibility = View.VISIBLE
+                            etPickupDate.text = Editable.Factory.getInstance().newEditable(getString(R.string.tv_value_pickup_date_buy_bottom_sheet_dialog))
+                        } else {
+                            tvHintPickUpDate.visibility = View.GONE
+                            etPickupDate.visibility = View.GONE
+                            etPickupDate.text = Editable.Factory.getInstance().newEditable("")
                         }
                     }
-                } else {
-                    Toast.makeText(this, getString(R.string.invalid_input), Toast.LENGTH_SHORT).show()
+
+                    quantitySubstract.setOnClickListener {
+                        if (tvValueQuantity > 1) {
+                            tvValueQuantity--
+                            tvQuantity.text = tvValueQuantity.toString()
+                            tvTotal.text = formatCurrency(tvValueTotal.toInt() * tvValueQuantity)
+                        } else {
+                            Toast.makeText(this, getString(R.string.invalid_quantity), Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    quantityAdd.setOnClickListener {
+                        tvValueQuantity++
+                        tvQuantity.text = tvValueQuantity.toString()
+                        tvTotal.text = formatCurrency(tvValueTotal.toInt() * tvValueQuantity)
+                    }
+
+                    etPickupDate.setOnClickListener {
+                        getDateTimeCalendar()
+
+                        DatePickerDialog(this, this, year, month, day).show()
+                    }
+
+                    btnCancel.setOnClickListener {
+                        tvValueQuantity = 1
+
+                        bottomSheetDialog.dismiss()
+                    }
+
+                    btnBuy.setOnClickListener {
+                        val buyProduct = view.findViewById<Button>(R.id.btn_buy_bottom_sheet_dialog)
+                        val type = view.findViewById<AutoCompleteTextView>(R.id.et_delivery_method_buy_bottom_sheet_dialog)
+                        val quantity = view.findViewById<TextView>(R.id.tv_value_quantity_buy_bottom_sheet_dialog)
+                        val datePickup = view.findViewById<TextInputEditText>(R.id.et_pickup_date_buy_bottom_sheet_dialog)
+                        val idProductValue = productId
+                        val typeValue = when (type.text.toString()) {
+                            getString(R.string.delivery_method_buy_bottom_sheet_dialog) -> "0"
+                            getString(R.string.self_pickup_method_buy_bottom_sheet_dialog) -> "1"
+                            else -> "0"
+                        }
+                        val quantityValue = quantity.text.toString().toInt()
+                        val datePickupValue = datePickup.text.toString()
+
+                        if (datePickupValue != getString(R.string.tv_value_pickup_date_buy_bottom_sheet_dialog)) {
+                            showLoadingBuyProduct(buyProduct, true)
+
+                            transactionViewModel.buyProduct(idProductValue, typeValue, quantityValue, datePickupValue)
+                            transactionViewModel.buyProductResponse.observe(this@MarketProductDetailActivity) { response ->
+                                val error = response?.error
+                                val message = response?.message.toString()
+
+                                if (error != null) {
+                                    showLoadingBuyProduct(buyProduct, false)
+                                    if (error == true) {
+                                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                                        transactionViewModel.defaultBuyProduct()
+                                    } else {
+                                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                                        transactionViewModel.defaultBuyProduct()
+
+                                        productViewModel.getProductById(productId)
+                                        productViewModel.detailProduct.observe(this) { detailProduct ->
+                                            setDetailProduct(detailProduct)
+                                        }
+
+                                        bottomSheetDialog.dismiss()
+
+                                        val transactionIntent = Intent(this, TransactionActivity::class.java)
+                                        transactionIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                        startActivity(transactionIntent)
+                                    }
+                                }
+                            }
+                        } else {
+                            Toast.makeText(this, getString(R.string.invalid_input), Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    bottomSheetDialog.setCancelable(false)
+
+                    bottomSheetDialog.setContentView(view)
+
+                    bottomSheetDialog.show()
                 }
             }
-
-            bottomSheetDialog.setCancelable(false)
-
-            bottomSheetDialog.setContentView(view)
-
-            bottomSheetDialog.show()
         }
     }
 
