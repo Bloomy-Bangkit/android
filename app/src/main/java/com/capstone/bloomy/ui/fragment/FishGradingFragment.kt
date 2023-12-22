@@ -108,11 +108,20 @@ class FishGradingFragment : Fragment() {
                                 else -> getString(R.string.default_grade)
                             }
 
-                            gradeDescription.text = when (result.data.fishGradingStatus.fishGradingData.fishGrade) {
-                                "A" -> getString(R.string.fish_grading_description_a)
-                                "B" -> getString(R.string.fish_grading_description_b)
-                                "C" -> getString(R.string.fish_grading_description_c)
-                                else -> getString(R.string.default_fish_grading_description)
+                            gradeDescription.text =  if (result.data.fishGradingStatus.fishGradingData.fishClass == "Ikan") {
+                                when (result.data.fishGradingStatus.fishGradingData.fishGrade) {
+                                    "A" -> getString(R.string.fish_grading_description_a)
+                                    "B" -> getString(R.string.fish_grading_description_b)
+                                    "C" -> getString(R.string.fish_grading_description_c)
+                                    else -> getString(R.string.default_fish_grading_description)
+                                }
+                            } else {
+                                when (result.data.fishGradingStatus.fishGradingData.fishGrade) {
+                                    "A" -> getString(R.string.shrimp_grading_description_a)
+                                    "B" -> getString(R.string.shrimp_grading_description_b)
+                                    "C" -> getString(R.string.shrimp_grading_description_c)
+                                    else -> getString(R.string.default_fish_grading_description)
+                                }
                             }
                         }
 
@@ -159,11 +168,11 @@ class FishGradingFragment : Fragment() {
     }
 
     private fun formatGradeIkan(grade: String): String {
-        return "Ikan ini bergrade \"$grade\""
+        return getString(R.string.fish_grade, grade)
     }
 
     private fun formatGradeUdang(grade: String): String {
-        return "Udang ini bergrade \"$grade\""
+        return getString(R.string.shrimp_grade, grade)
     }
 
     private fun showLoadingGrade(grade: Button, isLoading: Boolean) { grade.text = if (!isLoading) getString(R.string.btn_grade) else getString(R.string.btn_loading) }
