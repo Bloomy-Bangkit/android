@@ -241,12 +241,7 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 .load(profile.photo)
                 .into(imgProfileDashboard)
 
-            val tvHelloUsernameDashboardText = if (profile.nama.isNotEmpty()) {
-                "Hello, ${profile.nama}"
-            } else {
-                "Hello, ${profile.username}"
-            }
-
+            val tvHelloUsernameDashboardText = getString(R.string.tv_hello_username, if (profile.nama.isNotEmpty()) profile.nama else profile.username)
             tvHelloUsernameDashboard.text = tvHelloUsernameDashboardText
         }
     }
