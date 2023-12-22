@@ -32,6 +32,7 @@ import com.capstone.bloomy.ui.viewmodelfactory.ProfileViewModelFactory
 import com.capstone.bloomy.utils.getImageUri
 import com.capstone.bloomy.utils.reduceFileImage
 import com.capstone.bloomy.utils.uriToFile
+import com.google.android.material.snackbar.Snackbar
 
 class EditProfileActivity : AppCompatActivity() {
 
@@ -58,6 +59,9 @@ class EditProfileActivity : AppCompatActivity() {
 
         profileViewModel.getProfile()
         profileViewModel.profile.observe(this) { profile ->
+            if (profile.nama.isNullOrEmpty() && profile.nohp.isNullOrEmpty() && profile.provinsi.isNullOrEmpty() && profile.kota.isNullOrEmpty() && profile.alamat.isNullOrEmpty() && profile.description.isNullOrEmpty()) {
+                Snackbar.make(binding.root, getString(R.string.invalid_buy_sell), Snackbar.LENGTH_SHORT).show()
+            }
             setProfile(profile)
         }
 
